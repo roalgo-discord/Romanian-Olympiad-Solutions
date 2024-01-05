@@ -1,0 +1,8 @@
+ Enuntul ne sugereaza metoda folosita: programarea dinamica. Fie A matricea data. Vom construi 
+o matrice B, in  care Bij=suma minima pentru a ajunge in celula (i,j) venind din celula (i-1,j) . 
+Prima linie completata va fi linia a doua: B[2,1]=infinit (in conditiile probleei nu putem ajunge 
+in aceasta celula venind de deasupra), iar B[2,j]=A[1,1]+A[1,j]+A[2,j]. Pentru celelalte linii
+B[i,j]=A[i,j]+A[i-1,j]+minimul dintre B[i-1,1],B[i-1,2],...,B[i-1,n], daca j este diferit de
+coloana minimului. Pentru coloana minimului, deoarece nu putem cobora direct ci trebuie sa facem
+un salt pe orizontala, vom determina al doilea minim de pe linia i-1. Dupa ce calculam linia m,
+gasim minimul dintre B[m,1],B[m,2],...,B[m,n-1] si-l adunam cu A[m,n] obtinand suma minima ceruta.

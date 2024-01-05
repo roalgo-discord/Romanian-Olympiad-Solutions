@@ -1,0 +1,48 @@
+Solutie - piata			prof. Doru Popescu Anastasiu
+
+Se observa ca un element de pe linia i, coloana j este egal cu:
+
+su(j-i+1), daca j>=i
+su(n+j-i+1), daca j<i
+
+unde:
+su(k) este suma cifrelor lui k.
+
+
+Daca nu ne dam seama de acest lucru va trebui sa utilizam un vector cu elementele de pe prima linie,
+dupa care folosind elementele lui putem accesa fiecare componenta din tablou.
+
+Nu trebuie sa construim tabloul pentru a calcula suma dorita.
+O linie (incepand cu a doua) din tabloul ce se defineste in enunt
+se poate construi in functie de precedenta.
+  
+Pentru a calcula suma ceruta, trebuie sa calculam suma de pe prima linie a
+subtabloului (cu coltul stanga sus (iT,jT) si coltul din dreapta jos (iM,jM)), dupa
+care suma de pe linia i (i>iT) din subtablou este egala cu
+suma de pe linia i-1 din talou, din care scadem ultimul element al acestei linii
+(de pe coloana jM, pentru ca nu mai face parte din linia i) si adunam elementul
+de pe coloana jT, linia i (care este singur element de pe linia i ce nu se regaseste si 
+pe linia i-1 din subtablou)
+
+
+
+{suma de pe linia iT}
+s:=0;
+for j:=jT to jM do
+ if j>=iT then s:=s+su(j-iT+1)
+          else s:=s+su(n+j-iT+1);
+{sumele de pe liniile iT+1, iT+2, ..., iM}
+s1:=s;{suma de pe linia anterioara}
+for i:=iT+1 to iM do
+ begin
+  {elementul de pe linia i, coloana jM}
+  if jM>=i-1 then e1:=su(jM-(i-1)+1) else e1:= su(n+jM-(i-1)+1);
+  {elementul de pe linia i, coloana jT}
+  if jT>=i then e2:=su(jT-i+1) else e2:= su(n+jT-i+1);
+  s:=s+s1-e1+e2;
+  s1:=s1-e1+e2;
+ end;
+
+se scrie in fisier s
+
+

@@ -1,0 +1,11 @@
+Vom citi ecuatia intr-un sir de caractere, apoi vom imparti sirul in doua subsiruri (membrul stang, cu alte cuvinte caracterele pana la semnul egal formeaza primul sir, iar membrul drept, cu alte cuvinte caracterele de dupa semnul egal formeaza al doilea sir).
+Problema este de a determina pentru fiecare dintre cele doua subsiruri coeficientul lui x si termenul liber.
+Sa notam:
+nr1 termenul liber din membrul stang
+nr2 termenul liber din membrul stang
+nrx1 coeficientul lui x din membrul stang
+nrx2 coeficientul lui x din membrul drept.
+Solutia ecuatiei este (nr2-nr1)/(nrx1-nrx2) daca nrx1<>nrx2.
+Daca nrx1=nrx2, atunci ecuatia este imposibila (daca nr1<>nr2) sau nedeterminata (daca nr1=nr2).
+Pentru a determina nr1 si nrx1, respectiv nr2 si nrx2 se prelucreaza cele doua siruri, identificand coeficientii necunoscutei, respectiv termenii liberi.
+

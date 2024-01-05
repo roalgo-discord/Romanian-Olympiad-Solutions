@@ -1,0 +1,1 @@
+se aplica un algoritm de tip Lee care expandeaza o coada ce contine initial doar starea (1,1,S) cu toate starile in care se poate ajunge dintr-o pozitie data. Se adauga starile noi sau se actualizeaza starile in care se poate ajunge cu mai multi bani in buzunar.

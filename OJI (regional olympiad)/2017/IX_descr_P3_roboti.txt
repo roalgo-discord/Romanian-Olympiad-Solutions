@@ -1,0 +1,95 @@
+Problema P3 - Roboti
+Propunator - prof. Liliana Colin, Colegiul National "UNIREA", Focsani
+
+Solutia 1 si demonstratia propuse de Mihail-Cosmin Pit-Rada
+
+[0] Pentru usurinta comunicarii vom defini "puterea unui sir" prin suma produselor tuturor elementelor adiacente.
+
+[1] Solutia optima va avea cea mai mica valoare a sirului original pe prima pozitie.
+
+    Sa presupunem prin absurd ca solutia optima are pe prima pozitie un element mai mare strict decat minimul sirului.
+    Prin rotatii circulare puterea sirului se conserva. Astfel putem roti circular asa-numita solutie optima, pana cand elementul minim ajunge pe prima pozitie. Astfel ajungem la contradictie, intrucat noul sir are aceeasi putere,insa este lexicografic mai mic.
+
+[2] Vom incerca sa facem o demonstratie constructiva. Evident vom pune cea mai mica valoare pe prima pozitie.
+    Vom adauga elementele ramase in ordine crescatoare, incercand sa le ghicim pozitia optima.
+    Este util sa ne imaginam ca elementul de pe prima pozitie este o zona contigua, de un element, pentru inceput, 
+    ce se invecineaza cu pozitiile 2 si N.
+
+    A ? ? ? ... ? ? ?     --  asa arata sirul dupa asezarea minimului pe prima pozitie, ? reprezentand pozitii libere
+
+[3] Sa reprezentam mai general sirul:
+
+    ... * * * A ? ? ? ... ? ? ? B * * * ...     -- unde * reprezinta pozitii ocupate
+
+    Nu am demonstrat inca forma de mai sus, insa putem observa ca sirul de pornire (cel de la [2])
+    satisface regula. Astfel putem porni de la forma aceasta si tot ce demonstram se poate aplica
+    inductiv, fara nici o restrictie.
+
+[4] Lema: Fie sirul: ... * * * A X * ... * Y B * * * ... 
+    (1) daca A < B si X > Y sirul nu poate fi o solutie optima
+    (2) daca A > B si X < Y sirul nu poate fi o solutie optima
+    (3) daca A = B si X > Y sirul nu poate fi o solutie optima
+
+    Sa oglindim secventa X * ... * Y:   ... * * * A Y * ... * X B * * * ...
+
+    Fie P puterea sirului din enuntul lemei si P' puterea sirului obtinut dupa oglindire.
+    P - P' = A*X + B*Y - A*Y - B*X = A*(X - Y) + B*(Y - X) = (A - B)*(X - Y)
+
+    Cazurile (1) si (2) conduc la P - P' < 0, ceea ce implica faptul ca ultimul sir are o putere mai mare.
+    In consecinta sirul initial nu poate reprezenta o solutie optima.
+
+    In cazul (3) deducem ca P = P', insa cum X > Y sirul obtinut dupa oglindire este lexicografic mai mic.
+    Asadar si in acest caz sirul initial nu are proprietatea de optimalitate.
+
+[5] Sa continuam cu pattern-ul de la [3], incercand sa adaugam un nou numar, in ordinea lor crescatoare. 
+    Distingem posibilitatile:
+    (1) ... * * * A C ? ? ... ? ? ? B * * * ...
+    (2) ... * * * A ? ? ? ... ? ? C B * * * ...
+    (3) ... * * * A ? ? ? .C. ? ? ? B * * * ...
+
+    Intrucat avem duplicate, pot exista mai multe cai catre solutia optima.
+    Vom arata ca putem ajunge prin caile (1) si (2) la solutia optima.
+
+    Presupunem prin absurd ca solutia optima se poate atinge doar prin (3), solutie ce va arata:
+    ... * * * A X * ...  * Y C * ... * B * * * ...
+
+    A, B <= C < X , Y (avem C < X pentru ca altfel ar rezulta C == X si putem obtine solutia si prin (1))
+    Aplicam lema (1) pentru A X * ...  * Y C si obtinem contradictie.
+
+    Am exclus din discutie cazul (3). Ramane sa vedem in ce conditii vom amplasa C conform (1) sau (2).
+
+    Distingem cazurile:
+    (i)   A < B: 
+          In acest caz putem rejecta cazul (2). Daca prin absurd, solutia optima se poate obtine doar prin (2), fie aceasta solutie:  ... * * * A X * ... * C B * * * ...
+          Mai avem A, B <= C < X. Obtinem contradictie conform lemei (1).
+
+    (ii)  A > B:
+          In acest caz putem rejecta cazul (1). Daca prin absurd, solutia optima se poate obtine doar prin 
+          (1), fie aceasta solutie:  ... * * * A C * ... * X B * * * ...
+          Mai avem A, B <= C < X. Obtinem contradictie conform lemei (2).
+
+    (iii) A = B:
+          In acest caz putem rejecta cazul (2). Daca prin absurd, solutia optima se poate obtine doar prin (2), fie aceasta solutie:  ... * * * A X * ... * C A * * * ...
+          Mai avem A <= C < X. Obtinem contradictie conform lemei (3).
+
+ [6] Din cele de mai sus reiese algoritmul urmator:
+     (0) se sorteaza sirul
+     (1) se amplaseaza elementul minim pe prima pozitie
+     (2) se monitorizeaza capetele zonei contigue (mai sus, reprezentate de A si B) si se alipeste un nou element de capatul cel mai mic, iar in caz de egalitate, se alipeste de capatul stang.
+
+
+
+Solutia 2 - propusa de prof. Pit-Rada Ionel-Vasile, Colegiul National "TRAIAN", Drobeta Turnu Severin
+
+Presupunem ca vectorul p[] este sortat crescator, p[1]<=p[2]<=...<=p[n] si au fost construite perechile (valoare, frecventa)  (r[i], f[i])cu r[1]<r[2]<...<r[nr]
+Asezam consecutiv valoarea r[nr] de f[nr] ori si obtinem astfel secventa q[m],...,q[M], unde M-m+1==f[nr]. Este evident ca celelalte valori, care vor urma descrescator, se vor aseza la stanga sau la dreapta acestei secvente
+
+Pentru fiecare i cu nr>i>1
+(1) daca numarul de aparitii pentru r[i] este cel putin 2, atunci vom adauga cate o valoare r[i] la fiecare din capetele m si M, pentru obtinerea unei sume de produse maxime, apoi celelalte f[i]-2 valori egale cu r[i] le vom adauga la capatul stang m, pentru conservarea ordinii lexicografice minime.
+(2) daca numarul de aparitii pentru r[i] este 1, atunci putem presupune ca avem o secventa 1=f[i]=f[i-1]=...=f[j] de valori unicat (cu numarul de aparitii egal cu 1)
+	(a) daca avem capete egale q[m]==q[M], atunci toate valorile unicat trebuie adaugate alternativ la cele doua capete astfel incat ultima (cea mai mica) sa fie adaugata la capatul m (din stanga), pentru suma maxima de produse si conservarea ordinii lexiografice minime
+	(b) daca avem capete cu valori diferite , atunci valorile unicat trebuie adaugate alternativ la cele doua capete incepand cu capatul unde se afla cea mai mare, deoarece suma maxima este obiectivul principal de urmarit
+
+(3) La final valoarea minima se va adauga la capatul m, conform cu numarul ei de aparitii.
+Se va afisa apoi secventa q[m], q[m+1],...,q[M]
+

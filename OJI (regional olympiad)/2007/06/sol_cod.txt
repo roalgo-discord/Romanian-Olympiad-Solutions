@@ -1,0 +1,9 @@
+	Solutie - COD
+
+Se utilizeaza un vector v=(v[0],v[1],v[2], ...,v[99]), unde
+v[i]=frecventa de aparitie a lui i in fisierul cod.in,
+i=0,1,...99.
+In fiserul de iesire cod.out se scriu acele numere i=0,1,...99
+cu proprietatea ca v[i] mod 2=1.
+
+

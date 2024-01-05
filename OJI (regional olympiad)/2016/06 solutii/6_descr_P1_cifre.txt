@@ -1,0 +1,6 @@
+Descriere solutie  – cifre	
+	
+Se determinã cifrele comune pentru cele 2 numere ce formeazã o pereche, utilizând doi vectori de aparitii. 
+Pentru fiecare cifrã comunã se determinã minimul dintre a si b, unde a este numãrul de aparitii a cifrei în primul numãr iar b este numãrul de aparitii a cifrei în cel de-al doilea numãr. 
+Dacã existã cifre comune se formeazã valoarea maximã luând toate cifrele comune în ordinea descrescãtoare a valorii lor. 
+Dacã valoarea obtinutã este strict pozitiva, se numãrã ca solutie, actualizandu-se daca este cazul si valoarea maxima pe  care o poate forma Andrei.

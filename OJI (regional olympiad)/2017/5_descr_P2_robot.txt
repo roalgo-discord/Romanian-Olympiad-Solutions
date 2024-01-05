@@ -1,0 +1,16 @@
+﻿robot-soluție
+prof. Jakab Irma-Tünde, Liceul Teoretic "Bolyai Farkas"
+
+Punctul 1
+Numărul de cifre afișate pe ecran după executarea roboprogramului înseamnă de câte ori apasă robotul un anumit buton, adică de câte ori trebuie să se execute instrucțiunea A. Astfel, se citește roboprogramul caracter cu caracter și se numără caracterele 'A'.
+
+Punctul 2
+Determinarea cifrelor afișate pe ecran după executarea roboprogramului înseamnă determinarea cifrei în dreptul căreia se va poziționa mânerul robotului la executarea instrucțiunii A.
+Se citesc datele caracter cu caracter, se identifică direcția și poziția iar în funcție de direcția indicată se determină cifra care trebuie afișată. 
+Pentru stabilirea poziției, caracterele cifre din roboprogram trebuie transformate în cifre numerice. Dacă direcția indicată este dreapta și deoarece mânerul robotului se deplasează circular, numărul de poziții efectuate va fi suma dintre poziția (cifra curentă) și cifra indicată în program modulo 10 (având în total 10 cifre). Dacă direcția indicată este dreapta și din cauza deplasării circulare din poziția curentă se scade cifra din roboprogram, iar dacă rezultatul este negativ, se adună 10.
+Trebuie să se țină cont de faptul că instrucțiunile pot să indice cifre 0 chiar la început, respectiv cifrele pot apărea de mai multe ori datorita prezenței repetate a instrucțiunii A.
+
+Punctul 3
+Pentru numărul citit, instrucțiunile trebuie asociate începând de la cifra cea mai semnificativă spre cifra unităților și trebuie acordat atenție cifrelor 0 de la sfârșitul numărului dat (se determină oglinditul numărului și se reține numărul de zerouri de la sfârșitul numărului citit). 
+Numărul citit se prelucrează cifră cu cifră, se calculează numărul de deplasări necesare spre stânga și spre dreapta, se alege direcția în care deplasarea se va face într-un număr minim de pași. În calcularea numărului de deplasări se ține cont de mișcarea circulară a mânerului. În cazul în care cele două numere sunt egale, se alege direcția dreapta.
+Dacă numărul citit avea zerouri la sfârșitul numărului, se determină numărul de deplasări necesare afișării acestora și se introduc în roboprogram un număr de instrucțiuni A egal cu numărul de zerouri calculate.

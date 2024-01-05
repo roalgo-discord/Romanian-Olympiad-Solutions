@@ -1,0 +1,27 @@
+chibrituri - solutie
+prof. Marinel Serban
+
+
+Numar si retin pentru fiecare cifra numarul de chibrituri verticale si orizontale
+necesare.
+Retinerea valorilor o fac fie intr-un vector, fie in variabile fie...pe hartie!
+Plec de la ora 00:00, adica 0 minute
+Marchez faptul ca inca nu am gasit nici o ora corecta
+Parcurg toate orele posibile - intr-o zi sunt 24*60 minute
+    calculez ora
+    calculez minutele
+    calculez prima si a doua cifra a orei
+    calculez prima si a doua cifra a minutului
+
+    numar chibriturile verticale (fie din vector, fie din variabile, fie direct
+          ca si constante in instructiuni if sau switch)
+    numar chibriturile orizontale (la fel)
+
+    daca am gasit ambele valori corecte
+          mai am o solutie, o numar
+          daca este prima gasita aceasta este ora minima, o retin
+          daca nu este prima am mai gasit solutie deci aceasta este (deocamdata)
+              ora maxima, o retin
+    trec la ora (minutul) urmatoare
+    
+Afisez tinand cont ca daca am doar o solutie, aceasta este si ora maxima

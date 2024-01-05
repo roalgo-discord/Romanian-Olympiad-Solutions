@@ -1,0 +1,16 @@
+P1- martisoare
+Solutie – complexitate O(N) - prof.Ana Intuneric
+
+Solutia se bazeaza pe observatia ca este suficient sa determinam 
+primul numar modificat.
+
+Sunt doua cazuri clare
+
+a)primele doua numere sunt nemodificate, caz in care se calculeaza
+imediat numarul maxim si se cauta primul numar modificat comparand 
+cifrele sale cu cifrele numarului care trebuia sa fie pe respectiva 
+pozitie in fisier
+
+b)unul dintre primele doua numere sau amandoua sunt modificate. In 
+acest caz se citesc doar primele 4 numere si se trateaza combinatiile 
+posibile de numere modificate

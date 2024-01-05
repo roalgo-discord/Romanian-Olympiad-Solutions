@@ -1,0 +1,14 @@
+bete - solutie
+prof. Lucia Miron
+
+Pentru a determina lungimea initiala a betelor L vom determina in S suma 
+numerelor citite. Apoi evident
+      L = S div N
+Determinam maximul elementelor din sirul a si numarul de aparitii al 
+maximului, notate maxa si nrmaxa, apoi determinam maximul elementelor 
+din b si numarul de aparitii al acestuia, notate maxb si nrmaxb. Evident
+      K = maxa + maxb
+      nrbetemax = min(nrmaxa, nrmaxb)
+Toate datele necesare le determinam la citire, nu este necesara utilizarea 
+tablourilor
+ 

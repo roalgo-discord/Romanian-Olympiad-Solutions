@@ -1,0 +1,4 @@
+Se calculeaza pentru fiecare pozitie numarul de amestecari dupa care se repeta pozitia respectiva (perioda principala).
+Se calculeaza pentru toti divizorii d ai celui mai mic multiplu comun al numerelor calculate (tinut ca factori primi si exponentii corespunzatori) numarul de pozitii care se repeta dupa d amestecari.
+Sursa comisiei genereaza divizorii cu bkt pe exponentii descompunerii in factori primi.
+

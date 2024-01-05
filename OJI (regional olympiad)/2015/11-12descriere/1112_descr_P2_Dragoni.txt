@@ -1,0 +1,31 @@
+Problema Dragoni - Autor: Vlad-Alexandru Gavrila, Universitatea Cambridge
+
+Solutie oficiala - Vlad-Alexandru Gavrila
+
+Pentru a rezolva doar cerinta a), se vor pastra in graf doar acele muchii care pot fi parcurse de dragonul aflat pe insula 1 (care au lungimea mai mica decat distanta maxima Dmax[1]). Apoi se va face o parcurgere BFS sau DFS din nodul 1 pe acest graf pentru a se determina multimea M de noduri care pot fi vizitate pornind din nodul 1 folosind doar dragonul 1. Raspunsul va fi reprezentat de valoarea Dmax[x] maxima pentru care x apartine M.
+
+Pentru a rezolva cerinta b), vom construi un nou graf in care putem reprezenta corect miscarile pe care le poate face Hiccup. Astfel, un nod va fi reprezentat de o pereche (i, j) (1<=i, j<=N), cu urmatoarea semnificatie: Hiccup se afla in nodul i avand la el un dragon de tipul j. Apoi vom trasa muchiile in acest nou graf corespunzator cu miscarile pe care le poate face Hiccup:
+
+1. Zbor:
+
+Pentru fiecare muchie din graful initial A[i], B[i], D[i], si fiecare j intre 1 si N, avem muchie bidirectionala in graful nou intre nodurile (A[i], j), (B[i], j) de lungime D[i] doar daca D[i]<=Dmax[j]. Aceasta muchie corespunde unui zbor intre nodurile A[i] si B[i] cu dragonul j.
+
+2. Schimbarea dragonului:
+
+Pentru fiecare nod i din graful original si fiecare j intre 1 si N, avem muchie unidirectionala intre nodurile (i, j) si (i, i) de cost 0 in graful nou. Aceasta muchie corespunde schimbarii unui dragon arbitrar j cu un dragon din specia aflata in nodul i.
+
+Pe acest graf nou construit se va aplica algoritmul lui Dijkstra pornind din nodul (1, 1). Solutia va fi distanta minima in care putem accesa unul din nodurile (N, 1), (N, 2) ... (N, n), deoarece nu ne intereseaza cu ce dragon ajungem in nodul N.
+
+De mentionat este ca graful nu trebuie retinut efectiv in memorie, deoarece aceasta abordare nu se incadreaza in limitele problemei. Observam ca pentru orice i intre 1 si M si orice j intre 1 si N, avem (A[i], j) -> (B[i], j) in graful nou doar daca D[i] <= Dmax[j] - aceasta verificare putand fi facuta in cadrul algoritmului lui Dijkstra cand incercam sa vedem daca o muchie poate imbunatati vreo distanta. Muchiile de tip (i, j) -> (i, i) pot fi, din nou, generate pe parcurs, fara a trebui sa fie retinute.
+
+Complexitate timp: O(M*N log N) timp, O(N+M) memorie.
+
+
+
+Solutie alternativa (pentru cerinta 2) - Adrian Panaete
+
+Se considera multimea tuturor perechilor insula-dragon. Pentru fiecare pereche se calculeaza distanta minima parcursa pentru a ajunge pe insula respectiva cu dragonul respectiv. Initial avem doar dragonul 1 pe insula 1 cu distanta 0. In continuare vom alege mereu perechea de distanta minima disponibila. Aceasta va corespunde unei insule si unui dragon.
+
+Se alege cel mai bun intre dragonul respectiv si dragonul corespunzator insulei si se va incerca imbunatatirea distantelor la vecinii insulei care sunt situati la distanta mai mica decat Dmax pentru dragonul respectiv. Pentru mentinerea sortata a perechilor se poate folosi o structura de tip set sau heap. Pentru a evita utilizarea unei astfel de structuri poate fi folosit principiul din algoritmul Bellman-Ford. Mai precis se mentine o coada cu toate perechile in care a avut loc o imbunatatire a distantei si se proceseaza elementele din coada. Pentru eficientizare o pereche poate fi marcata la intrarea in coada si demarcata la parasirea ecesteia.
+
+Daca insula de destinatie este chiar insula N, in loc sa introducem perechea in coada se update-aza solutia.

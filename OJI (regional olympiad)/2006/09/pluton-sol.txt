@@ -1,0 +1,50 @@
+pluton - solutie
+
+1. solutia 1 (program PLUTRADU.CPP)
+============
+ - in timpul citirii creez un nou vector care contine pe pozitiile corespunzatoare numerele de
+   identificare din vectorul initial in ordinea descrescatoare a cifrelor
+ - in etapa a doua se parcurge vectorul nou format grupand toate numerele de identificare 
+   identice; dupa formarea unui grup (pluton) se determina marimea acestuia retinadu-se acesta 
+   daca e cel mai numeros gasit pana in acel moment, respectiv, contorizandu-l daca numarul
+   de soldati determinat este egal cu cel maxim determinat anterior. 
+ 
+2. solutia 2 (programe PLUTONC.C si PLUTONP.PAS)
+============
+ - citesc numerele de identificare in vectorul a[]
+ - construiesc 2 vectori ajutatori
+     o vectorul b[] care va contine numarul de cifre al fiecarui element
+     o vectorul c[] care va contine numarul de cifre distincte a fiecarui element
+ - ordonez cei trei vectori crescator dupa numarul de cifre distincte (dupa c[]) si dupa numarul de cifre, 
+   deci cheia de sortare va fi un numar construit dupa formula 
+            c[i]*10+b[i]
+ - formez si numar plutoanele
+     o plutoanele le voi retine pe linii distincte a matricii G[MAX][2]
+        x in fiecare linie, elementul G[i][0] va contine numarul de elemente din pluton
+        x elementul G[i][1] va contine reprezentantul plutonului, primul care apare in a[]
+        x repet pana cand toate elementele din a au fost verificate   
+          | o retinem primul element nepus inca din pluton cu caracteristicile lui
+          | o verific elementele cu aceleasi caracteristici sa faca parte din acelasi pluton cu primul
+          |   element din pluton pe care l-am retinut
+          |   x testez daca are aceleasi cifre
+          |     daca nu are aceleasi cifre 
+          |        trec mai departe
+          |     altfel
+          |        inca face parte din acelasi pluton, il numar
+ - detectez numarul maxim de elemente ale unui pluton si retin maximul
+ - afisare cerintele 1 2 3 folosind valorile aflate
+ - la cerinta 4
+     o caut in a[] reprezentantul unui pluton numeros
+     o afisez cele maxe elemente - in vectorul sortat elementele cu aceleasi caracteristici (b si c)
+       sunt unul dupa altul, dar mai trebuie verificat sa aiba caracteristicile reprezentatntului
+       (ex. 1212 si 3434 au aceleasi caracteristici (4,2), (4,2), dar nu fac parte din acelasi pluton)  
+
+3. solutia 3 (program PLUTCARM.CPP)
+============
+
+  - se utilizeaza notiunea de lista: dintr-o lista fac parte toti membrii unui pluton
+  - se construieste un vector ajutator care retine pentru fiecare element elementul care il urmeaza
+    in lista
+  - pe parcursul formarii listelor se determina lista cea mai numeroasa precum si numarul de liste de acest
+    tip
+  - afisarea se face utilizand informatiile din vetorul urm   

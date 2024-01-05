@@ -1,0 +1,39 @@
+Problema  1  - axyz   100 puncte
+
+
+
+Autor prof. Carmen Mincã
+Colegiul National de Informaticã “Tudor Vianu”, Bucuresti
+
+Descrierea solutiei
+
+Cerinta 1 (30 puncte)
+O solutie se poate obtine astfel:
+- Parcurgem sirul cifrelor de la pozitia N cãtre prima, întrerupând parcurgerea la prima cifrã X[k] cu proprietatea cã:
+X[k]>X[k+1] <= X[k+2] <=...<= X[N]
+- Determinãm pozitia poz a celei mai mari cifre dintre cele situate pe pozitiile k+1,k+2,…,N si cu proprietatea X[k]>X[poz]
+- Interschimbãm cifrele X[k] si X[poz].
+- Sortãm descrescãtor în vectorul X cifrele de pe pozitiile k+1,k+2,…,N restul numãrului nemodificându-se. Complexitatea este datã de algoritmul de sortare folosit, maximum O(N2) -solutia obtine un punctaj partial
+- Pentru a obtine o complexitate liniara (O(N)), ne vom folosi de faptul cã în vectorul X cifrele de pe pozitiile k+1,k+2,…,N sunt sortate crescãtor. Nu are sens sã le sortãm descrescãtor,  deoarece le putem scrie în fisierul de iesire în ordine inversã, solutia cãutatã fiind X[1], X[2],..., X[K], X[N], X[N-1],..., X[K+1]
+
+Cerinta 2 (70 puncte)
+O solutie cu punctaj maxim se poate obtine astfel:
+2.1.Pentru A format din 2 cifre
+      -	Separãm cifrele lui A: ab, a=[A/10], b=A%10
+      -	Parcurgem sirul cifrelor lui X de la pozitia N cãtre prima numãrând aparitiile cifrelor b în variabila NB (initial cu valoarea 0). Variabila Z va memora numãrul perechilor cerute (initial este 0). 
+      -	În timpul acestei parcurgeri, se studiazã fiecare cifrã astfel:
+         - Dacã cifra curentã este egalã cu b atunci o numãrãm ( NB=NB+1). 
+         - Altfel, dacã cifra curentã este a atunci se pot forma cu NB numere A din cifra a curentã si cele NB cifre b situate la dreapta lui a în X. Adãugãm numãrul acestora la celelalte gãsite pânã în acest moment (Z=Z+NB)  
+
+2.2.Pentru A format din 3 cifre
+      -	Separãm cifrele lui A: abc, a=[A/100], b=[A/10%10], c=A%10;
+      -	Parcurgem sirul cifrelor lui X de la pozitia N cãtre prima numãrând aparitiile cifrelor c în variabila NC (initial cu valoarea 0). La întîlnirea unei cifre b se pot genera NC numere de forma bc, astfel vom incrementa  variabila NBC (initial cu valoarea 0) cu valoarea NC. La întîlnirea unei cifre a se pot genera NBC numere de forma abc, astfel vom incrementa  variabila Z (initial cu valoarea 0) cu valoarea NBC. Variabila Z va memora numãrul perechilor cerute. 
+      -	În timpul acestei parcurgeri, se studiazã fiecare cifrã astfel:
+         - Dacã cifra curentã este egalã cu c atunci o numãrãm ( NC=NC+1). 
+         - Dacã cifra curentã este egalã cu b atunci se pot forma încã NC numere de forma bc si adãugãm acest numãr la variabila NBC ( NBC=NBC+NC). 
+         - Altfel, dacã cifra curentã este a atunci se pot forma cu NBC numere A din cifra a curentã si cele NBC numere bc situate la dreapta lui a în X. Adãugãm numãrul acestora la celelalte gãsite pânã în acest moment (Z=Z+NBC)  
+
+-	Complexitate O(N)
+
+
+

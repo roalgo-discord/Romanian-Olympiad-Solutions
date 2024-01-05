@@ -1,0 +1,47 @@
+Problema armonica
+Autor: Prof. Adrian Panaete - Colegiul National "A.T.Laurian" Botosani.
+
+Se observa ca pentru (a,b,c) progresie armonica se obtine 2ac=b(a+c).
+Se deduce ca 2ac-ba-bc=0. Inmultind cu 2 si adunand b^2 ( b la patrat ) se deduce:
+(2a-b)(2c-b)=b^2
+Daca b este impar atunci pentru orice descompunere b^2 = uv se obtine solutia
+a=(b+u)/2 c=(b+v)/2
+Daca b este par atunci b=2k si se deduce (2a-2k)(2c-2k)=4*k^2 adica
+(a-k)(c-k) = k^2. In acest caz pentru orice decompunere k^2 = uv se obtine solutia
+a=k+u c=k+v.
+
+Observatie finala: numarul de solutii este numarul divizorilor lui b^2 pentru b impar respectiv numarul divizorilor lui (b/2)^2 pentru b par.
+
+Solutia 2: Bazata pe observatie directa (Szabo Zoltan)
+
+Cu o sursa bruta generam primele solutii ale problemei.
+Se observa cu usurinta ca perechile (a,c) din fiecare solutie sunt fie multipli unul la celalalt, fie formeaza un raport al carui numarator si numitor are legatura cu divizorii numarului b.
+Astfel fractia a/c= va putea avea toate posibilitatile de valori p/q unde p si q sunt divizori ale lui b, iar p/q este fractie ireductibila.
+
+Din generarea solutiilor se observa ca pentru b numar impar algoritmul va genera solutii pentru divizorii lui b. Iar pentru b numar par, algoritmul va genera solutii pentur divizorii lui b/2.
+
+Pentru fiecare astfel de fractie gasita cu p si q cunoscute avem pe deoparte ecuatia a/c=p/q, sau a*q=p*c.
+Pe de alta parte b este numar cunoscut cu b=2ac/(a+c)
+de unde rezolvand sistemul de ecuatii, obtinem solutiile: a=b(p+q)/(2*q) respectiv c=b(p+q)/2q
+
+Observam ca fiecare pereche (a,c) se poate tipari si ca pereche (c,a), daca a este diferit de c. De acet cont tinem cont in memorarea solutiilor.
+
+De exemplu pentru b=15=3*5
+
+avem urmatoarele 5 rapoarte pentru a/c: 1,3,5,15,3/5. De aici vor rezulta 9 solutii distincte.
+
+Cele 9 soluti ale problemei sunt
+
+solutie    raport
+15 15       1/1
+10 30       1/3
+30 10       3/1
+9 45        1/5
+45 9        5/1  
+8 120       1/15
+120 8       15/1
+20 12       5/3
+12 20       3/5
+
+Complexitatea algoritmului este O(sqrt(b)).
+

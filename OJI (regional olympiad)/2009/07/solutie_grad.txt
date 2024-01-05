@@ -1,0 +1,11 @@
+Solutie- grad (Popescu Doru Anastasiu)
+
+Pentru a determina numarul de ordine al unei litere in alfabet se poate folosi codul ASCII sau un 
+sir de caractere constant cu toate literele alfabetului (cautand litera in acest sir de caractere, pozitia
+este chiar numarul de ordine). Gradul unui cuvant se obtine sumand numarul de ordine al fiecarei litere.
+Se formeaza un vector cu gradul fiecarui cuvant:
+g=(g[1],g[2],...,g[k]).
+Nu este nevoie sa se retina fiecare cuvant.
+Se determina numarul de grupe nrg, eventual ordonant crescator vectorul g.
+Se afiseaza k si nrg.
+

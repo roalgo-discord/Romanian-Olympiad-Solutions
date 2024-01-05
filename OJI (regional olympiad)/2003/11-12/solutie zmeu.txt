@@ -1,0 +1,12 @@
+Problema propusa de prof. Dana Lica (Ploiesti)
+
+Se lucreaza pe un graf orientat in care nodurile reprezinta povesti 
+si din care s-au eliminat niste arce (date in zmeu.in, i->1,  p->i si 1->p)
+
+Rezolvarea are la baza un algoritm de tip Lee cu memorarea in fiecare nod
+a tuturor timpilor minimi cu care se ajunge in nodul respectiv cu 1,2,...,c
+capete netaiate.
+
+Pentru testele mari sunt necesare tehnici de alocare si optimizari legate de
+parcurgerea in latime a grafului.
+

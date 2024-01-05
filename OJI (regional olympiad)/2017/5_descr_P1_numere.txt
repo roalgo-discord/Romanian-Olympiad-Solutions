@@ -1,0 +1,22 @@
+///autor profesor Cerasela-Daniela Cardas, Colegiul National A.T.Laurian Botosani
+
+1.Initializam casuta curenta si numarul liniei de pornire cu 1. 
+
+Pentru fiecare din cei n pasi din descriere: 
+- o alegere de tip 1 presupune actualizarea casutei curente cu valoarea casuta_curenta+linie 
+- o alegere de tip 2 conduce la actualizarea casutei curente cu casuta_curenta+linie+1
+- incrementam numarul liniei curente.
+
+2. Daca linia pe care se afla numarul K este l si numarul de ordine al numarului K pe linia l este c,
+se observa ca suma maxima se obtine din insumarea ultimelor valori de pe liniile 1,2,...,c
+si a valorilor de pe pozitia c din liniile c+1,c+2...,l.
+
+Fie ultim - valoarea ultimului element de pe fiecare linie si l valoarea liniei curente.
+Initial ultim=1, l=0. 
+Cat timp ultim < K,incrementam linia, actualizam ultim cu ultim<-ultim+l, calculam s-suma numerelor de linie.
+Cand ultim>=K, elemc<-K
+Repetat
+-eliminam din suma s ultimul element de pe linia l si adunam elementul de pe pozitia c, elemc
+-elemc<-elemc-l+1
+-decrementam linia l
+pana cand l=c

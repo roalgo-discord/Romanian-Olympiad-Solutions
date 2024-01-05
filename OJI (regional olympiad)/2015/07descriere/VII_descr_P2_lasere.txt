@@ -1,0 +1,8 @@
+Descrierea solutiei
+Autor: prof. Nicu Vad Laurentiu, Liceul Teoretic Mihail Kogalniceanu Vaslui
+
+ Varianta 1 -100p
+
+Se citesc datele si se modifica tabloul conform pozitilor laserelor in ordinea in care apar. 
+Pentru a afla numarul de gropi se calculeaza poziile valorilor minime in cele opt directii si contorizarea acestora.
+Pentru transee se foloseste un vector auxiliar cu valori de 0 si 1, 1 pentru pozitia gropii se cauta secventa maxima de valori consecutive de 1 si se contorizeaza.  

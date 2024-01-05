@@ -1,0 +1,38 @@
+CEAS - solutie
+
+Voi retine configuratia ceasului intr-un tablou bidimensional C[4][8]
+cu 4 linii si 8 coloane, in care voi retine doar valori binare 0 (pentru
+caractere spatiu sau 'x' citite) sau 1 (pentru caracter 'o' citit).
+
+Timpul citit t il pastrez sub forma restului impartirii la 8640000 deoarece
+sunt 8640000 secunde intr-o zi iar fiecare configuratie a ceasului se 
+repeta o data pe zi.
+
+In etapa a doua calculez cele 8 cifre zecimale reprezentate pe ecran,
+prin conversie din baza 2 in baza 10, apoi determin ora sub forma 
+h:m:s.ss, iar cu relatia
+
+  Ora_start := h*360000+m*6000+s*100+ss
+
+determin timpul initial exprimat in sutimi de secunda.
+
+Timpul care trebuie reprezentat il determin printr-o simpla adunare, 
+avand insa grija sa raman in intervalul a 24 ore 
+
+  Ora_final := Ora_start+t; 
+  Ora_final := Ora_final MOD 8640000
+
+dupa care determin noile valori pentru h, m, s si ss. 
+
+  h := Ora_final DIV 360000
+  Ora_final := Ora_final MOD 360000
+  m := Ora_final DIV 6000
+  Ora_final := Ora_final MOD 6000
+  s := Ora_final DIV 100
+  ss := Ora_final MOD 100
+
+Din acestea determin cele 8 cifre care trebuie reprezentate pe ecranul
+ceasului binar, apoi le convertesc in baza 2 in acelasi tablou C, care
+este in final scris in fisierul de iesire tinandu-se cont de spatiile care
+trebuie reprezentate (coloanele 1, 3, 5) si de valorile 0 si 1 din
+tabloul C.

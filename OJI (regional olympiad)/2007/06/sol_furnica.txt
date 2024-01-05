@@ -1,0 +1,30 @@
+	Solutie - FURNICA
+
+O modalitate de rezolvare care foloseste un singur tablou bidimensional
+a cu elemtele a[i,j], i,j=1,2,...n este urmatoarea:
+
+xc=1  {coordonatele initiale ale furnicii}
+yc=1
+s=0   {cantitatea totala de firimituri} 
+
+pentru i=1,...,k executa
+  -daca a[xc,yc]>=0 atunci s:=s+a[xC,yC];a[xC,yC]:=-1 altfel a[xC,yC]:=a[xC,yC]-1
+  -se citeste din fisierul de intrare numarul asociat mutarii, notat cu x
+  -in functie de valoarea lui x se actualizeaza coordonatele xc si yc
+sfarsit pentru
+daca a[xc,yc]>=0 atunci s:=s+a[xC,yC];a[xC,yC]:=-1 altfel a[xC,yC]:=a[xC,yC]-1
+
+determinam in variabila min, cea mai mica valoare din tablou {valorile negative din
+tablou in modul reprezinta numarul de treceri a furnicii prin acel patratel}
+
+nr=0
+parcurgem tabloul a, componenta cu componenta si pentru a[i,j]=min avem nr=nr+1  
+afisam in fisierul furnica.out s si nr.
+
+
+Observatie
+Daca se doreste sa nu se utilizeze numere negative, atunci se mai declara un tablou 
+bidimensional in care se retine, de cate ori s-a trecut prin patratelul respectiv. 
+
+ 
+

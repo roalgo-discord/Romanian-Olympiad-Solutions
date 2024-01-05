@@ -1,0 +1,24 @@
+Pentru fiecare cartela, se compara element cu element, matricea 
+care reprezinta sablonul, cu urmatoarele tablouri:
+
+ 1. Cartela
+ 2. Cartela rotita cu 90 grade 
+ 3. Cartela rotita cu 180 grade
+ 4. Cartela rotita cu 270 grade
+
+Daca nu s-a gasit o coincidenta, se intoarce cartela, printr-o operatie 
+de oglindire fata de linia i = n / 2, (sau fata de coloana j = n / 2), 
+dupa care se compara sablonul cu urmatoarele tablouri:
+
+ 5. Cartela oglindita
+ 6. Cartela oglindita rotita cu 90 grade 
+ 7. Cartela oglindita rotita cu 180 grade
+ 8. Cartela oglindita rotita cu 270 grade
+
+Rotirile se pot face in sens trigonometric sau orar.
+Daca s-a gasit o coincidenta la oricare dintre pasii de mai sus,
+se opreste cautarea, se afiseaza 1 si se trece la prelucrarea 
+urmatoarei cartele.
+
+Daca nici dupa pasul 8 nu s-a gasit o potrivire exacta, se afiseaza 0
+si se trece la prelucrarea urmatoarei cartele.
