@@ -1,0 +1,12 @@
+   Solutie sir
+ Sirurile mai mici lexicografic ca toate sufixele lor se intalnesc in teorie sub numele de siruri prime. Se poate arata usor ca un astfel de sir este mai mic ca orice permutare circulara a sa. Reciproca nu este 
+valabila pentru siruri formate din subsiruri identice concatenate, dar 
+una din restrictiile problemei elimina acest caz. 
+Prin urmare vom cauta cea mai mica permutare circulara a sirului initial.
+ Pornind de la sirul dat vom crea un sir numeric: -n1, +n2, -n3, +n4,... cu semnificatia: n1 caractere A, n2 caractere B, n3 caractere A etc. 
+Deoarece ultimele caractere pot coincide cu primele vom face o permutare 
+circulara cu r pozitii, unde r este indicele primului element
+diferit de ultimul. Pentru sirul numeric obtinut rezolvam aceeasi problema: gasim indicele imax pentru care permutarea circulara ce incepe 
+pe pozitia imax este cea mai mica (in ordine lexicogragica). Daca vrem, 
+putem repeta procedeul pentru multimea valorilor obtinute, dar nu e cazul 
+pentru siruri formate din doua simboluri si n<50000.

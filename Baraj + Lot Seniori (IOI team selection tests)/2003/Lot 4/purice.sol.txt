@@ -1,0 +1,19 @@
+PURICE - solutie
+
+	Desi nu pare, la prima vedere, aceasta problema se rezolva prin programare dinamica. Algoritmul de programare dinamica are complexitatea O(N^4), dar timpul lui de executie variaza mult in functie de configuratia efectiva.
+	Sa consideram intervale consecutive de spatii libere, separate intre ele prin zone continue de 'cuburi de zahar'. Pentru a trece dintr-o zona in alta, singura mutare posibila a puricelui este sa sara (eventual impingand unele cuburi pentru a-si face loc si mergand, pentru a-si lua avant). Principiul de optimalitate ce sta la baza algoritmului de programare dinamica este ca intr-o secventa optima de mutari, puricele nu trebuie sa se deplaseze dintr-o secventa continua de spatii libere (sa o numim 'zona libera') intr-o zona libera din spatele ei. Astfel, o data ajuns intr-o zona libera, el trebuie sa se gandeasca doar cum sa mearga inainte (chiar daca pentru asta trebuie sa mearga inapoi sau sa impinga unele cuburi inapoi, pentru a-si face loc sa isi ia avant).
+
+	Se calculeaza E[i,j], avand semnificatia energina minima consumata de purice pentru a ajunge pe pozitia i, avand j spatii libere in spate. Initial, E[1,0]=0. O data ajuns pe pozitia i cu j spatii libere in spate, se incearca toate combinatiile de mutari posibile ale puricelui care il duc ori pe o pozitie mai in fata in aceasi zona libera, ori intr-o zona libera de dupa el (exista numai 7 tipuri de mutari care pot face parte dintr-o secventa optima de mutari):
+
+1. deplasare la dreapta cu x pozitii in cadrul aceleiasi zone libere
+2. deplasare la dreapta x pozitii, plus salt la dreapta y pozitii (1<=y<=x+1)
+3. deplasare la stanga x pozitii (0<=x<=j), apoi mers pana la capatul zonei libere, plus salt la dreapta y pozitii
+4. deplasare la stanga, impingere la stanga, mers la dreapta pana la captul zonei libere + salt la dreapta
+...
+
+	Ultimele 3 tipuri de miscari sunt mai complicate, constand atat din deplasari si impingeri in fata, cat si in spate.
+
+	La executia fiecarei miscari se tine seama de urmatoarele:
+1. intrucat puricele nu se intoare niciodata inr-o zona libera din urma, pozitiile i+1,..,N sunt la fel ca in configuratia initiala, caci puricele nu a ajuns niciodata pana la ele.
+2. se stie cat se poate deplasa puricele la stanga si la dreapta, fara sa se loveasca de vreun cub de zahar sau sa paraseasca zona libera (prin saritura)
+3. se stie cate impingeri la stanga, respectiv la dreapta, poate executa puricele, pana ce toate cuburile de zahar ajung la margine.

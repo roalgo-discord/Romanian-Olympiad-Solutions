@@ -1,0 +1,1190 @@
+        Concursurile USACO - selectia echipei USA pentru IOI 2002
+        ---------------------------------------------------------
+
+        Selectia echipei USA pentru IOI 2002 s-a desfasurat intr-o tabara
+    organizata la inceputul lunii iunie, la care au participat cei 15 membri
+    ai lotului largit, selectati in urma concursurilor USACO de pe Internet.
+    Au fost 6 zile de concurs, de la care va trimit problemele, astfel:
+        - prima zi de concurs    - 3 probleme;
+        - a doua zi de concurs   - 4 probleme, concurentii alegeau cate 3;
+        - a treia zi de concurs  - concurs greu, 4 probleme;
+        - a patra zi de concurs  - 3 probleme;
+        - a cincea zi de concurs - 3 probleme;
+        - a sasea zi de concurs  - concurs greu, 4 probleme.
+
+    Zilele a treia si a sasea au contat mai mult la selectie. Din cate tin
+    minte de anul trecut (n-am mai intrebat anul acesta), zilele usoare au
+    avut probe de cate 3 ore, iar cele grele de cate 5 ore.
+        In total au fost folosite 21 probleme.
+        Autorii problemelor sunt antrenorii lotului american, plus cativa
+    invitati straini. In total, autorii au contribuit astfel:
+
+                     Zi1  Zi2  Zi3  Zi4  Zi5  Zi6  Total
+          Hal Burch   2         1    1         2     6
+        Mihai Stroe        1    2         1    1     5
+           Russ Cox        1         1               2
+        Rob Kolstad                            1     1
+         Gary Sivek   1                              1
+       Xitai Nguyen        1                         1
+     Miguel Revilla        1                         1
+       Tomek Czajka             1                    1
+     Steven Ciobaca                  1               1
+            Unknown                       1          1
+    Parade Magazine                       1          1
+          (revista)
+
+        Problema propusa de "Unknown" este de fapt propusa de mine (dar Rob
+    Kolstad nu si-a mai amintit cine a trimis mail-ul care o continea).
+    Problema propusa de "Steven Ciobaca" (probabil Stefan Ciobaca, membru al
+    lotului nostru national de anul acesta) pare a fi o adaptare dupa o
+    problema data la OlimpiadaOnline (autor probabil Marius Andrei), dar am
+    impresia ca "Steven Ciobaca" nu a stiut ca problema va fi data la
+concurs
+    si ca numele lui va figura ca autor (deci nu poate fi "acuzat").
+
+        Ca urmare a colaborarii dintre Comisia noastra si USA, staff-ul
+    american a decis sa ne puna la dispozitie aceste seturi de probleme
+    (care nu cred ca se gasesc pe Internet). Reamintesc ca membrii Comisiei
+    au fost de acord sa punem la dispozitie americanilor probleme de la
+    barajele noastre (cel putin de la ONI). Ca urmare a acestui fapt, avem,
+    ca si anul trecut, o baza buna de probleme pentru pregatirea lotului.
+        Din moment ce problemele au fost date, le consider publice si propun
+    sa nu le folosim la baraje.
+        Dintre problemele mele, "Cow Lines" este nefolosita in Romania,
+    "Taxi Driver" a fost folosita la finala Cupei COMPAQ, "Trapped Cows"
+    este LABIRINT de la barajele de la Braila, "Cow Houses" a fost folosita
+    la OlimpiadaOnline, "Cow Chess" a fost folosita anul acesta in Bucuresti
+    la Olimpiada, faza pe sector, clasa a X-a, iar "Cow Guards" este
+    nefolosita in Romania (dar exista sanse sa fie cunoscuta de cativa
+    elevi). Enunturile sunt adaptate la specificul USACO. Nu am primit bani
+    pentru ele :), colaborarea mea cu staff-ul USACO este benevola.
+        Daca nu gasiti 21 de probleme in set, exista o explicatie. Imi
+    rezerv dreptul de a trimite 2-3 probleme mai tarziu, deoarece le pastrez
+    pentru selectiile pe echipe pentru concursul ACM din Politehnica, de la
+    inceputul lunii iulie. La aceste selectii vor participa si Mugurel
+    Andreica, Andrei Marius si Bogdan Stroe (dar nu e cazul sa-si faca
+    probleme, vor fi abordabile :) ). Miza nu este aceeasi cu cea a
+    barajelor, si in plus nu cred ca problemele sunt cunoscute (dar ar fi
+    bine sa ne asiguram ca nu apar probleme cunoscute la lot, dand la baraje
+    problemele noastre). Voi trimite si aceste 2-3 probleme la cateva zile
+    dupa concursurile respective. De fapt, mai precis, m-am decis sa pastrez
+    problemele 6, 7 si 19. In locul enunturilor veti gasi mesajul:
+    "PROBLEMA PASTRATA PENTRU CONCURSUL ACM". Daca le vrea cineva
+    mai repede (nu tu, Mugurel :)  ) sa imi dea un mail si i le
+    trimit.
+        Fiecare problema incepe cu un rand de forma:
+            probname "LungProblemName" "Author"
+        Concurentii vor citi datele din "probname.in" si vor afisa in
+    "probname.out" (diferite de la problema la problema). Va trebui sa le
+    precizam chestia asta cand le dam problemele.
+
+        Propun sa folosim o parte din probleme la pregatirea prin e-mail de
+    dinaintea barajelor de la Bucuresti, iar pe restul sa le folosim la
+    Bucuresti daca se face pregatire intre baraje. O sa incerc sa fac o
+    lista cu problemele pe care le vad pentru acum si cele pentru mai
+    tarziu, dar aceasta e o decizie pe care am putea sa o luam impreuna.
+
+        Momentan nu am solutii si seturi de date (nici macar la problemele
+    mele :(, cu exceptia celei de la Braila ), dar s-ar putea sa le obtinem
+    de la americani.
+        In aceste zile sunt foarte ocupat cu sesiunea (examene luni si joi,
+    deci nu pot sa fac mai mult decat discutii cu Rob pentru teste si,
+    eventual, sa particip la discutii pe mail cu ceilalti membri ai
+Comisiei).
+    Pentru barajele de la Bucuresti am problema DEPOZITE pe care o stiti
+deja
+    si mai pregatesc inca una sau doua dupa sesiune.
+
+        Mihai
+
+#####################################################################
+
+                Contest #1: Warm Up
+
+Run time limit on all problems this week is one second per
+dataset unless otherwise specified. Contest URL:
+
+        http://ace.delos.com/contestgate
+
+Submit programs by including a header like this:
+/*
+PROG: grep       each program's name is different, of course
+LANG: C          or C++
+*/
+
+---------------------------------------------------------------
+
+Problem 1
+---------
+
+training "Cow Training" "Hal Burch"
+
+    The cows have taken up programming and have started in a training
+program. The training consists of a set of P (1 <= P <= 50,000)
+problems, each of which requires a certain number of minutes Ti
+(1 <= Ti <= 100,000) minutes to solve (not all problems require the same
+amount of time).
+    The problems are ordered in the input by difficulty. It is not
+possible to solve the harder problems until the earlier problems are
+solved. In fact, you are given an integer K (1 <=K <= P) which tells
+how far ahead a cow might work. The integer K constrains which problems
+can be solved because a cow can only work on an unsolved problem that
+is among the K easiest (lowest numbered) unsolved problems.
+    Given a set of F (1 <= F <= 50,000) time frames during which work
+might take place, calculate the the maximum number of problems that can
+be solved in those time frames. The time frame lengths range from
+1 through 100,000 inclusive and must be used in the order presented
+in the input.
+    Rules: Once a cow starts a problem, it must finish it. Due to the
+concentration required, a cow can solve no more than one problem per
+available time period.
+
+    INPUT FORMAT
+    Line 1: Three space-separated integers: P, F, and K
+    Lines 2..P+1: Each successive line contains a single integer that
+is the time required to solve a problem. Line 2 describes the
+time for problem 1; line 3 describes the time for problem 2;
+and so on.
+    Lines P+2..P+F+1: Each successive line contains a single
+integer that is the duration of a time frame. Line P+2 describes
+time frame 1; line P+3 describes time frame P+2; and so on.
+
+    SAMPLE INPUT
+    3 4 2
+    500
+    60
+    200
+    137
+    419
+    267
+    72
+
+    OUTPUT FORMAT
+    A single line with a single integer that is the maximum number of
+problems that can be solved in the given time frames.
+
+    SAMPLE OUTPUT
+    2
+
+---------------------------------------------------------------
+
+Problem 2
+---------
+
+eat "Happy Eating" "Hal Burch"
+
+    The cows so enjoy their visits to various grass clumps in the fields.
+In fact, they have measured their joy for each of the grass clumps
+at which they nibble (each clump takes a fixed period of time to
+nibble). Each morning, a cow starts out with a joy rating of 0.
+The joy is incremented by the measured per-clump amount of joy as
+soon as nibbling is completed for a grass clump.
+    All G (1 <= G <= 20,000) grass clumps take one minute to nibble.
+Some grass clumps must be consumed by a deadline, however, since the sun
+heats them up too much to be nibbled. You must eat all the clumps by their
+respective deadlines if it is possible to do so.
+    A cow's average joy is calculated by examining the cow's cumulated joy
+throughout the day. If the cow ate the set of G grass clumps, the cow's joy
+is (joy[1]+joy[2]+joy[2]+...+joy[G])/G, where joy[t] is the sum of the joys
+of the clumps eaten by time t.
+    Given the joy (-100,000 <= Ji <= 100,000) for eating each clump and the
+deadline for eating the clump (1 <= D <= G), calculate the maximum average
+joy that a cow can achieve.
+
+    INPUT FORMAT
+    Line 1: One integer: G
+    Lines 2..G+1: Each line contains two integers: Ji and Di.
+Line 2 describes the joy for grass clump 1; Line 3 describes the
+joy for grass clump 2; and so on.
+
+    SAMPLE INPUT
+    5
+    3 4
+    4 5
+    1 3
+    2 4
+    5 2
+
+    OUTPUT FORMAT
+    A single line with a single integer that is the truncated version of
+100 times the maximum average joy that can be achieved. If it impossible to
+consume all the clumps by the deadlines, output ``impossible''.
+
+    SAMPLE OUTPUT
+    960
+
+---------------------------------------------------------------
+
+Problem 3
+---------
+
+poker "Poker" "Gary Sivek"
+
+    Farmer John is running a casino in the barn with his top aide Bessie
+as poker dealer. As usual, the Barn always wins. More unusually, the Barn
+wins by cheating. Through hidden cameras, Bessie can see not only the hands
+of the N (1 <= N <= 500) players but can also secretly choose which card
+from her deck to give them. Even more unusually, the cows often play with
+non-standard card decks that have more or fewer cards (of the standard
+types, though) than usual.
+    Each player originally antes one dollar. If among the five cards each
+is dealt they have a pair, two pair, three of a kind, a straight, a full
+house, or four of a kind, they get two dollars back. Bessie wishes to
+minimize the Barn's loss. Given that she has dealt four cards to each
+gambler without cheating, she now chooses to cheat and choose the fifth
+and final card for each one. Help her make a profit.
+
+    INPUT FORMAT
+    Line 1: The integer N
+    Lines 2..N+1:  Four space-separated integers per line representing
+the cards that each of the N gamblers has already received. Each integer
+is in the range 1..13, with A being 1 and J, Q, K being 11, 12, 13, but
+remember that A can be used with either A-2-3-4-5 or 10-J-Q-K-A in a
+straight.
+    Line N+2: Thirteen space-separated integers representing the
+number of As, 2s, 3s, 4s, etc. (in order) that Bessie has left to
+deal to the gamblers. Each integer is in the range 0..500 inclusive.
+
+    SAMPLE INPUT
+    2
+    1 2 3 4
+    5 8 12 3
+    0 0 0 0 1 0 0 1 0 0 0 0 0
+
+    OUTPUT FORMAT
+    A single integer representing the amount of money Bessie will win if
+she deals optimally. If Bessie loses money, the number should be negative.
+
+    SAMPLE OUTPUT
+    0
+
+    The optimal strategy is to deal the five to the second player to create
+a pair (net gain of $1) and to deal the eight to the first player, who will
+then lose (net loss of $1); the barn will break even. If the first player
+gets the 5 and the second player gets the 8, then there is a straight and
+a pair for a net loss to the barn of $2.
+
+#####################################################################
+
+                Contest #2: Pick Three
+
+    Solve any three, using IOI scoring with 2 points/test case x 10 test
+cases per problem. Maximum contest score: 60. Contest URL:
+
+      http://ace.delos.com/contestgate
+
+    Submit programs by including a header like this:
+S
+/*
+PROG: grep       each program's name is different, of course
+LANG: C          or C++
+*/
+
+---------------------------------------------------------------
+
+Problem 4
+---------
+
+soko "Sokoban" "Russ Cox"
+
+    The cows have recently taken up playing a variant of the Japanese
+game Sokoban, which is played on the cow pasture, which is split into
+a rectangular grid with R (3 <= R <= 22) rows and C (3 <= C <= 22)
+columns. In the pasture there is a single ball as well as some number
+of obstacles like fences or other bales of hay.
+    To make a move, a cow needs to move the ball from its start location
+on the map (denoted as `O') to the point marked by `@', but only by
+standing behind it and pushing it one square at a time to the north,
+south, east, or west.
+    For example, consider the following pasture in which obstacles and
+the pasture border are denoted by #; the ball is `O'; the end point
+is `@'; and `C' marks the cow's start location:
+
+ #############
+ #     #     #
+ #           #
+ #   O #@    #
+ #     C     #
+ #############
+
+    The cow can push the ball to @ by pushing the ball up one square (the
+arrows mark the cow's path):
+
+ #############
+ #     #     #
+ #   O       #
+ #   C #@    #
+ #   ^<<     #
+ #############
+
+    The cow then moves to the west side of the ball:
+
+ #############
+ #     #     #
+ #  CO       #
+ #  ^< #@    #
+ #           #
+ #############
+
+in order to push the ball to the east:
+
+ #############
+ #     #     #
+ #   >>>CO   #
+ #     #@    #
+ #           #
+ #############
+
+    The cow then runs around to the north of the ball:
+
+ #############
+ #     #>C   #
+ #      ^O   #
+ #     #@    #
+ #           #
+ #############
+
+and pushes the ball south one square:
+
+ #############
+ #     # v   #
+ #       C   #
+ #     #@O   #
+ #           #
+ #############
+
+    Finally, the cow walks around the ball:
+
+ #############
+ #     #     #
+ #       >v  #
+ #     #@OC  #
+ #           #
+ #############
+
+and pushes it onto the finishing point:
+
+ #############
+ #     #     #
+ #           #
+ #     #OC<  #
+ #           #
+ #############
+
+    Thus moving the ball from O to @ took 15 steps for the cow.
+    Given a description of the pasture along with the starting and ending
+points, the cows would like to know whether it is possible move a ball from
+the staring point to the ending point starting from C. If it is possible,
+the ever demanding (and ever lazy) cows want to know the minimal number of
+steps required.
+
+    INPUT FORMAT
+    Line 1: Two space-separated integers, R and C.
+    Lines 2..R+1: Each line contains C characters that describe a row
+of the pasture using the rules above.
+    Every input description has exactly one `O', `C', and `@' in addition
+to hay bales around the border.
+
+    SAMPLE INPUT
+    6 13
+    #############
+    #     #     #
+    #           #
+    #   O #@    #
+    #     C     #
+    #############
+
+    OUTPUT FORMAT
+    A single integer that is the minimum number of moves to push the
+ball to the finish point. Output 0 if it is not possible to move the ball
+to the finish point.
+
+   SAMPLE OUTPUT
+   15
+
+---------------------------------------------------------------
+
+Problem 5
+---------
+
+meet "Meeting Point" "Xitai Nguyen"
+
+    Farmer John's cow Bessie has escaped into the woods, and now he
+must catch her. Bessie has become lonely and now wants to get back to
+FJ. Given an N x N grid (1 <= N <= 300) representing the woods, find
+the minimum amount of time it will take FJ and Bessie to reach the
+same square.
+    The amount of time Tij (1 <= Tij <= 9) required for FJ to move into
+a square from any square adjacent to it is defined for each square. Bessie
+does not move at the same speed as FJ; her time to enter a square is
+10 - Tij. Diagonal moves are not allowed.
+    Farmer John and Bessie are not required to get to the meeting point
+at the same time; either may wait there for the other. The value of a
+meeting point is the time that the last one of them gets there.
+    Farmer John starts in the top left corner, and Bessie in the bottom
+right.
+    What is the minimum time for them to meet?
+
+    INPUT FORMAT
+    Line 1: A single integer, N
+    Lines 2..N+1: Each line describes one row of transition times.
+Line 2 describes row 1; line 3 describes row 2; and so on. Each line
+contains N space-separated integers representing the time it takes FJ
+to enter that square.
+
+    SAMPLE INPUT
+    5
+    1 1 1 1 1
+    5 5 5 5 1
+    9 9 5 1 1
+    9 5 5 5 5
+    9 9 9 9 9
+
+    OUTPUT FORMAT
+    A single line with a single integer that is the minimum time for
+FJ and Bessie to meet.
+
+    SAMPLE OUTPUT
+    11
+
+    They can meet at row 2, column 1 or row 4, column 5.
+
+---------------------------------------------------------------
+
+Problem 6
+---------
+
+haystk "Hay Stacking" "Miguel Revilla"
+
+       PROBLEMA PASTRATA PENTRU CONCURSUL ACM.
+
+---------------------------------------------------------------
+
+Problem 7
+---------
+
+lines "Cow Lines" "Mihai Stroe"
+
+       PROBLEMA PASTRATA PENTRU CONCURSUL ACM.
+
+#####################################################################
+
+                Contest #3: Challenge Round I
+
+    Run time limit on all problems this week is one second per
+dataset unless otherwise specified. Contest URL:
+
+        http://ace.delos.com/contestgate
+
+Submit programs by including a header like this:
+/*
+PROG: grep       each program's name is different, of course
+LANG: C          or C++
+*/
+
+---------------------------------------------------------------
+
+Problem 8
+---------
+
+tennis "The Bovine Open Tennis Tournament" "Tomek Czajka"
+
+    N (N = 2, 4, 8, or 16) cows numbered 1..N are competing for the
+Bovine Open tennis cup. FJ wants to bet money on the winner. He knows
+the cows very well, so for every two cows he know which one will win
+if they play each other. He does not know the initial `seeding' of the
+cows (the first set of contest pairings), which will be chosen randomly
+at the beginning. The tournament is single elimination (also known as
+`knock out'). For example, if there were four competitors, the competition
+grid would look like this:
+
+              1-+
+                +-+
+              2-+ |
+                  +-- WINNER
+              3-+ |
+                +-+
+              4-+
+
+    TIME LIMIT
+    Time limit for this problem is 1.5 cpu seconds for each test case.
+
+    INPUT FORMAT
+    Line 1: A single integer, N
+    Lines 2..N+1: N lines, each with N space-separated integers. Line 2 is
+the first row of a matrix; line 3 is the second row, etc. If row i column j
+of the matrix is a 1, then cow i would defeat cow j in a competition. The
+matrix contains N*(N-1)/2 1's and is antisymmetric (i != j -> matrix[i,j] =
+1-matrix[j,i]).
+
+    SAMPLE INPUT
+    4
+    0 0 1 1
+    1 0 1 0
+    0 0 0 1
+    0 1 0 0
+
+    OUTPUT FORMAT
+    A single line which contains a numerically sorted, space-separated list
+of all cow numbers that have a chance to win the tournament.
+
+   SAMPLE OUTPUT
+   1 2
+
+---------------------------------------------------------------
+
+Problem 9
+---------
+
+lineup "Line 'em Up" "Hal Burch"
+
+    Every night, L (2 <= L <= 52) of Farmer John's 52 cows line up to enter
+the barn in which they sleep. Sometimes, some cows skip lining up and go
+straight into the barn - but every night exactly L cows line up to enter
+the barn.
+    Interestingly, after watching for a year, Farmer John notices that the
+cows line up in only N (2 <= N <= 1000) different orders. He'd like to
+find the minimum number of contiguous cows (cows that stand next to each
+other in line, that is) that he needs to observe in order to identify which
+of the N orders the cows are using on a given night.
+    Help him find the cows he needs to observe.
+
+    INPUT FORMAT
+    Line 1: Two space-separated integers: L and N
+    Lines 2..N+1: Each line contains a string of L characters. This string
+represents one possible line the cows might use. Each cow has a unique
+letter
+('A'..'Z','a'..'z') that identifies it (there are no more than 52 cows). The
+first letter represents the first cow in line and so on.
+
+    SAMPLE INPUT
+    8 5
+    abcdefgh
+    aZcdefgh
+    abYdefgh
+    abcXefgh
+    abWdefgh
+
+    OUTPUT FORMAT
+    A single line with two integers that describe the contiguous cows that
+form a unique signature for the set of possible lineups. The first integer
+is the first cow that needs to be observed; the second integer is the last
+cow that needs to be observed. If there is more than one distinguishing
+sequence of minimum length, output the one that occurs first.
+
+    SAMPLE OUTPUT
+    2 4
+
+---------------------------------------------------------------
+
+Problem 10
+----------
+
+cowwalk "Trapped Cows" "Mihai Stroe"
+
+    Alice (A) and Bessie (B) are two cows trapped in a M x N matrix (3
+<= M <= 20; 3 <= N <= 60) of binary numbers. A is at (1,1); B is at (M,N).
+In order to escape, Alice must reach the trapdoor exit denoted `a' in graph
+below and Bessie must reach the exit denoted `b' below. Each cow starts from
+a cell containing a 0 and can only walk to neighboring 0s (cells with 1s
+behave like walls).
+    Here is a diagram of a very simple sample matrix with all locations
+annotated:
+
+                        North
+                      A 0 1 0 0
+                      0 a 0 1 1
+                 West 0 0 0 0 0 East
+                      1 0 0 b 0
+                      0 1 0 0 B
+                        South
+
+    FJ has left them some directions to reach the exits; he wrote them on a
+piece of paper like this:
+
+               Cow  Direction
+               --------------
+                A       S
+                B       N
+                A       E
+                A       E
+                B       W
+                A       W
+
+    These are the moves that cows A and B must make. Following these
+directions in order, cows would reach their destination points and
+all would end well.
+    Unfortunately, one of the cows has eaten the left side of the paper.
+All that can be seen are the directions written on the right side (K
+capital letters belonging to {N, E, S, W} and indicating the obvious north,
+east south, and west directions), in this case: SNEEWW.
+    Noting that both you and the cows have mobile phones to talk to each
+other, your job is to get the cows to their destination points by following
+the entire list of FJ's directions. Cows might, at some time, share a
+square.
+They must not exit the matrix early and they must use the entire list of
+directions.
+
+    INPUT FORMAT
+    Line 1: Two space-separated integers, M and N
+    Lines 2..M+1: Each line contains N space-separated integers that
+comprise one row of the binary matrix
+    Line M+2: Four space-separated integers indicating the row, column
+exit point for Alice and Bessie, respectively
+    Line M+3: A single integer K (1 <= K <= 200) denoting the number of
+directions on the partially destroyed piece of paper
+    Line M+4: K characters indicating directions for the cows to move (from
+the set {N, E, S, W}).
+
+    SAMPLE INPUT
+    5 5
+    0 0 1 0 0
+    0 0 0 1 1
+    0 0 0 0 0
+    1 0 0 0 0
+    0 1 0 0 0
+    2 2 4 4
+    6
+    SNEEWW
+
+    OUTPUT FORMAT
+    A single line with a string of K letters from the set {A, B}. The
+i'th letter indicates whether instruction i is performed by cow A or
+B. Any correct answer is acceptable.
+
+   SAMPLE OUTPUT
+   ABAAAB
+
+---------------------------------------------------------------
+
+Problem 11
+----------
+
+taxi "Taxi Driver" "Mihai Stroe"
+
+    Farmer John has moved to Chicowgo and become a top-rated taxi driver.
+Chicowgo has N (2 <= N <= 100) taxi stations numbered 1..N connected by M
+(1 <= M <= 2000) bidirectional streets. There might be more than one street
+connecting any pair of taxi stations, and all pairs of taxi stations are
+connected at least indirectly. A direct path between a pair of taxi stations
+may be slower than an indirect one, due to road conditions. Needless to
+say, Farmer John knows exactly how long it takes to drive along each street.
+    When he gets up each morning, FJ looks into his crystal ball to divine
+the desires of his C (1 <= C <= 100) customers, learning what their
+locations
+will be, when they need to be picked up, and where they will want to go.
+There is no use in being late to pick up a customer: if FJ doesn't pick up
+a customer on time, another driver will.
+    FJ makes P (0 <= P <= 100) dollars per time unit when driving a
+customer,
+although he loses Q (0 <= Q <= 100) dollars per time unit when driving with
+no customer. If FJ is not driving (e.g., if he is waiting for a customer at
+some point), he neither gains nor loses money.
+    FJ only wants to drive at most K (1 <= K <= 30) customers during the
+day.
+Although he cannot transport more than one customer simultaneously, FJ can
+drop off one customer and pick up another at the same station in no time at
+all. FJ drives all his customers in minimum time between source and
+destination points.
+    FJ begins his day at time 0 at taxi station 1; he ends his day at time
+255 back at taxi station 1. Help FJ plan his route in order to maximize his
+profits.
+
+    INPUT FORMAT
+    Line 1: Six space-separated integers: N, M, C, P, Q, and K
+    Lines 2..M+1: Three space-separated integers X, Y, T, indicating a
+street between taxi stations X and Y that FJ drives in T (1 <= T <= 255)
+time units.
+    Lines M+2..M+C+1: Three space-separated integers S, D, T, indicating
+that a customer wishes to be picked up at station S at time T and be taken
+to station D.
+
+    SAMPLE INPUT
+    3 3 2 5 1 2
+    1 2 9
+    2 3 10
+    1 3 11
+    3 2 19
+    2 3 7
+
+    OUTPUT FORMAT
+    A line with a single integer that is the maximum profit FJ can make.
+
+    SAMPLE OUTPUT
+    30
+
+    FJ doesn't have enough time to get to customer 2, but he can go to
+station 3, pick up customer 1, go to station 2, drop customer 1 and return
+to station 1, resulting in a profit of: -1*11+5*10-1*9=30.
+
+#####################################################################
+
+                Contest #4: Feed, Fertilizer, and Finance
+
+Run time limit on all problems this week is one second per
+dataset unless otherwise specified. Contest URL:
+
+        http://ace.delos.com/contestgate
+
+Submit programs by including a header like this:
+/*
+PROG: grep       each program's name is different, of course
+LANG: C          or C++
+*/
+
+---------------------------------------------------------------
+
+Problem 12
+----------
+
+theft "Stealing Feed" "Hal Burch"
+
+    Farmer John uses a gravity feed system from a roof-mounted grain
+bin. Grain falls from the bin into a number of chutes that subsequently
+divide into other chutes (potentially several times) before the feed
+finally falls into a cow's feedbox. This creates a tree structure, with
+the roof-mounted bin as the root of the tree and nodes at each of the
+splitting points and feedboxes.
+    The cows have found they can sneak into the barn and nibble food from
+any node - without getting caught! - as long as a cow never takes feed from
+a node that is the descendant of another node also being nibbled. Being
+creative, they never want to sneak in to use the same set of nodes twice.
+Every cow must take feed and must take it from a node different than the
+other cows.
+    In how many different ways can the sneaky group of cows steal feed?
+
+    INPUT FORMAT
+    Line 1: Two integers: N (1 <= N <= 200), the number of nodes (which are
+identified below by their ID number in the range 1..N) and C, the number of
+cows (1 <= C <= N).
+     Lines 2..N+1: Each line describes the children of a node by specifying
+D, the number of children, and then D integers, each of which is a child ID
+number. In aggregate, these define a tree structure.
+
+    SAMPLE INPUT
+    7 3
+    2 2 3
+    2 4 5
+    2 6 7
+    0
+    0
+    0
+    0
+
+    OUTPUT FORMAT
+    A single line with an integer that is the total number of ways the cows
+can sneak food. Cows, of course, are indistinguishable from each other.
+
+    SAMPLE OUTPUT
+    6
+
+---------------------------------------------------------------
+
+Problem 13
+----------
+
+fertile "Big Fertilizer" "Steven Ciobaca"
+
+    FJ has a field of size N x N meters (1 <= N <= 1000). The squares in
+the field are described in (row,column) format, with (1,1) in the upper
+left corner of the field.
+    FJ wishes to keep track of how much fertilizer is held by each square
+meter of the field. Initially, each square meter of the field has F units
+(F is nonnegative and fits into 16 signed bits) of fertilizer.
+    Farmer John then adds some fertilizer to M (potentially overlapping)
+rectangles in the field (1 <= M <= 100,000). Your job is to keep track of
+how much fertilizer ends up in each square meter of the field. No more than
+2,000,000,000 units of fertilizer will ever accumulate in any square meter.
+
+    INPUT FORMAT
+    Line 1: Three space-separated integers, N, F, and M
+    Lines 2..M+1: Each of these M lines has five space-separated integers
+that together describe a rectangle and how much fertilizer should be added
+to each square in that rectangle. The first pair of integers is one corner
+of a rectangle to which fertilizer is added; the second pair is the opposite
+corner. The fifth integer is the amount of fertilizer to add.
+
+    SAMPLE INPUT
+    3 1 2
+    1 1 2 2 3
+    1 1 1 3 2
+
+    OUTPUT FORMAT
+    A single integer that is the maximum value of any square's fertilizer.
+
+    SAMPLE OUTPUT
+    6
+
+---------------------------------------------------------------
+
+Problem 14
+----------
+
+sellhi "Buy Low, Sell High" "Russ Cox"
+
+    The cows have mastered the mantra, `buy low, buy lower' and are
+ready to move on to the real recipe for success in the stock market:
+`buy low, sell high'.
+    Given a list of S (1 <= S <= 30) stocks and their prices (always
+positive integers that fit into a signed 16-bit entity) over each of D
+(1 <= D <= 30) days, decide how best to invest an initial B
+(1 <= B <= 10,000) cowbucks to yield the greatest return. On any day,
+the cows can buy stocks (if they have cash) and sell stocks (to create
+cash) - sometimes both on the same day. Stocks are always bought or sold
+in integer multiples.
+    The bovine stock market being what it is, the cows can not possibly
+increase their portfolio value beyond 65,535 cowbucks.
+
+    INPUT FORMAT
+    Line 1: Three space-separated integers: B, S, and D
+    Lines 2..D+1: Each line describes the prices of the S stocks on a given
+day. Line 2 describes day 1; line 3 describes day 2, and so on. Each line
+contains S space-separated integers.
+
+    SAMPLE INPUT
+    1000 2 3
+    5 10
+    10 10
+    10 15
+
+    OUTPUT FORMAT
+    A single line with an integer that is the great possible value the
+stock portfolio can have after D days.
+
+    SAMPLE OUTPUT
+    3000
+
+#####################################################################
+
+                Contest #5: Games & Houses
+
+Run time limit on all problems this week is one second per
+dataset unless otherwise specified. Contest URL:
+
+        http://ace.delos.com/contestgate
+
+Submit programs by including a header like this:
+/*
+PROG: grep       each program's name is different, of course
+LANG: C          or C++
+*/
+
+---------------------------------------------------------------
+
+Problem 15
+----------
+
+finder "Sentence Finder" "Parade Magazine"
+
+    The cows read Parade Magazine in the Sunday newspaper and really enjoy
+the sentence find puzzles. Here's one:
+
+             C+E S-L M
+             R O T I A
+             A W H N F
+             S E A T A
+             B E S M R
+
+    The goal is to start at the C (to the left of the plus) and end at the
+S (to the left of the minus). Each move requires you to move to an
+adjacent, not yet used, letter by moving vertically, horizontally, or
+diagonally. As you traverse the letters, fill in this English-language
+sentence:
+
+      C... ... ... .... .... ......S
+
+    In this case, the sentence is the standard cow-maxim taught to all the
+calves:
+
+      COWS ARE THE BEST FARM ANIMALS
+
+    Given a puzzle and a dictionary of words, deduce the sentence that
+the puzzle represents. The dictionary should be read from a file named
+`dict.txt'. The dict.txt that will be used during grading can
+be downloaded from http://ace.delos.com/usaco/dict.txt
+
+    INPUT FORMAT
+    Five lines that represent the puzzle in a format just like the puzzle
+above.
+
+    SAMPLE INPUT
+    C+E S-L M
+    R O T I A
+    A W H N F
+    S E A T A
+    B E S M R
+
+    Note that each of the lines above ends in a blank, since neither the
+`+' or `-' appears there!
+
+    OUTPUT FORMAT
+    A set of sorted lines that are all the possible sentences, omitting
+spaces, that can be formed from the puzzle and the dictionary. If a
+sentence can be derived in multiple ways, print it only once.
+
+    SAMPLE OUTPUT
+    COWSARETHEBESTFARMANIMALS
+
+---------------------------------------------------------------
+
+Problem 16
+----------
+
+chess "Cow Chess" "Mihai Stroe"
+
+    Cows play the strangest chess game. They move only a king on an
+L x L chessboard (2 <= L <= 100), and their goal is to move the king
+from the starting point (denoted `S') to the finish point (denoted
+`F') in the smallest number of turns.
+    The board is populated with various non-pawn chess pieces, denoted
+thusly:
+
+       Q        Queen   N       kNight
+       B        Bishop  R       Rook
+
+    Unoccupied squares are denoted by `.' (and, of course, the start
+and finish points by `S' and `F').
+    The king usually moves normally, one square at a time. However, if
+he captures one of the other pieces on the board, then for one turn, the
+king can move using either the normal rules for that piece or the rules
+for moving a king. Unlike normal chess, when moving as a queen, bishop
+or rook, the king can move `through' other pieces in its path.
+    Given a cow chess game board, determine the minimum number of turns for
+the king to traverse from the starting location to the finish location.
+
+    INPUT FORMAT
+    Line 1: a single integer, L
+    Lines 2..L+1: Each line denotes one row of the cow-chess board and
+contains L character as described above.
+
+    SAMPLE INPUT
+    5
+    F....
+    ..N..
+    .....
+    ...N.
+    .Q..S
+
+    OUTPUT FORMAT
+    A single line with a single integer that is the minimum number of
+turns for the king to traverse the board from `S' to `F'.
+
+    SAMPLE OUTPUT
+    3
+
+    Which uses the following traversal, where the result of the
+first move is shown by `1', second move by `2', etc.
+
+    3....
+    ..2..
+    .....
+    ...1.
+    .Q..S
+
+---------------------------------------------------------------
+
+Problem 17
+----------
+
+houses "Cow Houses" "Unknown"
+
+    FJ wants to build houses for some of his cows. His carpenter brother
+tells him how much wood is needed for each of H (1 <= H <= 100) house
+types. FJ doesn't wants to build two similar houses, so he must use a
+different amount of wood for each house.
+    FJ is going to harvest trees for the wood. He can cut down any subset
+of his N trees - but only at one of the K (1 <= K <= 10) heights marked
+on each tree. If he cuts a tree at one of these heights, he gets a
+specified amount of wood, and the tree will regenerate itself after a
+few years. After cutting a tree, he can cut the wood he has obtained
+in any size parts he wants and use it anywhere he needs it.
+    What is the greatest number of houses can FJ build without killing any
+trees and without wasting any wood?
+
+    INPUT FORMAT
+    Line 1: Three space-separated integers: N, K, and H.
+    Lines 2..N+1: These N lines contain the amount of wood each of the
+N trees will yield, depending on where it is cut. Line 2 describes tree 1;
+line 3 describes tree 2; and so on. Each line contains K space-separated
+positive integers no larger than 100. The first integer on each line
+describes cut #1; the second integer describes cut #2; and so on.
+    Line N+2: H space-separated positive integers, each no larger than 100.
+The first integer describes the amount of wood need to build house 1; the
+second describe house 2; and so on.
+
+    SAMPLE INPUT
+    3 2 5
+    5 10
+    3 7
+    4 6
+    2 3 4 5 6
+
+    OUTPUT FORMAT
+    A single line containing 0 or more numerically sorted space-separated
+integers that list the houses that can be built. This is the maximum set
+of houses that meet the criteria. If two or more sets of the same size can
+be built, output the set with the smallest first house ID (or smallest
+second house ID in the case of a tie, etc.).
+
+    SAMPLE OUTPUT
+    1 2 3 4
+
+#####################################################################
+
+                Contest #6: Challenge Round II
+
+Run time limit on all problems this week is one second per
+dataset unless otherwise specified. Contest URL:
+
+        http://ace.delos.com/contestgate
+
+Submit programs by including a header like this:
+/*
+PROG: grep       each program's name is different, of course
+LANG: C          or C++
+*/
+
+---------------------------------------------------------------
+
+Problem 18
+----------
+
+fjjoy "Joyful Tasks" "Hal Burch"
+
+    FJ enjoys most of his daily work on the farm very much. In fact,
+he has measured the joy he gets from the T (1 <= T <= 10,000) tasks he
+performs and made a list. Those tasks he doesn't like have negative joy.
+He accumulates a daily amount of joy by finishing tasks. As soon as he
+finishes a task, his joy index increases by the amount of joy for that
+particular task.
+    Given a set of tasks and the time it takes for each task, maximize
+the average joy FJ experiences throughout the day. If FJ works for a total
+of N time units, his average joy is (joy[1]+joy[2]+joy[3]+...+joy[N])/N,
+where joy[t] is the value of the joy function after t time units have
+passed. FJ must complete all the tasks and can not rest between them.
+    Given the time it takes to accomplish each task along with the joy
+associated with that task, calculate the maximum average joy FJ can
+achieve by ordering the tasks to maximize his average joy.
+
+    INPUT FORMAT
+    Line 1: A single integer: T.
+    Lines 2..T+1: Each line contains the a pair of space-separated
+integers that describe a single task. The first integer is the joy
+associated with that task (-10,000 <= joy <= 10,000) and the second
+integer is the time to accomplish the task (1 <= time <= 10,000).
+
+    SAMPLE INPUT
+    3
+    5 10
+    5 6
+    -1 9
+
+    OUTPUT FORMAT
+    A single line with a single integer that is the truncated version of
+100 times the maximum joy that can be achieved.
+
+    SAMPLE OUTPUT
+    596
+
+---------------------------------------------------------------
+
+Problem 19
+----------
+
+xword "Cow Crosswords" "Rob Kolstad"
+
+       PROBLEMA PASTRATA PENTRU CONCURSUL ACM.
+
+---------------------------------------------------------------
+
+    Problem 20
+    ----------
+
+choosy "Choosy Cows" "Hal Burch"
+
+    One of N (1 <= N <= 20,000) cows is going to be selected based on
+its position within the field. The judge will pick a function of the form
+ax+by (-1 <= a,b <= 1; a and b chosen uniformly within that range) and
+award the blue ribbon to the cow with the largest value when its x and y
+position are substituted. Given the cows' locations (all different!),
+which cow is most likely to win, and what is its probability of winning?
+The judge will never select a function such that two or more cows tie.
+    The N cows will never arrange themselves so that there is a tie for
+`most likely to win'.
+
+    INPUT FORMAT
+    Line 1: A single integer, N
+    Lines 2..N+1: Each line describes a single cow's X,Y location with two
+space-separated integer coordinates. Both X and Y are non-negative integers
+no larger than 1,000,000,000. Cow number one is described on line 2; cow
+number two is described on line 3; and so on.
+
+    SAMPLE INPUT
+    5
+    100 150
+    0 0
+    0 1000
+    2000 0
+    1000 500
+
+    OUTPUT FORMAT
+    A single line with an integer that is the number of the most likely
+winning cow followed by a space followed by an integer that is the
+truncated version of 1000 times the probability that cow will win.
+
+    SAMPLE OUTPUT
+    4 437
+
+---------------------------------------------------------------
+
+Problem 21
+----------
+
+guard "Cow Guards" "Mihai Stroe"
+
+    Poachers are stalking Farmer John's barnyard. He is going to hire
+guards to keep the cows safe.
+    Of course, the guards have varying schedules. Some are available
+in the morning, some in the evening. FJ decides to guard the cows for
+16 consecutive hours, 960 minutes from time 0 through time 960. Times
+always refer to the start of a minute. Thus, the time range `4 to 6' is a
+total of two minutes.
+    A total of N (1 <= N <= 100) guards has applied for the job. Each
+guard has a starting time (in minutes), an ending time (in minutes), and
+a cost for that shift (a number that fits nicely in a signed 16-bit
+integer). A guard can work a maximum of one shift.
+    Select some (or potentially all) of the N guards in the cheapest way
+possible such that:
+    - at least one guard is present for all 960 minutes
+    - at least two guards are present for all 960 minutes
+
+    INPUT FORMAT
+    Line 1: A single integer, N
+    Lines 2..N+1: Each line contains three integers. Line j+1
+contains Sj, Fj, and  Cj, the start time, the finish time, and the
+cost for the jth guard.
+
+    SAMPLE INPUT
+    6
+    0 400 3
+    380 780 5
+    570 960 9
+    680 960 7
+    0 580 3
+    390 650 9
+
+    OUTPUT FORMAT
+    Line 1: An ordered list of as many as N space-separated integers
+in the range 1..N that is the list of guards costing the least money
+while having at least one guard present at all times. Output -1 if no
+subset can meet the criteria.
+    Line 2: An ordered list of as many as N space-separated integers
+in the range 1..N that is the list of guards costing the least money while
+having at least two guards present at all times. Output -1 if no subset can
+meet the criteria.
+    On both lines, if multiple optimal solutions exist, choose any one
+of them to print.
+
+   SAMPLE OUTPUT
+   3 5
+   1 2 3 4 5

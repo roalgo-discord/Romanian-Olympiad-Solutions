@@ -1,0 +1,7 @@
+tri - solutie
+
+	Solutia evidenta are complexitatea O(M*N) si, anume, pentru fiecare triunghi verifica daca fiecare din celelalte N-3 puncte ramase se afla in interiorul sau.
+	O solutie mult mai buna are complexitatea O(N*N*logN + M*logN). Pt. fiecare punct se sorteaza toate celelalte puncte in jurul lui, dupa unghi. Apoi, pt. un triunghi dat, se poate determina in O(logN) cate puncte se afla in interiorul sau, folosind principiul includerii si excluderii. Astfel, se observa ca trebuie adunate doua intervale de unghiuri din jurul a 2 puncte ale triunghiului si scazut un al treilea interval, din jurul celui de-al treilea punct. pt. a determina efectiv intervalele, se folosesc cautari binare.
+	Solutia autorului preproceseaza setul de puncte intr-o complexitate O(N*N*logN), folosind O(N*N) memorie. Mai precis, fie punctele i si j, cu x[i]<x[j]. Pentru fiecare astfel de puncte, se calculeaza cate puncte se afla sub segmentul (i,j). Avand aceste valori calculate, se poate raspunde la fiecare intrebare in timp constant. Asadar, complexitatea totala a algoritmului este O(N*N*logN + M). Trebuie remarcat, insa, ca nu aceasta este complexitatea optima a unui algoritm care rezolva aceasta problema. Faza de preprocesare se poate realiza cu o complexitate temporala O(N*N).
+
+	Cele 3 solutii descrise mai sus obtin 30%, 80%, repectiv 100% din punctaj. Este posibil, insa, ca primele doua solutii sa obtina mai multe sau mai putine puncte, in functie de cat de eficienta este implementarea.

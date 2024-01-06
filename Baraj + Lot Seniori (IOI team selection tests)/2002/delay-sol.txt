@@ -1,0 +1,21 @@
+DELAY -	Solutie:
+
+	Se fixeaza o radacina a arborelui (un nod oarecare, de exemplu, nodul 1), dupa care se calculeaza pt. fiecare nod durata traseului de la radacina pana la nodul respectiv.
+	Sa presupunem ca putem calcula in O(1) acest timp (plus preprocesarea initiala, care calculeaza in O(N) acest timp pt. toate nodurile).
+
+	Atunci, fie i si j varfurile intre care trebuie sa calculez durata de deplasare si fie P cel mai apropiat stramos comun al lor (in arborele cu radacina fixata). Fie, de asemenea, Q, tatal lui P (daca P este radacina, atunci Q nu se mai ia in considerare).
+	Durata de transmitere a unui pachet de date intre nodurile i si j este:
+
+	T(i)+T(j)-T(P)-T(Q) (daca va ganditi putin, o sa vedeti ca asa este)
+
+	Exista un algoritm 'clasic' de determinare a celui mai apropiat stramos comun in O(logN), dar eu il determin in O(sqrt(N)), tinand pt. fiecare nod atat tatal cat si ascendentul cu sqrt(N) nivele mai sus. Sigur, avand doar acestea, nu se poate determina inca cel mai aporpiat stramos comun (degeaba merg eu din sqrt(N) in sqrt(N) nivele, caci s-ar putea sa sar peste nodul cautat). In plus, inca nu am tratat cazul modificarii timpului de asteptare al unui nod.
+
+	Pentru a asigura o complexitate de sqrt(N) si pt. primul tip de operatie, se renumeroteaza nodurile, conform unei parcurgeri DF. Astfel, numarul nodului i va fi mai mic decat cel al tuturor nodurilor din subarborele sau. Mai mult, multimea formata de numerele nodului i si ale tuturor nodurilor din subarborele lui formeaza un interval compact: sa-l notam [li,ls] (limita inferioara,limita superioara).
+
+	Sa presupunem ca avem o operatie de modificare a timpului nodului i. Noul timp este T'(i), iar vechiul timp este T(i). Atunci, durata traseului de la nodul i pana la radacina creste cu valoarea D=T'(i)-T(i) (in acest caz ma refer la timpul de asteptare corespunzator nodului i, nu la durata traseului de la nodul i la radacina). Insa nu doar durata traseului de la nodul i la radacina creste, ci si duratele tuturor nodurilor din subarborele lui i. Adica pentru toate nodurile cu numere asociate din intervalul [li,ls], durata traseului pana la radacina va creste cu D. Un "update" individual pt. fiecare nod din intervalul [li,ls] ar conduce la o complexitate O(N) pt. o operatie de tip 1. Dar, intrucat, nodurile pt. care trebuie sa se realizeze operatia de "update" sunt grupate intr-un interval, "update"-ul se poate realiza in O(sqrt(N)). Cum? Se imparte intervalul [1,N] in grupe de dimensiune sqrt(N). Apoi, pt. un interval [li,ls], se modifica timpul pt. valorile individuale din grupa de la capatul din stanga, se modifica valorile grupelor dintre grupa de la captul din stanga si grupa de la captul din dreapta si apoi se modifica individual valorile elementelor de la captul din dreapta al intervalului (pt. ca nu formeaza o grupa intreaga). Pt. fiecare din cei 3 pasi, complexitatea ese O(sqrt(N)).
+
+	In aceste conditii, revenind la operatiile de tip 2, durata traseului de la nodul i pana la radacina, T(i) este T_individual(i) + T_grupa(grupa[i]), unde grupa[i] reprezinta grupa (din cele sqrt(N) grupe) din care face parte nodul i.
+
+	Revenind la partea de determinare a celui mai apropiat stramos comun: pt. fiecare nod cunoastem intervalul [li,ls] al nodurilor din subarborele sau. Fie i' = numarul asociat lui i si j' = numarul asociat lui j (conform parcurgerii DF initiale). Trebuie sa determinam cel mai apropiat stramos comun al nodurilor i si j care sa contina numerele i' si j' in intervalul sau [li,ls]. Pt. aceasta, se porneste cu nodul i, si se merge in sus din sqrt(N) in sqrt(N) nivele, pana cand nodul la care s-a ajuns contine valorile i' si j' in intervalul sau. In acest caz, cel mai apropiat stramos comun se afla undeva intre acest nod la care s-a ajuns si nodul anterior prin care s-a trecut (care nu avea aceasta proprietate), situat cu sqrt(N) nivele mai jos. Acum se cauta cel mai apropiat stramos comun, pornind de la nodul situat mai jos si mergand din tata in tata (adica din nivel in nivel), iar nodul cautat se va gasi in cel mut sqrt(N) pasi [pt. ca am stabilit pt. el un interval de incadrare de lungime sqrt(N)].
+
+	Asadar, aplicand algoritmul descris mai sus, se ajunge la o complexitate O(sqrt(N)) pt. fiecare din cele 2 tipuri de operatii.

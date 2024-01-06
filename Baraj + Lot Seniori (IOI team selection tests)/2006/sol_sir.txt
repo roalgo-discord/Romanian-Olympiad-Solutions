@@ -1,0 +1,32 @@
+Solutie problema SIR (Alexandru Mosoi)
+
+Problema a pornit de la sirul clasic 1, 11, 21, 1211, etc (aproximativ
+acelasi mod de generare, doar ca 3 se comporta la fel ca 1 si 2).
+
+Sa observam mai intai ca odata ce apare un 3 acesta nu mai dispare (doar isi
+schimba pozitia). Astfel, pentru o anumita secventa,
+intre inceput si primul 3, sau intre oricare doi de 3 consecutivi avem cate 
+o secventa formata din 1 si 2.
+
+De exemplu: S_8 = 13211321322113 este format din secventele:
+13, 2113, 213, 22113.
+
+Sa notam cu A multimea tuturor secventelor posibile. Se observa ca
+aceasta multime este finita (|A| = 22). Fiecare secventa din multimea A se
+transforma in una sau mai multe secvente din multimea A.
+De exemplu: 11222113 se transforma in 213 si 22113.
+
+Astfel putem considera S_i (i >= 1) ca fiind format din secvente din multimea
+A concatenate. Intr-un sir fiecare secventa se transforma independent de
+celelalte. Putem reformula problema astfel: de cate ori apare fiecare secventa
+in sirul S_N.
+
+Problema a devenit aproape clasica. Fiecarui sir S_i se asociaza un vector
+v_i ce reprezinta numarul de aparitii a fiecarei secventa in sirul S_i.
+Se construieste o matrice de transformare M a.i M*v_i = v_{i+1}. =>
+v_{i+1} = (M^i)*v_1.
+
+O generare bruta a solutie poate aduce concurentului 20-25 puncte. Daca
+se memoreaza solutiile se poate obtine un punctaj de 30 puncte.
+
+Complexitatea problemei: logN*|A|^3 (exponentierea matricei M).

@@ -1,0 +1,36 @@
+ecu - solutie
+
+	Sa notam x(i,j) valoarea necunoscutei i dupa j iteratii. x(i,0) sunt date.
+
+	x(i,1) = p(i)*x(i,0) + (1-p(i+1))*x(i+1,0) + y(i)
+	x(i,2) = p(i)*x(i,1) + (1-p(i+1))*x(i+1,1) + y(i) =
+		 p(i)*( p(i)*x(i,0) + (1-p(i+1))*x(i+1,0) + y(i) ) +
+		 p(i+1) * ( p(i+1)*x(i+1,0) + (1-p(i+2))*x(i+2,0)).
+
+	x(i,j) se poate scrie ca o functie liniara de valorile initiale. Astfel,
+
+x(i,j) = c(i,j,1)*x(1,0) + c(i,j,2)*x(2,0) + .. + c(i,j,N)*x(N,0) + c(i,j,0) ,
+
+	unde c(i,j,k) cu k de la 0 la N sunt niste constante reale
+
+	Evident, daca am determina c(i,M,k) cu k de la 0 la M am putea afla valorea lui x(i,M) (exact ceea ce ne intereseaza).
+
+	Vom observa ca nu ne intereseaza toate valorile c(i,j,k), ci numai valorile de tipul  c(i,2^p,k)  (adica numai dupa un nr. de iteratii egal cu o putere a lui 2). Sa consideram ca am calculat aceste valori. Atunci putem determina c(i,M,k), parcurgand reprezentarea binara a lui M. Sa consideram ca primul bit de 1 al lui M se afla pe pozitia p. Atunci, c(i,M,k) = Suma de la j=0 la N din c(i,2^p,j)*c(j,M-2^p,k)  (este similar cu inmultirea de matrici; de fapt, problema se pate rezolva si considerand relatii intre matrici si vectori).
+Ramane de determinat c(i,M-2^p,k), care se determina ca si pt. M (M-2^p este M fara cel mai semnificativ bit de 1).
+
+	Valorile c(i,2^p,k) sunt egale cu:
+
+	c(i,2^p,k) = Suma de la j=0 la N din c(i,2^(p-1),j)*c(j,2^(p-1),k).
+
+	Valorile c(i,1,k) sunt usor de determinat, din relatiile date in enunt, caci
+
+	x(i,1) = c(i,1,i)*x(i,0) + c(i,1,i+1)*x(i+1,0) + c(i,1,0).
+
+
+	Pentru a nu lucra efectiv cu termeni constanti, in solutia oficiala s-a considerat ca exista o necunoscuta in plus, cu numarul 0, a carei valoare este egala cu 1 si nu se modifica in cursul unei iteratii. In schimb, relatiile de calcul devin:
+
+	x(i,j) = p(i)*x(i,j-1) + (1-p(i+1))*x(i+1,j-1) + y(i)*x(0,j-1), unde
+
+	x(0,k) = 1, oricare ar fi k>=0.
+
+	Astfel, complexitatea algoritmului este O(N^3*logM) si memoria folosita este O(N^2*logM).

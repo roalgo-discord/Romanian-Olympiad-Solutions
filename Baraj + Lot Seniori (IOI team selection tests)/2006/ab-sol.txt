@@ -1,0 +1,37 @@
+### romana ###
+
+	Sa consideram containerele sortate crescator dupa suma ce trebuie platita pentru a depozita o substanta in ele. Toate substantele care nu reactioneaza cu nici o alta subtanta sunt puse in containerul 1. In continuare, toate substantele ramase reactioneaza cu cel putin o alta substanta.
+	Daca avem doar 2 containere, singura modalitate este de a pune toti acizii intr-unul si toate bazele in celalalt (deoarece ultimul acid recationeaza cu toate bazele, acesta nu poate fi pus impreuna cu nici o baza ; dar daca in containerul lui nu se afla nici o baza, putem sa punem aici si toti acizii).
+	Daca avem cel putin 3 containere, impartim problema in urmatoarele M+1 cazuri (presupunand ca fiecare acid reactioneaza cu cel putin o baza) :
+
+1) nici un acid nu e plasat in containerul 1 ; atunci putem plasa in containerul 1 toate bazele si, deci, in containerul 2 toti acizii
+2) 
+-> acidul cu cel mai mare numar de ordine care este plasat in containerul 1 este X ;
+-> stim ca acidul X reactioneaza cu toate bazele de la 1 la BX, deci acestea nu pot fi puse in containerul 1 ;
+-> toti acizii cu numere mai mici decat X reactioneaza numai cu baze cu numere de la 1 la BX ; cum nici o baza de la 1 la BX nu este pusa in containerul 1, atunci toti acizii de la 1 la X-1 pot fi pusi si ei in containerul 1
+-> cum X este cel mai mare acid care este pus in containerul 1, inseamna ca toti acizii de la X+1 la M nu sunt pusi in containerul 1 ;
+-> toate bazele de la BX+1 la N ractioneaza doar cu acizi cu numere de ordine mai mari decat X; cum acestia nu sunt pusi in containerul 1, atunci toate bazele de la BX+1 la N pot fi puse in containerul 1 ;
+-> ne-au ramas bazele de la 1 la BX si acizii de la X+1 la M ; acestia formeaza un graf bipartit complet (fiecare acid de la X+1 la M are afinitate pentru fiecare baza de la 1 la BX) ; singurele modalitati de amplasare in containere sunt urmatoarele : toate bazele de la 1 la BX in containerul 2 si toti acizii de la X+1 la M in containerul 3, sau toti acizii de la X+1 la M in containerul 2 si toate bazele de la 1 la BX in containerul 3;
+
+	Observam, asadar, ca 3 containere sunt intotdeauna suficiente pentru o amplasare cu cost optim.
+	Complexitatea solutiei este liniara -> O(M).
+
+
+### english ###
+
+	Let's suppose that the containers are sorted ascendingly according to the sum needed to be paid if a substance is placed in the container. All the substances which do not react with any other subtance are placed in the container #1. Next we will consider only the case in which every subtance reacts with at least one other substance.
+	If we only have 2 containers, the only possibility is to place all the acids in one container and all the bases in the other (this results from the fact that the acid M has affinity for all the N bases).
+	If we have at least 3 containers, the solution can be partitioned into M+1 cases:
+
+1) no acid is placed in container #1 ; then, all the bases can be placed there ; then, all the acids can be placed in container #2
+
+2)
+-> the acid having the largest number which is placed in the container #1 is X
+-> we know that the acid X has affinity for all the bases from 1 to BX, so these bases cannot be placed in the container #1
+-> all the acids from 1 to X-1 have afinity only for some of the bases from 1 to BX, so these acids can be placed in container #1
+-> since X is the largest acid being placed in container #1, all the acids X+1,..,M are not placed in the container #1
+-> all the bases from BX+1 to N react only with some of the acids X+1,..,M ; since these acids are not placed in the container #1, all the bases from BX+1 to N can be placed in container #1
+-> the bases 1,..,BX and the acids X+1,..,M are left ; these substances form a complete bipartite graph ; so, we now have 2 options : we either place the bases in conainer #2 and the acids in container #3, or the other way round (whichever option requires a smaller sum)
+
+	So, we notice that 3 containers are always enough in order to achieve the minimum possible sum.
+	The time complexity of the solution is linear: O(M).

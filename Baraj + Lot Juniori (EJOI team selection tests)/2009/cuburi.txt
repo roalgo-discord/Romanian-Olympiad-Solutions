@@ -1,0 +1,10 @@
+SOLUTIE CUBURI
+Algoritm de numarare ce parcurge o singura data datele de intrare.
+- Se considera toate modelele (pattern) laterale, distincte in raport 
+  cu operatiile de rotire si rasturnare, ce se pot forma cu fiecare cub.
+- Pentru fiecare cub se disting 3 pattern-uri posibile pentru cele 3 perechi 
+  de fete opuse (combinari de 3 luate cate 2).
+- Pentru fiecare pattern DISTINCT format de acel cub, se va incrementa 
+  variabila corespunzatoare din sirul de modele (stil vector de frecvente)
+- Deoarece sunt 4 culori ce formeaza un model, se poate folosi o matrice 
+  cu 4 dimensiuni sau o alta structra de memorare mai eficienta.
