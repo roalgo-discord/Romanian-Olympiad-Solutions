@@ -1,0 +1,13 @@
+﻿Solutie DragonBall – Daniel Posdarascu
+
+Solutie 40-50 de puncte: 
+
+Cautam binar raspunsul. Pentru fiecare din cele N + 1 intervale calculam cate scanduri avem nevoie sa parcurgem intervalul. Dupa ce am calculat numarul total de scanduri de care avem nevoie, comparam acel numar cu T (si ne decidem daca cautam o valoare mai mica sau mai mare). Ca sa calculam numarul de scanduri necesare pentru un interval o sa facem scaderi repetate deoarece nu este nevoie sa facem mai mult de T scaderi (ca sa evitam impartirea intre doua numere mari). 
+
+Complexitate: O(Log(L) * T * Lungime_numere_mari)
+
+Solutie 100 de puncte:
+
+O sa incercam sa fixam treptat fiecare scandura. Initial avem cele N + 1 intervale pe care le bagam intr-un heap. La fiecare pas selectam intervalul cu lungimea cea mai mare si mai adaugam inca o scandura la el. Observatie: Scandurile pozitionate la un pas nu sunt finale. De exemplu, la primul pas o sa selectam intervalul cel mai mare si o sa il impartim in doua, dar este posibil ca mai incolo sa obtinem din nou intervalul acesta ca fiind cel mai mare si cand introducem o scandura noua, pozitionam cele 2 scanduri la cate o treime fiecare. Pentru fiecare interval este necesar sa tinem minte cate scanduri K am introdus si sa reactualizam raspunsul cu K + 1 scanduri fixate.
+
+Complexitate: O(T * Lungime_numere_mari * log(N))

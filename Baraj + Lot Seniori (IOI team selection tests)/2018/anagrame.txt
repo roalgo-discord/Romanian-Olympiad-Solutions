@@ -1,0 +1,131 @@
+Autor solutie: Alexandru Velea
+
+Determinarea costului minim - imprementarea accesibila participantilor
+- se ia primul element din sirul comisie si se gaseste primul element din sirul dat de participant egal cu el.
+    Se vor face swapuri pana ajunge pe prima pozitie
+    ex: comisie 4 5 6 1 2 3
+    participant: 1 2 3 4 5 6
+    - se va aduce valoarea 4 pe prima pozitie, rezultand sirul 4 1 2 3 5 6
+
+    Se va continua pana toate valorile sunt pe pozitiile lor.
+    ** Aceasta abordare functioneaza si pe anagrame.
+
+-- Rezolvarea pentru permutare --
+Prima observatie:
+- daca comisia are o permutare si concurentul da un sir, costul sirului este egal cu numarul de inversiuni din urmatoarea permutare:
+p[i] = pozitia din permutarea comisiei unde se afla elementul a[i], unde a este sirul dat de participanti
+ex: pentru permutarea comisier 1 3 5 7 6 4 2 si sirul dat de participanti 1 2 3 4 5 6 7 permutarea de mai sus va fi 1 7 2 6 3 5 4
+costul pentru sirul dat de permutarea participantilor este egal cu numarul de inversiuni din permutarea 1 7 2 6 3 5 4 
+
+A doua observatie:
+- 27 + 11 puncte maxim
+Putem compara 2 numere cu 2 operatii intreband urmatoarele queriuri
+1) a b 1 .. n
+2) b a 1 .. n
+Daca queriul 1 are raspuns mai mic ca queriul 2, inseamna ca valoarea a este inaintea valorii b in sirul final. 
+- Invers daca queriul 2 are raspuns mai mic.
+
+Aceasta abordare obtine 13 puncte folosind un merge sort implementat de mana sau std::stable_sort cu comparatorul precizat mai sus
+
+* Reducerea compararii la 1 operatie
+Putem precalcula in N queriuri urmatoarele operatii
+front[i] = i 1 .. n
+astfel cand vom intreba operatia
+a < b, b a 1 .. n putem deja sa stim raspunsul la ea
+raspunsul este egal cu front[a] + front[b] - front[1]
+front[a] aduna numarul de inversiuni fata de front[1] pe care il face a daca ar ajunge in fata.
+la fel si front[b]. Cum b > a este adunata si inversiunea (a, b) daca ea exista.
+Daca intrebam doar a b 1 .. n practic am scazut inversiunea (a, b) daca a < b.
+In cazul in care a b 1 .. n este mai mic ca front[a] + front[b] - front[1] inseamna ca a < b.
+
+Astfel folosind merge sort de mana si compararea in 1 queri + N queriuri de preprocesare se obtin exact NlogN comparari.
+Aceasta solutie obtine 27 de puncte
+
+** Observatii legate de anagrame **
+Putem construi o permutare similara cu cea descrisa in cazul in care sirul este o permutarea chiar si pe cazul cu anagrame.
+In loc sa inlocuim elementul a[i] cu pozitia pe care trebuie sa ajunga in sirul final (cum faceam la permutare)
+o sa inlocuim al X-lea element a[i] cu pozitia pe care se afla am X-lea element cu valoarea a[i] in sirul final
+ex: sir comisie 2 2 3 1 1 3
+    - sir participant 3 2 1 3 2 1
+    - permutare rezultate 3 1 4 6 2 5
+       
+Astfel costul sa facem secventa 'buna' este egal cu numarul de inversiuni din aceasta permutare
+
+Anagrame doar cu 2 elementes
+presupunem ca facem queriurile
+abaaaabbbbbb
+baaaaabbbbbb
+Folosind prima observatie legata de anagrame observam cum se schimba permutarea rezultata pe care se calculeaza numarul de inversiuni
+in practica se schimba intre ele primele 2 valori
+ex: comisie: 1 1 2 2 1
+    sir participant: 1 2 1 1 2 - sir rezultat 1 3 2 5 4
+    sir participant: 2 1 1 1 2 - sir rezultat 3 1 2 5 4
+
+astfel cu 2 queriuri putem sa ne dam seama care este prima pozitie din sir (daca este a sau b)
+dupa ce am facut aceasta decizie o "setam" si continuam recursiv pe restul sirului
+
+Acest caz particular valoreaza 11 puncte
+
+Solutia descrisa pana in acest punct valoreaza 38 de puncte
+
+** Rezolvare in N queriuri pe permutare
+sa luam urmatorul exemplu:
+    comisie 2 4 6 1 4 3
+    participant 1 2 3 4 5 6
+
+Daca notam cu 1 pozitiile din permutarea participantului pentru care valorile se vor afla inaintea valorii 1 in sirul final si cu 0 altfel obtinem urmatorul sir:
+    - # 1 0 0 1 1
+
+acum o sa punem urmatorul queri:
+    2 3 4 5 6 1
+
+Putem observa cum se schimba rezultatul intre cele 2 queriuri
+Daca avem x numere care se afla inaintea elementul 1 in sirul final cand mutam elementul 1 la final raspunsul va scadea cu x fata de raspunsul pe 1 .. n
+In acest fel avem (n - x - 1) elemente care se vor afla dupa elementul 1 la final. Cand il mutam pe 1 la final se vor creea (n - x - 1) noi inversiuni in sirul nostru. Astfel raspunsul va creste cu (n - x - 1)
+Daca raspunsul pentru 1 .. n = a
+si raspunsul pentru 2 .. n 1 = b
+stim ca b - a = (n - x - 1) - x = n - 2 * x - 1
+astfel putem afla in mod unic valoarea x
+valoarea x = cate elemente se vor afla in fata elementului 1 in sirul final
+astfel am aflat pozitia elementului 1 in sirul final
+
+Din acest pas aplicam acelasi rationament pentru aflarea pozitiei 2
+O sa punem queriurile 
+2 3 .. n 1
+3 .. n 1 2
+
+Observam ca queriul 2 3 .. n 1 este deja pus. 
+In final o sa intrebam pentru fiecare rotatie circulara a permutarii
+1 .. n
+2 .. n 1
+3 .. n 1 2
+n 1 2 .. n - 1
+
+La final stim unic pozitia fiecarui element.
+
+Rezolvare pentru anagram in N intrebari.
+O idee foarte buna e sa incercam sa avem control asupra permutarii rezultate 
+daca aplicam strategia de la permutari si facem queriurile
+1 1 1 1 2 2 3 3 3
+1 1 1 2 2 3 3 3 1
+putem sa ne imaginam ca nu am mutat prima valoarea de 1, ci ultima 
+pentru sirul comisiei 2 1 1 3 1 2 3 3 1
+sirul rezultat pentru 
+1 1 1 1 2 2 3 3 3 este
+2 3 5 9 1 6 4 7 8
+iar pentru
+1 1 1 2 2 3 3 3 1 este
+2 3 5 1 6 4 7 8 9
+dupa cum se poate observa am mutat valoarea 9 la final
+astfel putem calcula pozitia ultimului 1 (luand in considera ca elementul 1 avea deja in fata niste elemnte mai mic)
+
+Acum cand mutam a 2-a valoare de 1 ne putem imagina ca o inseram "inainte" ultimei valori de 1
+sirul rezultat pentru 
+1 1 1 2 2 3 3 3 1 este
+2 3 5 1 6 4 7 8 9
+iar pentru
+1 1 2 2 3 3 3 1 1 este
+2 3 1 6 4 7 8 5 9
+Putem observa ca am luat valoarea 5 si am inserat-o inaintea valorii 9
+
+Acelasi rationament se poate face pentru toate valorile, in final obtinand sirul dorit

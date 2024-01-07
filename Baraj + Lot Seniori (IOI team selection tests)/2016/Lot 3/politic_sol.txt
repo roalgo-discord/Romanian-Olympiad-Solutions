@@ -1,0 +1,25 @@
+ - worst-case, putem elimina oricând K noduri random, și vom avea N-K candidați deciși
+ - vom rezolva o problema echivalentă: maximizarea numărului (eliminați + indeciși)
+
+Soluția 1 (BRUT):
+ - backtracking: încercarea tuturor celor C(N, K) posibilități
+
+Soluția 2 (100):
+ - împărțim problema pe componente “conexe”
+ - primul pas pentru a crea indeciși este eliminarea unui nod terminal (care votează cu el însuși)
+ - observație: pentru a avea cel puțin un indecis într-o componentă “conexă”, trebuie eliminat complet ciclul din componentă (datorită configurației grafului, va exista tot timpul exact un ciclu în fiecare componentă)
+ - după ce eliminăm complet ciclul, o să avem deja noduri indecise (toate cele care votau cu cineva din ciclu)
+ - în continuare, pentru fiecare subarbore legat de ciclu, facem o dinamică D[x][i] = numărul maxim de eliminați + indeciși, dacă elimin i candidați din subarborele x
+
+ - relația de recurență atunci când adăugăm un subarbore y la dinamica care există deja în x, cu i >= 1 și i-j >= 1: D[x][i] = max(D[x][i], D[x][i - j] + D[y][j])
+ - observație: atât timp cât i >= 1, j poate fi 0, și avem D[x][i] = max(D[x][i], D[x][i] + D[y][0])
+ - pentru i == 0: D[x][0] = 1 (este eliminat de către părinte)
+ - nu are sens să avem i >= 1 și i-j == 0 în același timp (nu aduce niciun beneficiu, deoarece nu crează indeciși)
+ 
+(probabil există și alte moduri corecte de a construi dinamica)
+
+ - dinamica se poate face în O(N^2) dacă mergem cu i doar cât trebuie (până la min(N, K, mărimea subarborelui x))
+ - combinăm toate dinamicile pentru fiecare subarbore din componenta conexă curentă
+ - facem o ultimă dinamică pentru a combina componentele conexe
+
+Șmen anti-tractor (NU E GÂNDIT PREA MULT, DAR LA PRIMA VEDERE PARE CĂ AR MERGE): putem face o singură dinamică pe un singur arbore. Construim un arbore special în care nodurile au costuri, fiecare cost reprezentând câte noduri din graful original sunt incluse în nodul special. O să avem o rădăcină de cost 0, legată de X noduri (unde X este numărul de componente conexe din graful original), fiecare dintre acestea având costul egal cu numărul de noduri din ciclul componentei conexe pe care o reprezintă. Pentru restul nodurilor, le legăm normal, cu cost 1, formând subarborii legați de nodurile ciclu. Dinamica rămâne aproape identică. Trebuie doar să avem grijă să numărăm corect nodurile/costurile, iar pentru rădăcina de cost 0 să nu considerăm copiii ca fiind indeciși atunci când o eliminăm (ceea ce înseamnă D[x][0] = 0 pentru cele X noduri reprezentând componentele conexe)

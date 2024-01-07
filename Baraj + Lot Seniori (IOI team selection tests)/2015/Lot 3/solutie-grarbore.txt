@@ -1,0 +1,27 @@
+﻿Solutie Grarbore
+
+Dinamica pe arbore:
+
+D1[i][j] = cati subarbori exista in subarborele lui i (cu radacina in i) care au gradul maxim j si gradul lui i este j
+D2[i][j] = cati subarbori exista in subarborele lui i (cu radacina in i) care au gradul maxim j si gradul lui i este mai mic strict ca j
+
+Pentru a calcula d1[i][j] si d2[i][j] vom face un rucsac pe fiii nodului i. Rucsac[i][k] = in cate moduri putem selecta k fii din primii i.
+Rucsac[i][k] = Rucsac[i – 1][k] + Rucsac[i – 1][k – 1] * (d2[fiu_i][j] + (d2[fiu_i][t] + d1[fiu_i][t])) pentru orice t de la 0 la j – 1
+
+Rucsac[i – 1][k] = cazul in care nu il selectam pe i
+Rucsac[i – 1][k – 1] = cazul in care il selectam pe i
+
+d2[fiu_i][j] = subarborele fiului poate sa aibe gradul j, dar gradul lui fiu_j nu poate (pentru ca avem si muchia dintre i si fiu_i) 
+
+Pentru cazul in care gradul subarborelui este < j, nu avem restrictie asupra gradului lui fiu_i. T-ul poate sa fie redus cu o suma partiala.
+
+d1[i][j] = Rucsac[numar_fii][j] (selectez gradul lui I fix j)
+
+d2[i][j] = Rucsac[numar_fii][t] – Rucsac2[numar_fii][t] cu t de la 0 la j – 1 (gradul lui i trebuie sa fie mai mic ca j). 
+
+Din moment ce gradul subarborelui trebuie sa fie j, trebuie sa ne asiguram ca cel putin un fiu sa aibe subarborele cu gradul j. Pentru simplitate, din numarul de solutii cu gradul maxim j o sa scadem numarul de solutii cu gradul maxim j – 1 (care il calculam in Rucsac2[i][j]).
+
+Rucsac2[i][k] = Rucsac2[i – 1][k] + Rucsac2[i – 1][k – 1] * (d2[fiu_i][j - 1] + (d2[fiu_i][t] + d1[fiu_i][t])) pentru orice t de la 0 la j – 2
+
+Complexitate: O(N^3)
+

@@ -1,0 +1,95 @@
+Rezolvam cazul cand numerele ar fi pe 4 biti.
+Formam grupe de numere inchise la rotatii si negatii pe biti.
+O grupa va conntine odata cu un numar x, negatia acestuia non(x) precum si rotatiile acestora. Astfel se vor forma 4 grupe.
+A={0000,1111}
+B={0101,1010}
+C={0011,0110,1100,1001}
+D={0001,0010,0100,1000,1110,1101,1011,0111}
+Din fiecare grupa cu exceptia primei grupe sa alegem un reprezentant si sa verificam ce valori s-ar obtine daca xor-am cu aceasta valoare toate numerele din grupa si
+apoi aplicam rotatii:
+B^0101->{0000,1111}=A
+C^0011->{0000,0101,1111,1010}= A U B
+D^0001->{0000,0011,0101,1001,1111,1100,1010,0110} = A U B U C
+
+Acum observam ca in momentul in care am avea numar dintr-o grupa si xor-am numarul cu o anumita valoare fixata chiar din acea grupa atunci se obtin valori din
+grupele anterioare.
+Astfel putem merge prin urmatorul rationament.
+Presupunem intai ca numarul nu este in grupa D si incercam sa rezolvam problema. 
+Sa presupunem ca avem deja o succesiune "S" de apeluri care rezolva problema in acest caz particular.
+Daca numarul e din grupa D atunci (vom demonstra ) numarul ramane pe toata suscesiunea S in grupa D.
+Acum vom faca un apel cu 0001. Vom obtine o valoare care nu e in D si aplicand dinnou succesiunea S vom rezolva problema.
+Acum observam ca sucesiunea S 0001 S rezolva oricare valoare.
+Ramane sa vedem cu arata sucesiunea S.
+Vom presupune acum ca valoarea este din A sau B dar nu din C si avem o succesiune de apeluri S1 care rezolva problema in acest caz particular.
+Daca totusi este din C dupa aplicarea succsiunii S1 valoarea ( vom demonstra ) ramane in C. 
+Aplicand acum un apel 0011 valoarea va ajunge in A sau B si vom aplica iar succesiunea S1.
+Decucem ca orice valoare care este din A , B sau C se rezolva prin succesiunea de apeluri S1 0011 S1.
+Deci orice valoare este rezolvata de succesiunea S1 0011 S1 0001 S1 0011 S1.
+Avem nevoie de o succesiune S1 care rezolva o valoare din A sau B.
+Similar am nevoie de o succesiune S2 care rezolva grupa A si daca totusi numarul e din B mai aplicam odata un apel 0101 pentru a aduce valoarea in A
+Deci S1 = S2 0101 S2
+Dar S2 nu poate fi decat 1111 si se aplica pe grupa A doar daca valoarea pe care vrem sa o rezolvam este 1111 ( altfel as avea deja valoarea 0000 deci as fi terminat)
+Deci S2 = 1111
+Revenim si descoperim ca 
+S1 = 1111 0101 1111
+S = S1 0011 S1 = 1111 0101 1111 0011 1111 1010 1111
+In final succesounea de apeluri va fi   
+0000 1111 0101 1111 0011 1111 1010 1111 0001 1111 0101 1111 0011 1111 1010 1111
+in care primul apel e facut pentru a acoperi si situatia cand valoarea initiala este 0000.
+Se observa ca ( indexat din 0 ) avem apelurile:
+Apel[i]=
+0000 daca i=0
+1111 daca i=2k+1 ( 1 , 3 , 5 , 7, 9 , 11 , 13 , 15 )
+0101 daca i=4k+2 ( 2 , 6 , 10, 14 )
+0011 daca i=8k+4 ( 4 , 12 )
+0001 daca i-16k+8 (8).
+
+Demonstratia faptului ca daca un numar e dintr-o anumita grupa el nu va iesi din grupa respectiva se bazeaza pe faptul ca
+apelul 1111 aplicat grupelor B,C,D lasa orice valoare in acea gruoa
+Apelul 0101 aplicat grupelor C si D lasa orice valoare in acea grupa
+paelul 0011 aplicat pe grupa D lasa orice valoare in grupa D.
+
+Solutia pentru 16 biti.
+
+Se procedeaza analog cazului pe 4 biti.
+
+Initial creem grupele inchise la rotatii si negatii.
+Apoi vedem efectul xor-arii elementlor unei grupe cu un reprezentant al sau.
+Identificam modul in care valorile obtinute se regasesc in alte grupe.
+COnsideram succesiv grupe care vor fi rezolvate de anumite apeluri.
+Initial avem grupa 
+A={ 0000000000000000 , 1111111111111111 }
+Aceasta grupa va fi rezolvata fie de un apel initial cu 000000000000 fie de un apel (al doilea cu 1111111111111111).
+Identificam o grupa care va fi dusa de xor-are in grupa A
+Aceasta grupa va fi de fapt
+B={ 0101010101010101 , 1010101010101010 } 
+Apoi grupe de tip C care prin xorare merg in grupele A sau B
+Aici intervine o diferanta la situatia pe 16 biti - ca o valoare care rezolva o grupa de tip C le rezolva de fapt simultan pe toate.
+Astfel toate grupele de tip C pot fi de fapt reunite in una singura.
+
+Gasim apoi grupe de tip D care vor fi toate rezolvate de o anumita valoare din una dintre aceste grupe formand o mare grupa de tip D.
+Samd pana se obtine ultima grupa mare. Aceasta va contine mai multe grupa ( in esenta orice grupa de numere cu numar impar de biti 1 )
+
+Astfel prima grupa va fi rezolvata de a = 1111111111111111
+A doua grupa de a b a unde b = 0101010101010101
+A treia de a b a c a b a unde c= 0011001100110011
+samd. si se formeaza pana la urma un sir fixat de 2^16 valori care rezolva in cel mult 2^16 apeluri fiecare numar initial.
+Sintetic acest sir va fi exprimat astfel:
+apel[i]=
+0000000000000000 daca i = 0 
+1111111111111111 daca i = 2k+1 (i=1, 3, 5, 7,..)
+0101010101010101 daca i = 4k+2 (i=2, 6,10,14,..)
+0011001100110011 daca i = 8k+4 (i=4,12,20,28,..)
+0001000100010001 daca i = 16k+8 ...
+0000111100001111 daca i = 32k+16 ...
+0000010100000101 daca i = 64k+32 ...
+0000001100000011 daca i = 128k+64 ...
+0000000100000001 daca i = 256k+128 ...
+0000000011111111 daca i = 512k+256 ...
+0000000001010101 daca i = 1024k+512 ...
+0000000000110011 daca i = 2048k+1024 ...
+0000000000010001 daca i = 4096k+2048 ...
+0000000000001111 daca i = 8192k+4096 ...
+0000000000000101 daca i = 16384k+8192 ...
+0000000000000011 daca i = 32768k+16384 ...
+0000000000000001 daca i = 65536k+32768 ( i = 32768 )  
