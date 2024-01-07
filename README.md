@@ -36,3 +36,5 @@ De asemenea, puteti sa le gasiti si pe kilonova daca intrati pe fiecare link de 
 # Cum ne puteti ajuta? 
 
 Daca aveti descrierile solutiilor in format txt, docs, doc sau pdf, puteti fie sa dati pull request fie sa le incarcati in acest repo. Pentru mai multe detalii, puteti intra si pe [RoAlgo](https://discord.gg/E82gRbUBCJ). 
+
+Proiect creat de [Stefan Dascalescu](https://stefdasca.ro/) 
