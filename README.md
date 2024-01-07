@@ -29,7 +29,7 @@ De asemenea, puteti sa le gasiti si pe kilonova daca intrati pe fiecare link de 
 # Ce lipseste?
 
 * Juniori: Lot 3 si 4 din 2010, Loturile din 2011 si 2018, Baraj 2012 si 2013
-* Seniori: In intervalul 2018-2023 sunt doar barajele (cu exceptia anului 2020, din motive obiective), 2017 si 2016 nu au loturile 4, 5, 6, o parte din probleme lipsesc la 2014, lot 1 2012, la 2011 si 2019 e doar barajul
+* Seniori: In intervalul 2018-2023 sunt doar barajele (cu exceptia anului 2020, din motive obiective), 2016 nu are loturile 4, 5, 6, o parte din probleme lipsesc la 2014, lot 1 2012, la 2011 si 2019 e doar barajul
 * OJI, ONI: lipsesc anumite probleme, mai ales din cele date inainte de 2010 la gimnaziu
 * Majoritatea editorialelor de la alte concursuri precum Urmasii lui Moisil, Grigore Moisil, Info-Oltenia, AGM etc. 
 
