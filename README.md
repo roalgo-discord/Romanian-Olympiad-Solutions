@@ -40,3 +40,7 @@ Daca aveti descrierile solutiilor in format txt, docs, doc sau pdf, puteti fie s
 [Link alternativ drive](https://drive.google.com/drive/folders/1swvqAbDCBJ-UAKUawtz0J2ZFvBrIz3WO?usp=sharing) (credits to [@susanthenerd](https://github.com/susanthenerd)) 
 
 Proiect creat de [Stefan Dascalescu](https://stefdasca.ro/) 
+
+# Patch Notes
+
+13.01.2024 - Toate problemele adaugate au solutii in PDF, s-au adaugat si IIOT, InfoPro plus unele concursuri regionale de informatica
