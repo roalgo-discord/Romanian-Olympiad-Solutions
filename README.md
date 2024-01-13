@@ -37,4 +37,6 @@ De asemenea, puteti sa le gasiti si pe kilonova daca intrati pe fiecare link de 
 
 Daca aveti descrierile solutiilor in format txt, docs, doc sau pdf, puteti fie sa dati pull request fie sa le incarcati in acest repo. Pentru mai multe detalii, puteti intra si pe [RoAlgo](https://discord.gg/E82gRbUBCJ). 
 
+[Link alternativ drive](https://drive.google.com/drive/folders/1swvqAbDCBJ-UAKUawtz0J2ZFvBrIz3WO?usp=sharing) (credits to [@susanthenerd](https://github.com/susanthenerd)) 
+
 Proiect creat de [Stefan Dascalescu](https://stefdasca.ro/) 
