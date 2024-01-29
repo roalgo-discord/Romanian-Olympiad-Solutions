@@ -44,5 +44,5 @@ Proiect creat de [Stefan Dascalescu](https://stefdasca.ro/)
 
 # Patch Notes
 
-13.01.2024 - Toate problemele adaugate au solutii in PDF, s-au adaugat si IIOT, InfoPro plus unele concursuri regionale de informatica
-29.01.2024 - Foarte multe probleme au fost gasite si incarcate, cele mai notabile fiind baraj juniori 2012, lot 3 + 4 juniori 2010, lot 2011 seniori, lot 2010 seniori baraje 4, 5, 6, info1cup post 2020, niste RMI-uri precum si editorialele de la runda 3 IIOT
+* 13.01.2024 - Toate problemele adaugate au solutii in PDF, s-au adaugat si IIOT, InfoPro plus unele concursuri regionale de informatica
+* 29.01.2024 - Foarte multe probleme au fost gasite si incarcate, cele mai notabile fiind baraj juniori 2012, lot 3 + 4 juniori 2010, lot 2011 seniori, lot 2010 seniori baraje 4, 5, 6, info1cup post 2020, niste RMI-uri precum si editorialele de la runda 3 IIOT
