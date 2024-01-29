@@ -1,0 +1,8 @@
+
+
+	PAVARI - SOLUTIE
+       ------------------
+
+PAV[N] = 4*PAV[N-1] - PAV[N-2]
+
+PAV[0]=1 ; PAV[1]=3 

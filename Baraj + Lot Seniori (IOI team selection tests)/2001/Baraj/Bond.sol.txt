@@ -1,0 +1,10 @@
+
+
+	BOND - SOLUTIE
+       ----------------
+
+	Solutia consta intr-un Dijkstra modificat. Pentru fiecare
+segment (i,j) se calculeaza timpii maximi pana la care se poate parcurge
+in sensul i->j si in sensul j->i (efectuand intersectiile cu cercurile).
+Se va tine cont de acesti timpi maximi in calcularea timpului minim
+total.

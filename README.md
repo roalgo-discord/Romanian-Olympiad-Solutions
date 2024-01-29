@@ -28,10 +28,10 @@ De asemenea, puteti sa le gasiti si pe kilonova daca intrati pe fiecare link de 
 
 # Ce lipseste?
 
-* Juniori: Lot 3 si 4 din 2010, Loturile din 2011 si 2018, Baraj 2012 si 2013
-* Seniori: In intervalul 2018-2023 sunt doar barajele (cu exceptia anului 2020, din motive obiective), 2016 nu are loturile 4, 5, 6, o parte din probleme lipsesc la 2014, la 2011 si 2019 e doar barajul
+* Juniori: Loturile din 2011 si 2018, Baraj 2013
+* Seniori: In intervalul 2018-2023 sunt doar barajele (cu exceptia anului 2020, din motive obiective), 2016 nu are loturile 4, 5, 6, o parte din probleme lipsesc la 2014, la 2019 e doar barajul
 * OJI, ONI: lipsesc anumite probleme, mai ales din cele date inainte de 2010 la gimnaziu
-* Majoritatea editorialelor de la alte concursuri precum Urmasii lui Moisil, Grigore Moisil, Info-Oltenia, AGM etc. 
+* Majoritatea editorialelor de la alte concursuri precum Urmasii lui Moisil, Grigore Moisil, Info-Oltenia, AGM etc.
 * Anumite probleme de la loturi pre 2010
 
 # Cum ne puteti ajuta? 
@@ -45,3 +45,4 @@ Proiect creat de [Stefan Dascalescu](https://stefdasca.ro/)
 # Patch Notes
 
 13.01.2024 - Toate problemele adaugate au solutii in PDF, s-au adaugat si IIOT, InfoPro plus unele concursuri regionale de informatica
+29.01.2024 - Foarte multe probleme au fost gasite si incarcate, cele mai notabile fiind baraj juniori 2012, lot 3 + 4 juniori 2010, lot 2011 seniori, lot 2010 seniori baraje 4, 5, 6, info1cup post 2020, niste RMI-uri precum si editorialele de la runda 3 IIOT

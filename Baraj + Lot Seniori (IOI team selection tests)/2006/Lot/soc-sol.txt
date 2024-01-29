@@ -1,0 +1,42 @@
+soc - solutie
+
+	Prima etapa a rezolvarii acestei probleme consta in ordonarea nodurilor grafului sub forma unei secvente, in asa fel incat toti vecinii unui nod care se afla inaintea acestuia in cadrul ordonarii formeaza o clica. O astfel de ordonare este mereu posibila, ea corespunzand unei posibile ordini de "inserare" a nodurilor in graf, conform primei definitii (din enuntul problemei) a grafurilor cordale. Aceasta ordonare se determina de la sfarsit catre inceput.
+	Pentru a determina o astfel de ordonare, se pot foolosi mai multe abordari:
+
+* algoritm cu complexitatea O(N^4)
+	-> se incearca fiecare nod pe rand, testand in complexitatea O(x^2), unde x este nr de vecini ai nodului care nu au fost  deja selectati in cadrul ordonarii, daca acestia formeaza o clica
+
+	Acest algoritm functioneaza corect si destul de repede, deoarece, pentru orice graf cordal exista, in general, multe ordonari posibile ale nodurilor grafului care sa respecte proprietatea mentionata sau, daca exista putine ordonari, testul daca vecinii formeaza o clica sau nu se termina destul de repede (se gaseste repede o pereche de vecini neadiacenti ai nodului testat)
+
+* algoritm cu complexitatea O(N^3) - folosit in solutia "oficiala"
+
+	Se poate rafina solutia anterioara, memorand o matrice NVC[i][j] = nr de vecini comuni si neselectati ai nodurilor i si j ; astfel, testul daca vecinii unui nod formeaza o clica se face testand pentru fiecare vecin daca NVC[nod][vecin] = x-1, unde x este nr de vecini selectati ai lui nod si vecin este un vecin al nodului
+	Dupa ce un nod este selectat, se recalculeaza valorile NVC[i][j]
+
+* Maximum Cardinality Search sau Lexicographic BFS
+
+	Sunt 2 algoritmi "clasici" pentru grafuri cordale, care au complexitatea O(N+M) - optima
+
+
+	Dupa determinarea acestei ordonari, se construieste o descompunere arborescenta asociata grafului (vezi cursul de la Ploiesti). Nodurile grafului cordal corespunzatoare unui nod al arborelui formeza o clica.
+	O modalitate de constructie este urmatoarea :
+
+	Se construieste arborele corespunzator nodurilor de la 1 la i-1, din cadrul ordonarii. Apoi, pentru al i-lea nod, se determina toti vecinii selectati dinaintea lui (care formeaza o clica) si se cauta in arborele construit pana la acest pas un nod ce contine toti acesti vecini. Se construieste un nod nou, ce contine clica formata din al i-lea nod si toti vecinii sai si se pune adiacent cu nodul gasit. Acest algoritm are complexitatea O(N^3) : la fiecare pas (sunt N pasi) se parcurge intreg arborele construit pana atunci (are O(N) noduri) si se verifica daca vecinii fac parte din cadrul unui nod (sunt O(N) vecini).
+	De ce functioneaza aceasta abordare ? Singurul motiv pentru care aceasta abordare ar putea fi incorecta ar fi ca nodul de la pasul i sa nu aiba nici un vecin inaintea lui, deci sa nu poate fi "legat" de arborele construit pana la pasul i-1. Aceasta situatie apare, insa, doar in cazul primului nod din ordonare. Daca la un pas i>1 ar avea loc aceasta situatie, atunci, intrucat graful este conex, va exista unnod situat pe o pozitie j>i, care va face "legatura" cu nodul de pe pozitia i si cu nodurile dinaintea pozitiei i. Realizarea acestei "legaturi" va implica, insa, ca vor exista cel putin 2 vecini ai nodului de pe pozitia j care nu sunt adiacenti, deci proprietatea nu ar fi respectata.
+
+
+	Avand construit arborele asociat grafului cordal, problema se rezolva folosind programare dinamica. Pentru fiecare nod X al arborelui si fiecare nod u al grafului ce face parte din clica corespunzatoare nodului X, se calculeaza
+
+	MAX[X][u] = suma maxima daca nodul u ar face parte din societate (independent set)
+	MAX[X][0] = suma maxima daca nici un nod al clicii nu face parte din societate
+
+	Intrucat nodurile grafului corespunzatoare unui nod al arborelui formeaza o clica, este clar ca cel mult unul din ele poate face parte din societate.
+
+	Aceasta etapa de programare dinamica se poate realiza in complexitate O(N^3) : pentru fiecare pereche (X,u) ne folosim de valorile calculate pentru fiii Y ai lui X si alte noduri v. Realtia de recurenta nu este foarte complicata.
+
+	Asadar, problema se poate rezolva in complexitate O(N^3).
+
+[ Solutia "oficiala" are o complexitate O(N^3 * logN), deoarece foloseste "map"-uri din STL pentru testarea apartenentei unui nod la un arbore, testare care s-ar fi putut realiza in timp O(1) ].
+
+
+### pentru solutia de 60 de puncte, se construieste arborele componentelor biconexe si al nodurilor critice si, pentru fiecare nod X al acestui arbore si fiecare submultime de noduri S ale nodurilor grafului corespunzatoare nodului X al arborelui, se calculeaza MAX[X][S] = suma maxima daca nodurile din submultimea S ar face parte din societate (independent set)

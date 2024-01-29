@@ -1,0 +1,29 @@
+
+
+		SIRURI - SOLUTIE
+ 	       ------------------
+
+data de Mihai Patrascu
+
+	In cel de-al doilea sir se dedubleaza fiecare element, si se
+"asociaza" astfel cu elementele corespunzatoare din primul sir:
+
+sir1:		x1          x2
+		 
+		 		
+sir2:	     x11 x12 ...   x21  x22  (xij=xkl - sunt elementele egale
+					din cele 2 siruri)
+
+-> se cupleaza x1 cu x11, x2 cu x21, x11 cu x2 si x22 cu x1
+
+	Inlocuind in cel de-a doilea sir (dublat) elementele cu pozi-
+tiile corespunzatoare din primul sir ale elementelor asociate, se obtine
+un sir in care fiecare pozitie de la 1 la N apare de 2 ori. Se cauta
+subsirul strict crescator de lungime maxima in acest al doilea sir, si
+elementele din cel de-al doilea sir corespunzatoare pozitiilor elemen-
+telor din subsirul gasit vor constitui cea mai lunga subsecventa comuna
+(daca din subsir face parte un element dublat, elementul corespunzator
+este cel dinaintea lui - a carui dublura este).
+
+	Efectuand cuplarile ca mai sus, se garanteaza ca intr-o solutie
+nu vor aparea mai mult de 2 elemente x (desi sunt considerate 4).
