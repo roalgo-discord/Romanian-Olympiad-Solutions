@@ -1,0 +1,15 @@
+Problema se rezolvă prin programare dinamică.
+
+Soluţia 1:
+Calculăm o matrice D[i][j] = numărul de şiruri de lungime i care au j caractere minus consecutiv la final. Calculăm un element considerând că adăugăm un semn la finalul unei secvenţe cu i-1 elemente. Această soluţie are complexitatea O(N*K).
+
+Soluţia 2:
+Notăm:
+P[i] = numărul de şiruri cu proprietatea dată care se termină în plus;
+M[i] = numărul de şiruri cu proprietatea dată care se termină în minus;
+
+În general:
+P[i] = P[i-1] + M[i-1]
+M[i] = P[i-1] + M[i-1] - P[i-K]
+
+Această soluţie are complexitatea O(N).

@@ -1,0 +1,18 @@
+Soluţia 1 – 100p
+Notăm K = (M-1)x(N-1). Codificăm cele K mutări posibile cu numere naturale de la 1 la K, astfel:
+
+Mutarea 1 afectează pătrăţelele de coordonate (1,1), (1,2), (2,1), (2,2)
+Mutarea 2 afectează pătrăţelele de coordonate (1,2), (1,3), (2,2), (2,3)
+. . .
+Mutarea K afectează pătrăţelele de coordonate (M-1,N-1), (M-1,N), (M,N-1), (M,N)
+Datorită dimensiunilor mici ale tablei de joc putem putem utiliza o coadă, care memorează toate configuraţiile posibil de obţinut pornind de la configuraţia iniţială, aplicând cele K mutări. La fiecare apariţie a configuraţiei finale vom actualiza efortul total atunci când acesta este mai mic decât cel curent.
+
+În timpul procesului de expandare vom avea grijă să nu introducem în coadă configuraţii deja generate, cu excepţia cazului în care efortul total este îmbunătăţit.
+
+Soluţia 2 – 70 – 80p
+Folosind aceeaşi codificare a mutărilor, generăm toate posibilităţile de a efectua un şir de K mutări şi reţinem soluţia cea mai bună. Utilizam un algoritm de generare a permutărilor în ordine lexicografică şi, pentru fiecare permutare generată, calculăm efortul total necesar efectuării şirului de mutări corespunzător, reţinând soluţia cea mai bună la acel moment.
+
+Soluţia este optimă însă nu se încadrează în timp decât pe 70 - 80% dintre teste.
+
+Soluţia 3 – 60p
+Putem aplica o strategie greedy pentru efectuarea şirului de mutări, alegând la fiecare pas acea mutare care permite eliminarea unui număr maxim de cuburi. Algoritmul nu conduce la soluţia optimă decât pentru 60% dintre teste.

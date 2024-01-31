@@ -1,0 +1,17 @@
+Soluție 40p
+Parcurgem pe rând traseele furnicilor până la ieşirea din matrice. Utilizăm o matrice de nx*ny în care marcăm direcţia în care a mers ultima furnică. Complexitate: O(n*(nx+ny))
+
+Soluție 60p
+Utilizăm o matrice de nx*ny în care memorăm numărul de furnici ce trec prin fiecare celulă înaintea furnicii cu numărul n, având în vedere că jumatate merg la dreapta şi jumătate în jos: T[i,j] = T(i,j-1]/2 + T[i-1,j]/2 + T[i,j-1] % 2, iar T[1,1] = n.
+Se contorizează celulele ce conțin valoarea 0. Complexitate: O(nx*ny)
+
+Soluție 80p
+În loc să se folosească o matrice de nx linii şi ny coloane pentru a calcula numărul de furnici ce trec prin fiecare celulă a matricei, se foloseşte un vector de ny elemente şi calculează pe rând valorile din fiecare linie a matricei. Complexitate: O(nx*ny).
+
+Soluție 100p
+Valorile pe linie sunt împărţite în trei intervale:
+- De la început pâna la o poziţie p1 valorile sunt 0;
+- De la poziţia p1+1 până la o poziţie p2 sunt diferite de 0, întâi crescătoare până la o valoare maximă şi apoi descrescătoare până la 2
+- De la poziţia p2+1 până la capătul rândului sunt 1.
+Trebuie să calculăm doar valorile pe intervalul 2, care este foarte mic în comparaţie cu celelalte două.
+Complexitate: O(nx*log ny)

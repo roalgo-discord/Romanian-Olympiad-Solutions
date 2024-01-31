@@ -1,0 +1,16 @@
+Soluția 1 - 75 de puncte
+
+Pornind de la șirul de valori, vom calcula numărul de x-secvențe pentru orice x. Acest lucru este posibil, observând schimbările între numărul de (x-1)-secvente și x-secvente. Aceste schimbări depind de valorile x din șirul a. Vom porni de la (x-1)-secvențe, pe care le presupunem calculate, și vom itera prin toate valorile x din șir de la stânga la dreapta. Pentru fiecare astfel de valoare există trei cazuri posibile:
+1) Atât la stânga cât și la dreapta există câte o secvență deja formată. În acest caz, cele două secvențe, împreuna cu valoarea x, se alipesc devenind o singură secvență. În total, scade cu 1 numărul de secvențe.
+2) În doar una dintre direcții (stânga sau dreapta) există o secvența deja formată. În acest caz, valoarea curentă x se alipește acelei secvențe, iar numărul total de secvențe nu se schimbă.
+3) Nu există secvența imediat vecină deja formată. În acest caz, valoarea x formează singură o secvență, iar numărul total de secvențe crește cu 1.
+Pentru a verifica dacă există o secvență la stânga valorii x, este suficient să verificăm dacă vecinul stânga are o valoare mai mică sau egală cu x. În mod asemănător, pentru a verifica dacă există o secvență la dreapta valorii x, este suficient să verificăm dacă vecinul dreapta are o valoare mai mică strict decât x. Aceste condiții sunt obținute presupunând că valorile x sunt parcurse de la stânga la dreapta.
+Vom reține un vector Answer[x] reprezentând diferența între numărul de x-secvențe și (x-1)-secvențe. Acest vector poate fi calculat parcurgând șirul inițial de valori de la stânga la dreapta. Pentru o poziție a[i], vom verifica în care dintre cele trei cazuri ne aflăm și vom modifica Answer[a[i]] conform explicației anterioare.
+
+Pentru determina numărul efectiv de x-secvențe, vom calcula sumele parțiale (sumele secvenței 1..i, pentru orice i) ale vectorului Answer. Sumele parțiale trebuie calculate în același vector Answer pentru ca programul să se încadreze în limitele de memorie.
+În final, vom citi cele Q întrebări V[i] și vom afișa Answer[Vi].
+Complexitatea acestei abordari este O(N + ValMax), iar memoria folosită este N + ValMax, unde ValMax reprezintă valoarea maximă din șirul inițial.
+
+Soluția 2 - 100 puncte
+
+Observăm că pentru a putea calcula Answer nu este necesar reținerea întregul șir inițial de valori. Cu alte cuvinte, pentru a vedea în care dintre cele trei cazuri ne aflăm pentru o anumită poziție a[i], sunt necesare doar valorile a[i - 1] și a[i + 1]. Astfel, în timpul citirii, vom reține doar ultimele trei valori din șirului și vom modifica Answer cu ajutorul lor. Aceasta metodă reduce memoria folosita la ValMax. Datorită volumului de date, pentru încadrarea în limita de timp, se va parsa citirea.

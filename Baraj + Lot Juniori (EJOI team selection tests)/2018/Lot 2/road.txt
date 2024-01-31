@@ -1,0 +1,5 @@
+Presupunem că dorim să determinăm pentru o submulțime de cifre distincte A = {c[1], c[2], ...,c[k]} un traseu de lungime minimă care trece doar prin cifre din mulțimea A. Folosim o matrice suplimentară d[,] în care d[i,j] = costul minim al drumului de la un element de pe coloana 1 până la poziția (i,j). Se utilizează și o coadă Q în care se pun inițial pozițiile de pe prima coloană unde se află elemente ale mulțimii A, apoi se extrag pe rând din Q pozițiile și se depun vecinii acesteia în care se poate actualiza (minimiza) costul.
+
+Deoarece elementele matricei sunt cifre, înseamnă că sunt în total 210-1 = 1023 submulțimi de cifre. Se aplică algoritmul de mai sus pentru fiecare astfel de submulțime.
+
+O observație ar fi că mai ușor decât generarea submulțimilor ar fi să parcurgem numerele de la 1 la 1023 și descompunând fiecare număr în baza 2 avem de fapt în submulțime acele poziții în care există biți de 1. De exemplu, x = 13(10) = 0000001101(2), deci biții de 1 sunt la pozițiile 0, 2, 3 (pentru că biții lui x sunt numerotați de la dreapta la stânga începând cu 0). Deci x = 13 corespunde submulțimii de cifre {0, 2, 3}.

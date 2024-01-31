@@ -1,0 +1,19 @@
+Notații:
+L = N / 2K-1
+m = X – 1 (numărul de numere strict mai mici ca X)
+M = N – X (numărul de numere strict mai mari ca X)
+A(x, y) = x! / (x-y)! – aranjamente de x luate câte y
+C(x, y) = x! / (y! * (x-y)!) – combinări de x luate câte y
+
+Pentru ca X să ajungă pe nivelul K, în mod obligatoriu X trebuie să fie valoare maximă pe o secvență (din care face parte și X) de lungime L. În plus, pentru ca X să nu ajungă și pe nivelul K-1 trebuie ca în secvența vecină de lungime L să existe cel puțin un număr strict mai mare ca X.
+
+În determinarea soluției ținem cont de următoarele observații:
+- Numărul X poate fi pe oricare din cele N poziții
+- În secvența de lungime L în care este X, toate valorile trebuie să fie mai mici ca X, deci A(m,L-1) posibilităţi. Dacă m < L-1, atunci nu sunt soluții (răspunsul este 0).
+- În secvența de lungime L alăturată trebuie să existe cel puțin un număr mai mare ca X, deci S modalităţi, unde
+
+S = suma(C(M, i)*A(L,i)*A(m-L+1,L-i), i=1..L, M>=i, m-L+1>=L-i)
+
+- Restul elementelor se aranjează oricum pe celelalte (N-2*L) poziții, deci (N-2*L)! posibilități.
+
+Deci soluția este N * A(m,L-1) * S * (N-2*L)! modulo 1234577.

@@ -1,0 +1,5 @@
+Rezolvare bazată pe un algoritm de tip greedy: pe primele poziţii ale celor k numere se „aşează” cele mai mici k cifre nenule. Apoi se distribuie cifrele rămase celor k numere, în ordinea crescătoare a lor, prima dată cifrele nule, apoi cifrele de 1 etc.
+
+Corectitudinea algoritmului se bazează pe observaţia că dacă avem două cifre c1 şi c2 şi ele ocupă poziţiile p1 şi p2, atunci în suma totală cele două contribuie cu valoarea c1*10^p1+c2*10^p2.
+
+Dacă c1<c2, ca suma totală să fie cât mai mică trebuie ca p1<p2, adică cifra mai mică (c1) să fie în stânga cifrei c2.

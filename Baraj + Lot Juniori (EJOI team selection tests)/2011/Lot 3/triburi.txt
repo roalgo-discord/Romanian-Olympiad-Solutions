@@ -1,0 +1,9 @@
+Soluția 1
+Se abordează într-o primă fază o strategie de tip greedy: se sortează satele după timpul de atac asupra primului sat inamic, cea de a k valoare după sortare fiind ora h1 la care se atacă primul sat. Pentru primele k sate se adaugă la timpul de atac al celui de al doilea sat valoarea h1 şi timpul de revenire în satul de reîntoarcere. Se sortează din nou satele după cel de al doilea timp, cea de a k valoare fiind ora h2 la care se atacă cel de al doilea sat.
+
+Plecând de la această strategie, se încearcă îmbunătăţirea ei: în mod repetat se înlocuieşte un sat din care se atacă atât primul sat cât şi al doilea sat cu un alt sat nefolosit la primul atac, până când nu se mai poate îmbunătăţi soluţia.
+
+Soluția 2
+Retultatul final este maxim Tmax = 23*60 + 59. Observăm că dacă al doilea sat poate fi distrus după un timp t acesta poate fi distrus şi după un timp mai mare decât t. Putem astfel căuta binar rezultatul. Pentru valoarea t fixată în căutarea binară considerăm fiecare valoare mai mică decât t ca fiind momentul la care este distrus primul sat. Testul pentru cele două valori fixate se poate face cu o singură parcurgere a satelor.
+
+Complexitate finală: N*Tmax*log(Tmax). Această soluţie obţine 100p.

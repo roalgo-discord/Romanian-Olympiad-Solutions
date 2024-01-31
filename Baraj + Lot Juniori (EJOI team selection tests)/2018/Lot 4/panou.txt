@@ -1,0 +1,26 @@
+Soluție – 10 puncte
+(“Brute force”) Pentru fiecare valoare de interogare H se parcurg valorile h = 1,2,…,hmax și se calculează maxim(H/h*P[h]).
+
+Soluție – 70 puncte (Piț-Rada Mihail-Cosmin)
+1) Fie best[H] = profitul maxim ce se poate obține pentru un panou de dimensiune H. Practic acesta este răspunsul pentru un query.
+
+2) Pentru fiecare bandă h se dorește să se calculeze contribuțiile către fiecare interogare H. Astfel h va contribui cu 0*P[h], 1*P[h], 2*P[h], …., V*P[h], … Se observă că V*P[h] contribuie la h*V, h*V+1, …, h*(V+1) - 1.
+
+3) Pentru un V fix, în loc să se updateze best-urile asociate unul câte unul, se va updata doar best[h*V]=max(best[h*V], V*P[h]), cu semnificația că începând cu h*V toate pozițiile spre dreapta vor fi afectate de V*P[h]. Funcționează pentru că V*P[h] <= (V+1)*P[h] și updatăm în ordinea crescătoare a V-urilor, iar update-urile se fac spre dreapta. Astfel V+1 va scurtcircuita influența lui V, etc…
+
+4) Mai rămâne de făcut o parcurgere completă de la stânga la dreapta: best[H] = max(best[H], best[H - 1]). Abordarea pare să fie un fel de truc al lui Mars. Vrem să afectăm intervalele [A1, A2), [A2, A3), …., în ordinea B1 <= B2 ….
+
+Soluție – 100 puncte (Piț-Rada Mihail-Cosmin)
+0) profitul pentru un panou de dimensiune H este: profit(H) = max{ P[h] * floor(H/h)  |  1 ≤ h ≤ hmax }
+1) La o primă vedere calculul lui profit(H) ar consuma complexitatea O(H*hmax).
+2) Se observă că pentru valori mari ale lui h există secvențe lungi floor(H/h), floor(H/(h+1)), floor(H/(h+2)) …. ce au aceeași valoare și nu va fi nevoie să se inspecteze termen cu termen.
+3) Pentru un h1 fixat se poate determina h2 ≥ h1 maxim, astfel încât toate valorile floor(H/h1), …, floor(H/h2) sunt egale, să notăm cu V aceste valori pentru simplificarea notațiilor. Contribuția acestor valori va fi V*max{P[h1], P[h1+1], ... P[h2]}. Pentru a calcula g(a, b) = max{ P[i]  /  a ≤ i ≤ b} se poate folosi un “sparse table” (complexitate timp și spațiu O(hmax * log(hmax)):
+
+g[i][k] = max{ P[j]  | i ≤ j < i + 2^k }
+g[i][k] = max{ g[i][k-1], g[i + 2^(k-1)][k-1] }
+g[i][0] = P[i]
+pentru un query [a, b] se acoperă intervalul cu două intervale putere a lui 2, totul reducându-se la maximul a două valori g[][].
+Astfel, după preprocesare, query-urile se rezolvă in O(1).
+4) Strategia va fi ca pentru fiecare 1 ≤ h ≤ sqrt(hmax) termenii din definiția lui profit(H) să fie evaluați unul câte unul, iar pentru h > sqrt(hmax) se va utiliza strategia 3)
+5) Complexitatea pasului 3) este O(sqrt(H)) pentru că valorile V vor fi distincte și mai mici decât sqrt(H) pentru că h > sqrt(H).
+6) Complexitate finală: O(Q * sqrt(H)).

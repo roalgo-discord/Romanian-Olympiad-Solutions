@@ -1,0 +1,9 @@
+Rezolvarea se bazează pe algoritmul lui Lee, în care pentru fiecare poziţie se păstrează atât costul (=numărul de schimbări de culoare) cât şi numărul minim de paşi necesari pentru a ajunge în acea poziţie. Astfel, iniţial se introduce în coadă poziţia (1,1) cu costul 0 şi număr de paşi 0. La scoaterea unei poziţii (x,y) din coadă, pentru fiecare vecin (x1,y1) al său se calculează costul şi numărul de paşi:
+
+c1=cost(x,y) dacă (x1,y1) are aceeaşi culoare cu (x,y)
+c1=cost(x,y) + 1 dacă (x1,y1) are altă culoare decât (x,y)
+n1=nr_paşi(x,y)+1
+Aceste valori actualizează cost(x1,y1) şi nr_pasi(x1,y1) doar dacă s-a ajuns la poziţia (x1,y1) pentru prima dată sau c1<cost(x1,y1) sau c1=cost(x1,y1) şi n1<nr_pasi(x1,y1)
+
+Soluţie 2 (prof. Stelian Ciurea)
+Pentru prima cerinţă, se determină printr-un algoritm Lee numărul minim de schimbări de culoare de la poziţia de plecare la poziţia de sosire. Pentru a doua cerinţă, se determină tot printr-un algoritm Lee numărul minim de celule care trebuie parcurse de la plecare la sosire. Pentru aceasta se foloseşte atât matricea de culori cât şi cea obţinută la prima cerinţă.

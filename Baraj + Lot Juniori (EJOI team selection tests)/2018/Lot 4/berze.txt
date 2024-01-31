@@ -1,0 +1,14 @@
+Soluția 1 – O(n^3)
+
+Pentru fiecare stâlp i este necesar să se determine dacă acesta este inclus într-un interval cu constrângeri (maximum două cuiburi) sau nu. În plus, pentru că aceste intervale nu sunt neapărat disjuncte, este posibil ca același stâlp i să fie inclus în interiorul mai multor intervale având constrângeri. În realitate, pentru stâlpul i, ne interesează maximul capetelor din dreapta ale tuturor intervalelor cu constrângeri care-l includ pe i. Dacă x este valoarea acestui maxim, adică stâlpul x, atunci, pentru pozițiile k mai mari decât x, avem un posibil stâlp fără constrângeri, unde cu siguranță poate să fie plasat un cuib. Dacă plasăm un cuib pe stâlpul i și dorim să plasăm un cuib și pe stâlpul j (j > i), atunci atunci trebuie să ne asigurăm că stâlpul j este unul lipsit de constrângeri. Utilizăm un algoritm de programare dinamică. Fie nr[i][j] numărul de posibilități până la stâlpul i de a plasa cuiburi, dacă plasez sau nu un cuib în i și stâlpul j ar fi pe o poziție lipsită de constrângeri. Atunci putem updata toate stările nr[j][k], unde k, este în afara intervalului maximal având constrângeri, care-l conține pe i.
+
+nr[j][k] += nr[i][j], k = x + 1, x + 2, ..., n – 1
+
+Soluția primește 50-60 de puncte în funcție de implementare.
+
+Soluție O(n^2) – 100 de puncte
+
+Pentru fiecare stâlp x, aflat în interiorul unuia sau a mai multor intervale având constrângere la maximum două cuiburi, se determină valoarea t[x], cu t[x] > x, reprezentând numărul de ordine al primului stâlp, care poate fi plasat în afara intervalelor de constrângere care-l conțin pe i. Acest șir poate fi calculat relativ ușor în O(n).
+Apoi, asemănător soluției anterioare, reținem în nr[i][j] numărul de posibilități până la stâlpul i de a plasa cuiburi, dacă pe stâlpul i plasăm sau nu un cuib și j este primul stâlp în afara intervalelor cu constrângeri care-l conțin pe i. Dacă nu plasăm cuib în i, atunci nr[i][j] = nr[i – 1][j]. Dacă s-a plasat un cuib în i – 1, atunci avem cazurile:
+1. j <= i. Atunci nr[i][t[i - 1]] += nr[i – 1][j]; adică putem plasa cuib în i, dacă plasasem în j și i - 1.
+2. j > i. Atunci nr[j][t[i - 1]] += nr[i – 1][j]; adică putem plasa cuib în j, dacă plasasem (sau nu) în i-1 și i. Rezultatul final se obține însumând toate valorile nr[n][i], i = 0, 1, ..., n.

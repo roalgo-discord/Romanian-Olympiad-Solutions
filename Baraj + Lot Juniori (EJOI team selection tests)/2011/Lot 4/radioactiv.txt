@@ -1,0 +1,17 @@
+O soluție ușor de implementat, care evită calcule cu numere reale, presupune rescrierea formulei factorului radioactiv dintr-o celulă, aducând la acelaşi numitor (k) și ignorând acest numitor deoarece el este acelaşi pentru toate celulele matricei.
+
+Notând cu A matricea dată, factorul radioactiv dintr-o celulă (i,j) mărit de k ori devine:
+A[i,j] + 
+suma tuturor valorilor din pătratul de latură 3 centrat în (i,j) + 
+suma tuturor valorilor din pătratul de latură 5 centrat în (i,j) + 
+... + 
+suma tuturor valorilor din pătratul de latură 2*(k-1) centrat în (i,j).
+
+Memorând într-o altă matrice B sumele parţiale ale submatricelor matricei A care au colţul stânga‑sus în (1,1), se pot obţine direct suma tuturor valorilor din pătratul aflat la distanţa d de celula (i,j) din matrice: b[i+d][j+d]-b[i+d][j-d-1]-b[i-d-1][j+d]+b[i-d-1][j-d-1].
+
+Astfel, avem o soluţie O(n^2∙k).
+
+S-au utilizat, în plus:
+
+bordarea matricei B cu k linii şi coloane, pentru a evita testările apartenenţei la matrice a celulelor subpătratelor de la o distanţă oarecare
+determinarea valorii minime şi a numărului de apariţii ale valorii minime, pe parcursul calculului factorului radioactiv din fiecare celulă.

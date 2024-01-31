@@ -1,0 +1,7 @@
+La citire putem calcula un șir de structuri S, în fiecare structură memorând pozițiile prin care trece robotul în ordinea în care acestea sunt accesate de el. Sortăm șirul S întâi după linie apoi după coloană.
+
+Elementele din S sunt astfel în ordinea întâlnirii lor la citirea matricei. Astfel, putem memora pentru fiecare element din matrice la poziţia corespunzătoare din S valoarea sa.
+
+În fiecare structură vom memora în plus poziţia iniţială p (înainte de sortarea după coordonate). Putem astfel sorta din nou S, acum după poziţiile p şi să refacem ordinea iniţială poziţiilor de pe traseul robotului pentru a aplica simularea necesară determinării locului în care se opreşte.
+
+Soluţia are complexitatea O(N^2).

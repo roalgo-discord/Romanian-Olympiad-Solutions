@@ -1,0 +1,23 @@
+Problema admite mai multe abordări care obțin punctaje parțiale, neîncadrându-se în timp.
+Una dintre acestea este următoarea: Se generează toate șirurile de lungime n cu valori 0, 1, 2. Pentru o soluție generată însumăm în variabila s1 valorile dalelor de pe pozițiile marcate cu 1 și în s2 valorile dalelor de pe pozițiile marcate cu 2. Adunăm la D[s1][s2] valoarea (număr de valori 1)! * (număr de valori 2)!. La întâlnirea unei coloane cu pomul pe linia i, înmulțim la soluție valoarea D[i-1][n-i].
+Una dintre soluțiile care obține punctaj maxim este următoarea: Precalculăm matricea D cu semnificația: la pasul k, D[k][si][i][sj][j] reprezintă numărul de variante de pavare pentru a obține suma lungimilor dalelor si cu i dale (dintre primele k) în una dintre cele două zone separate de pom și suma sj cu alte j dale dintre cele k în cealaltă zonă separată de pom. La introducerea celei de-a k-a dale actualizăm: D[k][si + L[k]][i+1][sj][j] += D[k-1][si][i][sj][j] (pentru cazul în care pun dala în prima zonă), respectiv D[k][si][i][sj + L[k]][j+1] += D[k-1][si][i][sj][j] (pentru cazul în care pun dala în a doua zonă). Nu este necesară folosirea primei dimensiuni a matricei. L[k] reprezintă lungimea celei de-a k-a dale.
+
+O altă soluție care obține punctaj maxim este următoarea:
+(prof. Ionel-Vasile Piț-Rada, C.N. “Traian” – Drobeta Turnu Severin)
+
+Se stabilesc perechile (x[i], y[i]), 1 ≤ i ≤ m, unde x[i] sunt lungimile distincte din pachet și y[i] este numărul de apariții în pachet a lungimii x[i], iar m este numărul de lungimi distincte.
+Pentru fiecare coloană, în funcție de poziția pomului, avem configurații de forma (x, L-1-x), unde x este lungimea porțiunii de dinainte de pom și L-1-x lungimea porțiunii de după pom. Printr-o parcurgere a pozițiilor pomilor se numără în a[x][L-1-x] configurațiile de fiecare tip.
+Pentru fiecare tip de configurație (s1, s2) se determină, cu backtracking, soluțiile ecuației
+st1[1]*x[1]+st1[2]*x[2]+…+st1[m]*x[m]=s1, unde 0 ≤ st1[i] ≤ y[i]
+și pentru fiecare soluție (st1[1], ..., st1[m]) se determină, cu backtracking, soluțiile ecuației
+st2[1]*x[1]+st2[2]*x[2]+…+st2[m]*x[m]=s2, unde 0 ≤ st2[i] ≤ y[i]-st1[i]
+Pentru fiecare pereche de soluții (st1[],st2[]) se calculează
+n1 = st1[1] + ... + st1[m], n2 = st2[1] + ... + st2[m]
+și se adaugă la b[s1][s2] valoarea
+z=C(y[1],st1[1])*...*C(y[m],st1[m])*C(y[1]-st1[1],st2[1])*C(y[m]-st1[m],st2[m])*n1!*n2!
+unde cu C(n, k) am notat combinări de n luate câte k, C(n, k) = n! / (k! * (n-k)!).
+Apoi se calculează suma produselor a[s1][s2]*b[s1][s2] pentru toate configurațiile (s1, s2) existente.
+Pentru creșterea vitezei de lucru a algoritmului backtracking se folosește și observația
+Ecuația st[1]*x[1]+...+st[m]*x[m] = s are soluții întregi doar dacă s este divizibil cu cmmdc(x[1],…,x[m]).
+Pentru calculul inverselor modulare ale factorialelor necesare s-a folosit algoritmul următor:
+finv[M-1] = M-1, deoarece se știe că inversul modular al lui (M-1)! este M-1, iar apoi, pentru fiecare i = M-2..0 se execută finv[i] = (i+1) * finv[i+1] % M.

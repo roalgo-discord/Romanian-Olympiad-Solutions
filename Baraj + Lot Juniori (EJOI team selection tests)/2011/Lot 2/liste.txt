@@ -1,0 +1,5 @@
+Putem asocia unei liste un vector caracteristic cu 120 de elemente (sau biţii din reprezentarea unor numere întregi).
+
+Vom folosi o stivă astfel:
+
+Iniţial aceasta conţine prima listă. Se parcurg listele în ordine şi lista curentă se analizează repetat cu lista din vârful stivei iar dacă se poate unifica cu ea se unifică și se coboară în stivă. Lista obţinută se pune la final în stivă. Soluţia este dată de numărul de elemente aflate în stivă la final. Întrucât fiecare listă se analizează o singură dată şi se scoate din stivă cel mult o dată, complexitatea algoritmului este O(L).

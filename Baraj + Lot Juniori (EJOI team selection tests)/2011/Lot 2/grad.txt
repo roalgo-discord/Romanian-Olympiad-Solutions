@@ -1,0 +1,7 @@
+Se determină cuvintele din propoziţie. Pentru un cuvânt determinat se calculează gradul lui. Calculul gradului unui cuvânt presupune determinarea numărului de divizori ai unui produs de puteri de numere. Dacă se calculează produsul se iese din tipurile întregi. Pentru a evita acest lucru se descompune produsul de puteri în produs de puteri cu baza numere prime şi astfel se ajunge la:
+
+grad(cuvant)= Nr modulo k,
+
+unde Nr este numărul de divizori pentru un număr de forma p[1]^x[1]*p[2]^x[2]*...*p[h]^x[h], cu p[1], p[2], ..., p[h], numere prime distincte. Adică Nr=(x[1]+1)(x[2]+1) … (x[h]+1). Din păcate şi acest număr este mare şi poate ieşi din tipurile întregi, dar Nr modulo k se poate determina făcând produsul modulo k la înmulţirea cu fiecare paranteză.
+
+Suma gradelor tuturor cuvintelor ne dă gradul propoziţiei.

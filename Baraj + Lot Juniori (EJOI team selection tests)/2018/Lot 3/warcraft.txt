@@ -1,0 +1,9 @@
+Observații preliminare:
+problema admite o modelare cu ajutorul grafurilor (relația între două triburi determină un arc)
+relațiile de vasalitate dintr-un trib sunt de tip arbore cu rădăcină.
+Cerințele 1-2
+Prin parcurgere DFS/BFS se determină componentele conexe (clanurile). Determinarea abilitățile unice dintr-o componentă conexă se poate face fie cu unordered_map (hashmap), fie cu bitset-uri, etc.
+Complexitate: O(număr noduri + număr abilități din subarbore).
+
+Cerința 3 (duelul)
+Se folosește tehnica greedy cu întoarcere. Se sortează crescător clanurile (reprezentate prin conducătorii) după numărul de triburi. La fiecare pas se alege clanul cu număr cel mai mare de triburi cu care Durotan se poate duela cu șanse de câștig. Se reia procesul de alegere cu clanurile rămase.

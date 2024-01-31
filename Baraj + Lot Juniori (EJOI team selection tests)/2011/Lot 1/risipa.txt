@@ -1,0 +1,26 @@
+Se observă că după minim două zile suma devine divizibilă cu 3.
+
+Deci operaţia de împărţire la 3 se va aplica cel puţin o dată la două zile.
+
+Plecând de la această observaţie se poate deduce că atâta timp cât suma într-o zi Z este foarte mare, în ziua Z+2 va deveni suficient de mică astfel încât să fim siguri că suma din ziua Z nu mai poate fi atinsă.
+
+Tragem concluzia că sumele care au şansa de a apărea în două zile distincte trebuie să fie mici.
+
+Ceea ce trebuie să decidem este deci, cât de mică ar trebui să fie o sumă pentru a avea şansa să se repete.
+
+Să luăm următorul exemplu în care calculul e doar aproximativ.
+
+Într-o zi suma are valoarea aproximativ 100000. Să observăm că în următoarele două zile este posibil să aplicăm două împărțiri prin 3 sau o adunare şi o împărțire prin 3. Deoarece suma adunată este cel mult 3002 este clar ca după doua zile suma va avea o valoare de cel mult 40000 (supraevaluată). Cu alte cuvinte o valoare de aproximativ 100000 este încă „prea mare” pentru a avea șansa să se repete.
+
+La o analiză riguroasă se poate determina cu precizie care poate fi suma maximă care se poate repeta în funcţie de valorile A şi B din enunţ. O astfel de analiză devine însa inutila, în măsura în care, se poate sesiza că o suma de o valoare de 15000 este deja „prea mare”. Se poate contura următorul algoritm.
+
+Cât timp suma nu are o mărime reprezentabilă pe variabile simple se simulează operaţiile pe numere mari memorând doar ziua în care s-a ajuns ( deoarece ne aflăm la sume prea mari pentru a se repeta).
+După ce suntem siguri că orice sumă va rămâne reprezentabilă pe variabile simple ( de exemplu când suma a ajuns la 5 - 7 cifre deja putem folosi tipuri întregi pentru reprezentarea sumei ) comutăm pe operaţii cu variabile simple (adică la calcul pe tipuri de numere întregi ).
+
+Din acest moment memorăm pe un vector, pentru fiecare sumă, prima zi în care aceasta a fost obţinută. Vectorul pe care se memorează zilele pentru fiecare sumă, poate sa fie de dimensiune peste 15000, dar în esenţă doar sumele cu între 1 şi 15000 pot fi soluţii, deci marcarea este importantă numai pentru aceste sume.
+
+Algoritmul se opreşte ziua în care obţinem o sumă care a fost deja marcată cu o zi. În acel moment am descoperit toate cerințele problemei :
+
+Suma ceruta = suma curenta;
+Prima zi = ziua marcata în vector la suma curenta
+A doua zi = ziua curenta.
