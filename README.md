@@ -53,7 +53,7 @@ Există câteva lacune în colecție, pe care sperăm să le completăm cu ajuto
 Dacă dețineți descrierile soluțiilor în format txt, docs, doc sau pdf, ne puteți ajuta printr-un pull request sau încărcându-le în acest repository. Pentru mai multe detalii și colaborare, vă invităm pe serverul [RoAlgo Discord](https://discord.gg/roalgo).
 
 # Mulțumiri
-- [Stefan Dascalescu](https://stefdasca.ro/) pentru crearea acestui proiect și colectarea a majorități editorialelor din accest repo
+- [Stefan Dascalescu](https://stefdasca.ro/) pentru crearea acestui proiect
 
 ## 📝 Patch Notes
 
