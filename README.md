@@ -1,49 +1,64 @@
-# Romanian Olympiad Solutions
+# 🏆 Soluții Olimpiade și Concursuri de Informatică din România
+![Discord](https://img.shields.io/discord/1105067704878112778?style=flat&labelColor=Discord&link=https%3A%2F%2Fdiscord.gg%2Froalgo)
 
-Aici puteti gasi descrierile solutiilor de la toate olimpiadele si concursurile de informatica oficiale din Romania (OJI, ONI, Baraje, Loturi) precum si alte concursuri precum IIOT, concursuri regionale etc. Solutiile oficiale se pot gasi la problemele de pe kilonova (alternativ, infoarena daca problema nu e pe kilonova)
 
-Pe parcurs voi incerca sa adaug si solutii de la alte concursuri de informatica. Ne puteti gasi si pe [RoAlgo](https://discord.gg/E82gRbUBCJ) sa putem colabora mai usor.
+Bine ați venit! Acest repository conține descrieri ale soluțiilor pentru o varietate largă de olimpiade și concursuri de informatică oficiale din România, precum OJI, ONI, Baraje, Loturi de pregătire, și alte concursuri precum IIOT.
 
-Problemele le puteti gasi aici:
+## 📚 Resurse Soluții
 
-[OJI](https://kilonova.ro/problem_lists/460)
+Descoperiți soluțiile oficiale și rezolvați folosind linkurile de mai jos:
 
-[ONI](https://kilonova.ro/problem_lists/524)
+- **OJI (Olimpiada Județeană de Informatică):** 
+  - [Vezi soluțiile](OJI%20(regional%20olympiad))
+  - [Rezolvă pe Kilonova](https://kilonova.ro/problem_lists/460)
 
-[Baraj Seniori](https://kilonova.ro/problem_lists/516)
+- **ONI (Olimpiada Națională de Informatică):** 
+  - [Vezi soluțiile](ONI%20(national%20olympiad))
+  - [Rezolvă pe Kilonova](https://kilonova.ro/problem_lists/524)
 
-[Baraj Juniori](https://kilonova.ro/problem_lists/508)
+- **Baraj Seniori:** 
+  - [Vezi soluțiile](Baraj%20+%20Lot%20Seniori%20(IOI%20team%20selection%20tests))
+  - [Rezolvă pe Kilonova](https://kilonova.ro/problem_lists/516)
 
-[Lot Seniori (2014-prezent, celelalte sunt pe infoarena)](https://kilonova.ro/problem_lists/225)
+- **Baraj Juniori:** 
+  - [Vezi soluțiile](Baraj%20+%20Lot%20Juniori%20(EJOI%20team%20selection%20tests))
+  - [Rezolvă pe Kilonova](https://kilonova.ro/problem_lists/508)
 
-[Lot Juniori](https://kilonova.ro/problem_lists/689)
+- **Loturi Seniori:** 
+  - [Vezi soluțiile](Baraj%20+%20Lot%20Seniori%20(IOI%20team%20selection%20tests))
+  - [Rezolvă pe Kilonova](https://kilonova.ro/problem_lists/225)
 
-[IIOT](https://kilonova.ro/problem_lists/128)
+- **Loturi Juniori:** 
+  - [Vezi soluțiile](Baraj%20+%20Lot%20Juniori%20(EJOI%20team%20selection%20tests))
+  - [Rezolvă pe Kilonova](https://kilonova.ro/problem_lists/689)
 
-Aici puteti folosi checklisturile mele pentru a va masura progresul: https://drive.google.com/drive/folders/1FbTP-PkXTz7mBmBPe4ssbIQOH2VwkwCz?usp=drive_link
+- **IIOT (Olimpiada Internațională de Informatică pe Echipe):** 
+  - [Vezi soluțiile](IIOT%20(team%20olympiad))
+  - [Rezolvă pe Kilonova](https://kilonova.ro/problem_lists/128)
 
-Pentru IIOT puteti gasi datele [aici](https://tinyurl.com/arhiva-iiot) pana ce le pun si in acest repo.
+Pentru a vă urmări progresul, puteți utiliza checklisturile disponibile aici: [Google Drive](https://drive.google.com/drive/folders/1FbTP-PkXTz7mBmBPe4ssbIQOH2VwkwCz?usp=drive_link).
 
-De asemenea, puteti sa le gasiti si pe kilonova daca intrati pe fiecare link de mai sus.
+### Ce lipsește?
 
-# Ce lipseste?
+Există câteva lacune în colecție, pe care sperăm să le completăm cu ajutorul comunității:
 
 * Juniori: Baraj 2013
-* Seniori: loturile 3, 4 din 2018, in intervalul 2019-2023 sunt doar barajele de selectie pentru lot (cu exceptia anului 2020, din motive obiective), 2016 nu are loturile 4, 5, 6, o parte din probleme lipsesc la 2014
+* Seniori: lotul 3 din 2018, in intervalul 2019-2023 sunt doar barajele de selectie pentru lot (cu exceptia anului 2020, din motive obiective), 2016 nu are loturile 4, 5, 6, o parte din probleme lipsesc la 2014
 * OJI, ONI: lipsesc anumite probleme, mai ales din cele date inainte de 2010 la gimnaziu
 * Majoritatea editorialelor de la alte concursuri precum Urmasii lui Moisil, Grigore Moisil, Info-Oltenia, AGM etc.
 * Anumite probleme de la loturi pre 2010
 
-# Cum ne puteti ajuta? 
+## 🤝 Cum ne puteți ajuta?
 
-Daca aveti descrierile solutiilor in format txt, docs, doc sau pdf, puteti fie sa dati pull request fie sa le incarcati in acest repo. Pentru mai multe detalii, puteti intra si pe [RoAlgo](https://discord.gg/E82gRbUBCJ). 
+Dacă dețineți descrierile soluțiilor în format txt, docs, doc sau pdf, ne puteți ajuta printr-un pull request sau încărcându-le în acest repository. Pentru mai multe detalii și colaborare, vă invităm pe serverul [RoAlgo Discord](https://discord.gg/roalgo).
 
-[Link alternativ drive](https://drive.google.com/drive/folders/1swvqAbDCBJ-UAKUawtz0J2ZFvBrIz3WO?usp=sharing) (credits to [@susanthenerd](https://github.com/susanthenerd)) 
+# Mulțumiri
+- [Stefan Dascalescu](https://stefdasca.ro/) pentru crearea acestui proiect
 
-Proiect creat de [Stefan Dascalescu](https://stefdasca.ro/) 
+## 📝 Patch Notes
 
-# Patch Notes
-
-* 13.01.2024 - Toate problemele adaugate au solutii in PDF, s-au adaugat si IIOT, InfoPro plus unele concursuri regionale de informatica
-* 29.01.2024 - Foarte multe probleme au fost gasite si incarcate, cele mai notabile fiind baraj juniori 2012, lot 3 + 4 juniori 2010, lot 2011 seniori, lot 2010 seniori baraje 4, 5, 6, info1cup post 2020, niste RMI-uri precum si editorialele de la runda 3 IIOT
-* 31.01.2024 - Toate descrierile de la juniori care lipseau au fost incarcate, cu exceptia barajului din 2013. Totusi, multe din ele sunt in format .txt, fiind gasite de pe diverse siteuri. Au mai fost recuperate si loturile 1, 2 de seniori din 2018.
+- **12.03.2024** - Reorganizare readme
+- **11.03.2024** - Adăugare soluții pentru [RoAlgo PreOji 2024](Other%20Romanian%20contests/RoAlgo%20PreOJI%202024)
+- **31.01.2024** - Încărcate toate descrierile lipsă pentru juniori, cu excepția Barajului din 2013. Recuperate și loturile 1, 2 de seniori din 2018.
+- **29.01.2024** - Găsite și încărcate multe probleme noi, printre care se numără Baraj Juniori 2012 și loturi juniori și seniori din anii menționați.
+- **13.01.2024** - Adăugate soluții în PDF pentru toate problemele, inclusiv IIOT și InfoPro, plus unele concursuri regionale.
