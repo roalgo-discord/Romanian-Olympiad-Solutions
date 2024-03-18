@@ -57,6 +57,7 @@ Dacă dețineți descrierile soluțiilor în format txt, docs, doc sau pdf, ne p
 
 ## 📝 Patch Notes
 
+- **18.03.2024** - Adăugare soluții pentru [OJI 2024](OJI%20(regional%20olympiad)/2024)
 - **12.03.2024** - Reorganizare readme
 - **11.03.2024** - Adăugare soluții pentru [RoAlgo PreOji 2024](Other%20Romanian%20contests/RoAlgo%20PreOJI%202024)
 - **31.01.2024** - Încărcate toate descrierile lipsă pentru juniori, cu excepția Barajului din 2013. Recuperate și loturile 1, 2 de seniori din 2018.
