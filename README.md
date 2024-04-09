@@ -58,7 +58,7 @@ Dacă dețineți descrierile soluțiilor în format txt, docs, doc sau pdf, ne p
 
 ## 📝 Patch Notes
 
-- **
+- **9.04.2024**  - Adăugare soluții Info1Cup 2024 și reorganizare OJI  
 - **18.03.2024** - Adăugare soluții pentru [OJI 2024](OJI%20(regional%20olympiad)/2024)
 - **12.03.2024** - Reorganizare readme
 - **11.03.2024** - Adăugare soluții pentru [RoAlgo PreOji 2024](Other%20Romanian%20contests/RoAlgo%20PreOJI%202024)
