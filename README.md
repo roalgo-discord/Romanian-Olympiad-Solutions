@@ -42,7 +42,6 @@ Pentru a vă urmări progresul, puteți utiliza checklisturile disponibile aici:
 
 Există câteva lacune în colecție, pe care sperăm să le completăm cu ajutorul comunității:
 
-- Juniori: Baraj 2013
 - Seniori: lotul 3 din 2018, in intervalul 2019-2023 sunt doar barajele de selectie pentru lot (cu exceptia anului 2020, din motive obiective), 2016 nu are loturile 4, 5, 6, o parte din probleme lipsesc la 2014
 - OJI, ONI: lipsesc anumite probleme, mai ales din cele date inainte de 2010 la gimnaziu
 - Majoritatea editorialelor de la alte concursuri precum Urmasii lui Moisil, Grigore Moisil, Info-Oltenia, AGM etc.
