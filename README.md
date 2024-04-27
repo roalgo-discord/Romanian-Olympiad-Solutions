@@ -57,7 +57,7 @@ Dacă dețineți descrierile soluțiilor în format txt, docs, doc sau pdf, ne p
 
 ## 📝 Patch Notes
 
-- **27.04.2024** - ONI 2024
+- **27.04.2024** - ONI 2024 și reoganizare ONI
 - **9.04.2024**  - Adăugare soluții Info1Cup 2024 și reorganizare OJI  
 - **18.03.2024** - Adăugare soluții pentru [OJI 2024](OJI%20(regional%20olympiad)/2024)
 - **12.03.2024** - Reorganizare readme
