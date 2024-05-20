@@ -42,7 +42,7 @@ Pentru a vă urmări progresul, puteți utiliza checklisturile disponibile aici:
 
 Există câteva lacune în colecție, pe care sperăm să le completăm cu ajutorul comunității:
 
-- Seniori: lotul 3 din 2018, in intervalul 2019-2023 sunt doar barajele de selectie pentru lot (cu exceptia anului 2020, din motive obiective), 2016 nu are loturile 4, 5, 6, o parte din probleme lipsesc la 2014
+- Seniori: lotul 3 din 2018, in 2019 avem doar barajele de selectie pentru lot, 2020 nu are lotul, 2016 nu are loturile 4, 5, 6, o parte din probleme lipsesc la 2014
 - OJI, ONI: lipsesc anumite probleme, mai ales din cele date inainte de 2010 la gimnaziu
 - Majoritatea editorialelor de la alte concursuri precum Urmasii lui Moisil, Grigore Moisil, Info-Oltenia, AGM etc.
 - Anumite probleme de la loturi pre 2010
@@ -57,6 +57,7 @@ Dacă dețineți descrierile soluțiilor în format txt, docs, doc sau pdf, ne p
 
 ## 📝 Patch Notes
 
+- **20.05.2024** - Adăugate soluții în PDF pentru toate problemele ce au fost publicate de SEPI din loturile din anii 2021-2023, precum si loturile de pana acum din 2024.
 - **27.04.2024** - ONI 2024 și reoganizare ONI
 - **9.04.2024**  - Adăugare soluții Info1Cup 2024 și reorganizare OJI  
 - **18.03.2024** - Adăugare soluții pentru [OJI 2024](OJI%20(regional%20olympiad)/2024)
