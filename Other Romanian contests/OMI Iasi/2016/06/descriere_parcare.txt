@@ -1,0 +1,16 @@
+parcare
+prof. Marinel Serban
+
+
+- citirea datelor
+- se transforma diferenta de timp intre sosire si plecare in minute
+  o caz1: aceiasi zi
+  o caz2: zile diferite
+    . subcaz1: aceiasi luna
+    . subcaz2: luni diferite
+        # subsubcaz1: februarie->martie
+        # subsubcaz2: luna cu 30 zile -> luna cu 31 zile
+        # subsubcaz3: luna cu 31 zile -> luna cu 30 zile
+- afisarea rezultatelor
+  o se tine cont de cazul cand nu se percepe taxa
+  o se rotunjesc minutele la numar intreg de ore

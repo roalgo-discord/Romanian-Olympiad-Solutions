@@ -1,0 +1,2 @@
+Vom folosi o coada in care vom introduce fiecare pozitie accesibila schiorului.
+Vom calcula un minim intre altitudinile parcelelor accesibile.

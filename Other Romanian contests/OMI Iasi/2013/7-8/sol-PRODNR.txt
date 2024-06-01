@@ -1,0 +1,8 @@
+ProdNr - Descrierea solutiei 
+         prof. Emanuela Cerchez
+
+Vom parcurge sirul de caractere citit identificand succesiv numerele.
+Pentru fiecare numar citim mai intai numarul de cifre, apoi citim succesiv cifrele numarului, construind astfel numarul, apoi descompunem numarul in factori primi.
+Factorii primi identificati ii contorizam intr-un vector nrd.
+nrd[i]=multiplicitatea factorului prim i in descompunerea in factori primi a produsului numerelor.
+100 de puncte se obtin  daca se genereaza in prealabil toate numerele prime, utilizand ciurul lui Eratostene si la descompunerea in factori primi se iau in considerare doar numerele prime.

@@ -1,0 +1,15 @@
+Descriere solutie problema betisoare
+prof. Ionel Maftei
+
+Se citeste n si apoi se citesc pe rand marcile betisoarelor
+Vom determina din citire solutia problemei, astfel ne vom folosi de trei variabile:
+lg - lungimea actuala a unei secvente de elemente de acelasi tip
+prec - elementul precedent
+x - elementul curent
+
+Daca x == prec, atunci lg = lg + 1;
+Altfel, vom compara lungimea actuala (lg) cu maximul gasit pana in acel moment, 
+avand grija la respectarea conditiilor impuse de enunt (betisoarele de tipul 1 fiind prioritare)
+
+Complexitate: O(N)
+

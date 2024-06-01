@@ -1,0 +1,6 @@
+Problema drenaj
+prof. Emanuela Cerchez
+
+Vom identifica pentru fiecare patrat nivelul din care face parte, printr-un algoritm clasic de fill. 
+Pentru fiecare nivel identificat, retinem daca este sau nu inundabil.
+Pe parcursul aplicarii algoritmului de fill, cand analizam vecinii patratului curent, daca identificam un vecin cu cota mai mica decat cota patratului curent, deducem ca intregul nivel din care face parte acest patrat nu este inundabil.

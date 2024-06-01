@@ -1,0 +1,12 @@
+Descrierea solutiei- problema nuclee
+prof. Lucia Miron- Colegiul Costache Negruzzi, Iasi
+
+Vom reprezenta datele sub forma unui graf orientat. Nodurile grafului sunt persoanele, operatia de transmitere a informatiei reprezinta arcele.
+Problema se reduce la determinarea componentelor tare conexe ale grafului orientat construit.
+Pentru determinarea componentelor tare conexe se pot aplica oricare din algoritmii cunoscuti.
+Sunt prezentati algoritmii: 
+- solutie de complexitate O(N^3), in care construim matricea drumurilor (vezi clasic.cpp)
+- algoritmul Kosaraju, de complexitate O(n(n+m)), unde n este numarul de varfuri si m numarul de arce (vezi solutia nuclee.cpp)
+
+
+

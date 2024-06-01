@@ -1,0 +1,6 @@
+Problema planta – descrierea soluției
+Creșterea este cu A-B la fiecare două zile.
+Deci în total este creștere de (n / 2) * (A - B) dacă n este par. Dacă n este impar se mai adaugă o dată valoarea lui A.
+
+Problema triviador – descrierea soluției
+Se citesc pe rând tripletele de valori și se calculează suma lor, memorând totodată cele mai mari două valori distincte obținute.

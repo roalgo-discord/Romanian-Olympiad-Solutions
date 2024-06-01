@@ -1,0 +1,10 @@
+Descrierea solutiei- pinguini
+prof. Lucia Miron
+Colegiul "C. Negruzzi", Iasi
+
+Pentru cerinta 1) vom determina inca din citire numarul de pinguini (cate elemente sunt egale cu 2).
+Pentru cerinta 2) determinam cate dintre elementele egale cu 2 sunt precedate de valoarea 1, exceptie face primul element care trebuie tratat separat.
+Pentru cerinta 3) determinam lungimea secventei maxime de elemente egale cu 2.
+
+
+

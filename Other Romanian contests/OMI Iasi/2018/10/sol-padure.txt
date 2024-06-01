@@ -1,0 +1,11 @@
+padure - solutie
+prof. Cretu Constantin
+Colegiul National Iasi
+
+Fiecare element al matricei a[i][j] retine suma elementelor din dreptunghiul determinat de a[1][1] si a[i][j].
+Suma elementelor din dreptunghiul determinat de elementele a[l1][c1] si a[l2][c2] este data de suma elementelor 
+din dreptunghiul determinat de elementele a[1][1] si a[l2][c2] din care se scad suma elementelor din dreptunghiul 
+determinat de elementele a[1][1] si a[l2][c1-1] si suma elementelor din dreptunghiul determinat de elementele a[1][1] si 
+a[l1-1][c2] si la care se aduna suma elementelor din dreptunghiul determinat de elementele a[1][1] si a[l1-1][c1-1]. 
+Ultima suma fost adaugata deoarece ea a fost deja scazuta de doua ori.
+

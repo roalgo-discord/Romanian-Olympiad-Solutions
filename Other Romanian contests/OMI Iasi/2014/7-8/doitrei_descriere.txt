@@ -1,0 +1,10 @@
+doitrei-descrierea solutiei
+prof. Lucia Miron-Colegiul Costache Negruzzi
+
+
+La prima vedere este o problema cu numere mari. Tinand cont de forma unui numar doitrei se observa
+23*23=529
+233*233=54289
+2333*2333=5442889
+Se poate deduce foarte usor forma patratului unui numar doitrei
+Problema se poate rezolva prin inmultirea a doua numere mari, formate conform enuntului.

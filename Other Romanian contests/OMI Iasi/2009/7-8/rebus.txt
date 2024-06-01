@@ -1,0 +1,7 @@
+1.Reprezentarea datelor
+Se considera doi vectori row si col care retin coordonatele punctelor negre.
+In urma citirii vectorul row va fi sortat crescator
+2. Calcularea numarului de cuvintele pe linii
+Se parcurg cei doi vectori simultan si pentru punctele negre de pe aceeasi linie se calculeaza lungimile cuvintelor formate facand diferenta intre punctul curent si cel precedent (pentru primul punct negru se calculeaza diferenta fata de 0, iar pentru ultimul se calculeaza diferenta fata de m). De asemenea, se adauga si liniile fara nici un punct negru.
+3. Calcularea numarului de cuvintel pe coloane
+Se sorteaza vectorul col crescator. In cazul coloanelor egale, liniile vor fi implicit ordonate intrucat vectorul row era sortat crescator. Apoi se realizeaza o parcurgere asemanatoare celei de la punctul 2.

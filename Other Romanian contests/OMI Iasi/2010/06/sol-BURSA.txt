@@ -1,0 +1,20 @@
+Vom analiza toate perechile (i, j) cu 1<=i<j<=n
+Consideram ca in ziua i cumparam actiuni de toti banii, iar in ziua j le vindem pe toate.
+cat := S div c[i]; {cate actiuni pot cumpara}
+crt := S - cat * c[i] + cat * v[j]; {cat castig daca cumpar in ziua i si vand in ziua j}
+
+Retinem valoarea maxima, precum si zilele pentru care se obine maximul.
+rez := S;  d1 := -1;  d2 := -1;
+for i := 1 to n-1 do
+    for j := i + 1 to n do
+        begin
+        cat := S div c[i]; {cate actiuni pot cumpara}
+        crt := S - cat * c[i] + cat * v[j]; {cat castig daca cumpar in ziua i si vand in ziua j}
+        if (crt > rez) then
+           begin
+           rez := crt;
+           d1 := i;
+           d2 := j;
+           end;
+        end;
+

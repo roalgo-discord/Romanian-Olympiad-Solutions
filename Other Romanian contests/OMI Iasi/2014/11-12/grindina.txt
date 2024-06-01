@@ -1,0 +1,32 @@
+grindina
+prof. Marinel Serban
+
+Problema solicita cunostinte minimale de geometrie computationala:
+- determinarea coeficientilor dreptei ce trece prin doua puncte
+- determinarea semiplanului din care face un punct
+- calculul distantei dintre doua puncte
+- calculul ariei unui triunghi  
+
+Solutia 1:
+Pentru fiecare bob de grindina cazut se determina semiplanul in care a cazut
+fata de fiecare dreapta suport a cate unei laturi a poligonului. Cele care
+nu fac parte din semiplanul corect sunt eliminate.
+
+Solutia 2:
+Pentru fiecare bob de grindina cazut se calculeaza suma ariilor triunghiurilor
+determinate de acest bob de grindina si cate o latura a poligonului. Daca suma
+ariilor este egala cu aria poligonului, bobul de grindina este in interiorul
+poligonului.
+
+Ambele solutii sunt de complexitate 
+
+O(nrl * G * max(nrp[l])) 
+
+unde:
+nrl - numar loturi
+G - numar boabe de grindina
+nrp[l] - numarul de laturi ale lotului l
+ 
+Ca timp de executie solutia 2 este mai lenta, datorita utilizarii repetate
+a functiei standard de extragere a radicalului (sqrt).
+ 

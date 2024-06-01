@@ -1,0 +1,15 @@
+rebus - solutie (prof. Marinel Serban)
+
+Datele se citesc in variabilele
+	nrcuv - variabila intreaga
+	a     - sir de caractere de dimensiune maxima 100 x 100 + 1
+Calculez perechile de divizori a lui n (n - numarul caractere din linia a doua a fisierului de intrare) si retin
+perechile de divizori (d, n/d) in doi vectori l[] si c[].
+Parcurg concomitent cei doi vectori si, daca dimensiunile sunt corecte (>=2, <=100) 
+	curata vectorul de cuvinte
+        construiesc careul corespunzator in matricea de caractere x
+        numara cuvintele (atat pe orizontala cat si pe verticala), retinand in acelasi timp cuvintele gasite
+		intr-un vector cu componente de tip struct, care retin informatiile: cuvantul, linia, coloana, tip
+        daca numarul de cuvinte gasit corespunde cu numarul de cuvinte dat
+		am gasit solutia, deci sortez vectorul si afisez solutia
+

@@ -1,0 +1,24 @@
+Descriere solutie problema 2cifre
+prof. Marinel Serban
+
+se citeste n si cerinta
+cat_timp mai exista numere
+{
+  se citeste un numar in variabila x
+  cat_timp se poate (x > 9)
+  {
+    se separa cate un numar de doua cifre (x % 100)
+    daca acesta este mai mic decat minimul curent
+    {
+       se retine ca minim curent
+       el apare o data
+    }  
+    altfel
+       daca acesta este egal cu minimul curent
+          se contorizeaza aparitia
+    se procedeaza la fel pentru maximul curent
+    se elimina ultima cifra (x / 10)
+  }
+  am terminat de tratat inca un numar (n--)
+}
+afisare rezultate

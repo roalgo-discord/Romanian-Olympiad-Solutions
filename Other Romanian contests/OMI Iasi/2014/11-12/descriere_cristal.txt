@@ -1,0 +1,8 @@
+cristal-descrierea solutiei
+prof. Lucia Miron-Colegiul Costache Negruzzi
+
+
+Vom reprezenta cristalul printr-un graf neorientat, ionii sunt nodurile grafului, muchiile sunt legaturile cristaline.Un nod poate fi eliminat daca subgraful obtinut prin eliminarea acestuia este conex.
+Reprezentam graful prin matricea de adiacenta.Pentru verificarea conexitatii folosim parcurgerea in latime (sau in adancime).
+Vom elimina pe rand cate un nod din graf si verificam conexitatea subgrafului format. 
+Complexitatea algortimului O(n*m) 

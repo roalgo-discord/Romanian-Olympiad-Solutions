@@ -1,0 +1,22 @@
+unu_patru - solutie (prof. Marinel Serban)
+
+citesc numarul de numere
+pentru fiecare numar
+{
+	il citesc in x
+        initializez cu 0 numarul de operatii
+	cat timp nu am obtinut 1 sau 4
+        {
+		initializez suma patratelor cu 0
+		contorizez calculul
+		cat timp mai exista cifre in x
+		{
+			scot ultima cifra
+			adun patratul cifrei
+			scap de ea
+		}
+		s2 este noul x
+	}
+	afiseaza rezultatul
+}
+

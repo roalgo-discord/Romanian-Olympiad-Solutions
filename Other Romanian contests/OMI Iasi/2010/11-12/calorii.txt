@@ -1,0 +1,10 @@
+calorii - descriere solutie
+
+Algoritmul este clasic, de tip greedy - problema rucsacului in varianta ccontinua.
+
+- se citesc datele
+- se calculeaza raportul calorii/pret pentru fiecare produs (cate calorii se pot
+  cumpara din acel produs pe unitate de pret)
+- se ordoneaza descrescator produsele dupa acest raport - deoarece se doresc cat
+  mai multe calorii
+- se iau produsele ordonate pana se cheltuie toti banii sau pana se termina produsele

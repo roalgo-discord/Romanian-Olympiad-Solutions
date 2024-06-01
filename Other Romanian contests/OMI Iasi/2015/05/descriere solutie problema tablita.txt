@@ -1,0 +1,3 @@
+Prima grupa contine 1 termen ;1, grupa 2, contine 2 termeni:2,3, o grupa oarecare, grupa k va contine k termeni.
+Pentru a determina grupa g ,inscrisa pe tablita ce contine numarul dat n, se obtin termenii precedenti numarului n, 
+pe grupe,( grupele 1,2...g-1), adunind valoarea k la ultimul termen obtinut, pana ce se determina numarul n. 

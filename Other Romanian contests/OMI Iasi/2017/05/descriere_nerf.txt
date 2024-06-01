@@ -1,0 +1,7 @@
+Descrierea solutiei- nerf
+prof. Lucia Miron
+Colegiul "C. Negruzzi", Iasi
+
+Pentru a calcula valoarea lui X, initializam X cu 1, citim succesiv perechile de numere a b, si inmultim pe a la p de b ori, adunam pe p la X.
+Calculam apoi cu un algoritm elementar suma cifrelor lui X si numarul de cifre nenule din X. 
+

@@ -1,0 +1,8 @@
+Pentru a calcula eficient valmin (in timp liniar) vom utiliza niste vectori suplimentari, fiecare cu cate n elemente
+s[i]=v[i]+v[i+1]+...+v[i+k-1] (suma elementelor din secventa de lungime k care incepe la pozitia i)
+smax[i]=max{s[j]|1<=j<=i} (suma maxima a unei secvente de lungime k care incepe pana la pozitia i, inclusiv)
+dmax[i]=max{s[j]|j>=i} (suma maxima a unei secvente de lungime k care incepe dupa pozitia i, inclusiv).
+
+Pentru a determina valmin, consideram ca Ana alege secventa de lungime k care incepe la pozitia i (pentru orice 1 <=i<=n-k+1).
+Pentru aceasta secventa valoarea maxima pe care o poate obtine Bogdan este max{smax[i-k],dmax[i+k]}
+valmin este minimul dintre aceste maxime.

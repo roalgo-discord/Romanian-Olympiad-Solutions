@@ -1,0 +1,14 @@
+Descriere solutie - vector de frecventa - 100p
+
+Construim vectorul de frecventa pentru numarul dat.
+Daca in numar sunt cifre de 0, cautam prima cifra nenula si o afisam.
+Cautam apoi cea mai din dreapta cifra para si o memoram intr-o variabila p.
+Afisam cifrele numarului in ordine crescatoare si in final afisam p.
+
+Descriere solutie - ordonare cifre - 100p
+
+Extragem cifrele din numarul dat si le punem intr-un vector.
+Ordonam vectorul crescator.
+Daca in numar sunt cifre de 0, identificam cea mai mica cifra nenula si o plasam pe prima pozitie in vector, punand 0 in locul ei
+Identificam apoi cea mai din dreapta cifra para, pe care o vom pune pe ultima pozitie, dupa ce am deplasat cifrele de dupa ea cu o pozitie la stanga.
+In final afisam vectorul.

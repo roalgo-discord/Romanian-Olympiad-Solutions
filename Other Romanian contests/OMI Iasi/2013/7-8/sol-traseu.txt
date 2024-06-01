@@ -1,0 +1,9 @@
+traseu - solutie
+prof. Gradinariu Mariana
+
+Se citesc din fisierul text : marimea matricei, linia si coloana corespunzatoare pozitiei de start,
+elementele din matricea asociata labirintului si sirul de directii. 
+Pentru fiecare deplasare se determina noua pozitie in matrice.
+Daca intr-o noua pozitie este zid, se incearca urmatoarea directie din sirul de deplasari;
+daca  se ajunge pe margine, se opreste deplasarea.
+In fisierul de iesire se va afisa linia si coloana corespunzatoare pozitiei finale.

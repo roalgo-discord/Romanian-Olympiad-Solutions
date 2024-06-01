@@ -1,0 +1,2 @@
+Intr-o matrice de caractere de dimensiune adecvata se schimba valoarea in 1 a elementelor corespunzatoare pixelilor negri pentru cifra curenta.
+La sfarsit se numara valorile de 1 din matrice.

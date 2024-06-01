@@ -1,0 +1,9 @@
+//Descrierea solutiei propuse pt problema CENTRALE.
+Se citeste din fisier n, numarul de numere
+Se initializeaza contorul cerut cu 0
+Se parcurg numerele din fisier si pentru fiecare numar citit:
+- se elimina ultima cifra
+- se salveaza in a penultima cifra
+- cat timp numarul ramas are mai mult de o cifra si ultima cifra este egala cu a se elimina ultima cifra 
+- daca numarul ramas are o singura cifra inseamna ca numarul initial avea proprietatea ceruta si se numara
+Se afiseaza in fisierul de iesire contorul

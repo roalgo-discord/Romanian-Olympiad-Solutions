@@ -1,0 +1,20 @@
+lgdrum - solutie
+
+Problema clasica - algoritm de tip Lee
+- in timpul citirii se determina si se retin in doi
+  vectori coordonatele tuturor oraselor de plecare,
+  respectiv sosire; tot acum se calculeaza codurile
+  asociate localitatilor si se retin intr-o matrice
+- se bordeaza matricea
+- pentru fiecare pereche (plecare, sosire)
+    o se curata matricea distantelor
+    o se aplica algoritmul Lee cu plecare din 
+      "plecare" si sosire in "sosire" 
+    o se retine distanta minima
+- verificarea conditiei de "trecere" dintr-un oras
+  in altul se realizeaza fie cu ajutorul operatiilor
+  pe biti, fie comparand concomitent resturile 
+  succesive a impartirii la 2 a celor doua coduri
+
+prof. Marinel Serban
+C. N. "Emil Racovita" Iasi

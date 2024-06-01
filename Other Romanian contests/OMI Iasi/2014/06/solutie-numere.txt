@@ -1,0 +1,44 @@
+Pentru fiecare numar natural x din intervalul [a,b] se verifica daca el
+
+este divizibil cu toate cifrele nenule ale sale. Daca da, x este numarat
+
+in variabila nr. Pentru a verifica proprietatea precizata pentru x, se foloseste 
+
+variabila ok care initial primeste valoarea 1. Daca se gaseste o cifra nenula a lui x
+
+cu care x nu este divizibil, ok devine 0 si se iese fortat din verificare. La final se 
+
+verifica valoarea variabilei ok.
+
+
+
+#include <fstream>
+
+using namespace std;
+ifstream f("numere.in");
+ofstream g("numere.out");
+int main()
+{
+    long a,b,x,nr=0,aux;
+    int c,ok;
+    f>>a>>b;
+    for(x=a;x<=b;x++)
+    {
+        ok=1;
+        aux=x;
+        while(aux>0)
+        {
+            c=aux%10;
+            aux=aux/10;
+            if(c>0 && x%c!=0)
+            {
+                ok=0;
+                break;
+            }
+        }
+        if(ok==1)  nr++;
+               
+    }
+    g<<nr<<endl;
+    return 0;
+}

@@ -1,0 +1,10 @@
+Pentru fiecare linie din fisierul virusat, se extrage cate o pereche de numere alaturate reprezentand 
+pozitia in sirul nevirusat si numarul de spatii eliminate prin virusare, respectand ordinea in care au 
+fost memorate.
+Se insereaza in linia virusata primul sir de spatii astfel determinat si se continua pana la epuizarea 
+tuturor perechilor (pozitie, numar de spatii eliminate). 
+Fiecare linie reconstituita se memoreaza intr-un tablou S, cu max 200 elemente de tip string.
+Vectorul v(200) retine in v[i]=numarul de linii vide consecutive care apar in fisierul devirusat, 
+incepand la linia i, daca exista sau 0 altfel.
+Se scrie numarul de linii din fisierul devirusat apoi liniile reconstituite din S, avand grija sa inseram 
+v[i]linii vide la pozitia i, daca este cazul.

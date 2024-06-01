@@ -1,0 +1,6 @@
+Smiley - solutie
+prof. Emanuela Cerchez
+C. N. "Emil Racovita" Iasi
+
+Citim textul linie cu linie.
+Parcurgem fiecare linie caracter cu caracter si cand intalnim un caracter de inceput de smiley, verificam daca secventa care urmeaza este un smiley (sarim peste eventualele caractere - si apoi verificam daca urmeaza un caracter de sfarsit de smiley).

@@ -1,0 +1,20 @@
+Descriere solutie ornament
+
+Este o problema de backtracking in care singura problema
+o constituie verificarea potrivirii patratelului care
+urmeaza sa fie adaugat solutiei cu cele puse anterior.
+Se disting cazurile:
+ - in linia 1 patratelul care se pune trebuie sa se potriveasca
+doar cu cel pus anterior (latura 4 a acestuia trebuie sa se 
+potriveasca cu latura 2 celui pus anterior); exceptie face 
+primul patratel pus in aceasta linie
+ - in liniile 2..k patratelul care trebuie pus trebuie sa se 
+potriveasca si cu cel pus anterior in aceasta linie (exceptie
+primul) si cu cel aflat deasupra lui in linia anterioara  
+ 
+De asemenea apelul recursiv se face prin 2 parametri (l, c), 
+unul pentru linie altul pentru coloana; in cazul in care 
+ultimul patratel pus a fost in coloana k, se reapeleaza functia
+pentru linia urmatoare (l+1) si coloana 1, altfel se reapeleaza
+functia pentru aceiasi linie (l) si coloana urmatoare (c+1); 
+apelul recursiv se termina in cazul in care linia este k+1.

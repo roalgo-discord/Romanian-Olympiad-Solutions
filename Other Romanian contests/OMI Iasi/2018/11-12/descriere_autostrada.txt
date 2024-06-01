@@ -1,0 +1,31 @@
+autostrada-descrierea solutiei
+prof. Lucia Miron-Colegiul Costache Negruzzi
+prof. Maftei Ionel- Liceul de Informatica "Grigore Moisil"
+
+solutia 1
+
+Vom reprezenta reteaua stradala printr-un graf neorientat, localitatile sunt nodurile grafului, muchiile sunt soselele.
+O sosea poate fi blocata daca subgraful obtinut prin eliminarea acesteia ramane conex.
+Reprezentam graful prin matricea de adiacenta.Pentru verificarea conexitatii folosim parcurgerea in latime.
+Vom elimina pe rand cate o muchie din graf si verificam conexitatea subgrafului format. 
+Complexitatea algortimului O(n*m) 
+
+solutia 2
+Vom parcurge graful prin metoda Df. Prin aceasta metoda identificam doua tipuri de muchii:
+-muchii care fac parte din arborele rezultat prin parcurgerea Df, numite muchii de avans sau inaintare si
+-muchii de intoarcere sau muchii inverse, care sunt muchiile ce nu fac parte din arbore
+Observam ca nici o muchie de intoacere nu poate fi critica, deoarece o astfel de muchie inchide un ciclu si deci 
+prin renuntarea la ea, conexitarea grafului nu se pierde.
+Observam de asemenea ca un graf conex contine n-1 muchii de avans. O muchie de avans, [u,v] este critica 
+daca si numai daca nu exista nici o muchie de intoarcere care leaga nodul u al arborelui sau un predecesor al acestuia 
+de nodul v.
+Pentru fiecare nod vom calcula, pe langa nivelul acestuia, si nivelul minim la care poate ajunge nodul respectiv mergand 
+numai pe muchii directe din subarborele sau din cadrul arborelui DF si folosind ca ultima muchie o muchie inversa. 
+Aceasta valoare, pe care o vom numi nivelul minim accesibil este egala cu minimul dintre urmatoarele 3 valori : 
+•	nivelul nodului curent
+•	minimul dintre nivelurile nodurilor cu care este legat nodul curent printr-o muchie inversa
+•	minimul dintre nivelurile minime accesibile ale fiilor nodului curent din cadrul arborelui DF.
+Deci, orice muchie critica face parte din orice arbore DF. Conditia pentru ca o muchie [u,v] sa fie critica este ca u 
+sa fie tatal lui v in arborele DF, iar nivelul minim accesibil al nodului v sa fie strict mai mare decat nivelul lui u.
+Determinarea nodurilor si a muchiilor critice se poate realiza, astfel, cu o complexitate O(N+M), unde N este numarul 
+de noduri ale grafului, iar M este numarul de muchii ale grafului. 

@@ -1,0 +1,22 @@
+Problema daruri-descrierea solutiei
+
+Rezolvarea problemei se bazeaza pe cateva notiuni de matematica
+-divizibilitate in multimea numerelor naturale
+-determinarea cmmdc
+
+Solutia :
+
+ -toate pachetele trebuie sa contina acelasi numar de tablete, deci numarul de pachete 
+  este necesar sa fie printre divizorii lui t.
+ -toate pachetele trebuie sa contina acelasi numar de laptopuri, deci numarul de pachete 
+  este necesar sa fie printre divizorii lui l.
+ -numarul de pachete trebuie sa fie maxim si pachetele trebuie sa aiba componenta identica,
+  deci trebuie sa aflam cmmdc al lui t si l.
+ -daca t si l sunt prime intre ele(cmmdc=1) se va afisa pe o linie 0 iar pe linia urmatoare
+  0 0.
+ -pentru determinarea cmmdc se poate utiliza unul din algoritmii: 
+    .scaderi repetate
+    .algoritmul lui Euclid
+    .orice alt algoritm de determinare a cmmdc  
+ -au fost elaborate doua surse, una utilizeaza algoritmul lui Euclid si cealalta
+ algoritmul prin scaderi repetate pentru determinarea cmmdc.

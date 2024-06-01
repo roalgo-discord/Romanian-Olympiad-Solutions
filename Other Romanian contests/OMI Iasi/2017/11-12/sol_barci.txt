@@ -1,0 +1,9 @@
+Barci - solutie
+prof. Paul Diac
+Putem sorta initial elevi dupa greutate descrescator. Apoi asezam in barci elevii cu greutatea cea mai mare. Pentru fiecare elev curent i cu greutate Wi daca ne uitam la elevii cu care poate fi asezat in barca din dreapta lui (dupa sortare): acestia pentru a respecta cele doua conditii se vor afla intr-un interval compact, cu valori mai mari ca (Wi-B) si mai mici decat (C-Wi). Dintre toti acestia il putem alege pe cel cu greutatea mai mare (se poate demonstra matematic ca e corect din punctul de vedere al ambelor conditii).
+
+Putem rezolva problema in O(N^2) cautand printr-o parcurgere la fiecare barca perechea elevului deja ales si astfel se obtin ~ 60 puncte. 
+
+Pentru 100 puncte putem rezolva aceasta etapa in O(N) astfel:
+Pe langa vectorul de elevi retinem si o lista dublu inlantuita cu elevi care nu au fost inca urcati in barci. Capatul din stanga al intervalului de elevi valizi cu care poate fi pus in barca elevul curent Wi se muta doar in stanga pe masura ce Wi scade (cand i creste). Astfel complexitatea este liniara pentru ca parcurgem lista o singura data, iar eliminarea unui element din lista se realizeaza tot in timp constant (cand punem doi elevi intr-o barca si il marcam ca utilizat pe cel de-al doilea).
+

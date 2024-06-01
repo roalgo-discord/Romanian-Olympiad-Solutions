@@ -1,0 +1,7 @@
+WB - descrierea solutiei
+prof. Emanuela Cerchez
+Vom genera toate tripletele (a,b,c), unde 0<=a, b, c <=1000.
+Pentru fiecare triplet se simuleaza interschimbarile. Primul triplet pentru care bila ajunge de pe pozitia S pe pozitia F va fi afisat.
+Aceasta abordare obtine... puncte
+Observam ca toate calculele se fac %K, prin urmare este suficient sa generam tripletele cu 0<=a, b,c <=K
+

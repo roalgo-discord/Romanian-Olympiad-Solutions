@@ -1,0 +1,23 @@
+Descrierea solutiei- nave (prof. Ionel Maftei)
+
+O posibila solutie a problemei ar putea fi urmatoarea:
+Pentru reprezentarea zonei cartografiate se va utiliza o matrice cu maxim 100 de linii si 100 de coloane.
+Se citesc de pe primul rand din fisierul de intrare dimensiunile zonei cartografiate n si m si respeciv numarul de baze martiene, b.
+De pe urmatoarele b randuri se citesc triplete de forma x y z, reprezentand linia si coloana din zona cartografiata unde se gaseste
+baza martiana respectiva si numarul de nave din acaeasta zona.
+Se parcurge apoi matricea cautand pozitiile (i,j), i=1,..n; j=1,...m, in care nava Enterprise poate ateriza, a[i][j]=0.
+Se retin coordonatele acestei zonei, in care nava Enterprise poate ateriza, in=i, jn=j si se initializeaza o variabila s cu valoarea 0. 
+Se cauta, mergand pe cele doua directii, ale zonei in care suntem bazele martiene si se aduna la variabila s, numarul de nave din aceste baze.
+Se compara apoi variabila s cu o variabila smax(initializata cu 0), si daca s>smax, se actualizeaza smax cu s, iar variabilele care vor
+retine linia maxima, xmax si coloana maxima ymax in care poate ateriza nava Enterprise se vor actualiza cu in, respectiv jn.
+In cazul in care s=smax, se vor actualiza doar xmax si ymax tinand cont de cerintele problemei. 
+La final se vor afisa smax xmax si ymax, reprezentand numarul maxim de nave ce pot fi distruse de nava Enterprise, daca sunt atacate 
+bazele martiene ce se gasesc pe cele dou directii ale zonei cu linia egala cu xmax si coloana egala cu ymax.
+Ca observatie- alte posibile solutii s-ar putea diferentia de solutia prezentata prin modul de stocare al datelor, respectiv prin modul de 
+parcurgere al celor doua directii.
+Complexitatea algoritmului este O(n*m).
+
+
+
+
+

@@ -1,0 +1,14 @@
+Solutie subtitrare
+                      
+Se vor citi pe rand liniile din fisierul de intrare. 
+Prima linie, cea cu numarul de ordine nu are importanta.
+A doua linie contine timpul de inceput si de sfarsit a afisarii subtitrarii curente. Timpii sunt
+exprimati in hh:mm:ss,fff si se transforma in secunde si se inmultesc cu 25, obtinandu-se frame-ul 
+de inceput si cel de sfarsit pentru afisarea subtitrarii. Cele doua numere se scriu in fisierul
+de iesire incadrate intre acolade. Toate celelalte randuri pana la urmatorul rand gol se vor
+scrie in fisierul de iesire separate prin "|". Se trece pe randul urmator in fisierul de iesire 
+si se reia conversia cu urmatoarea subtitrare.
+
+
+Autor: prof. Constantin Cretu
+Colegiul National Iasi

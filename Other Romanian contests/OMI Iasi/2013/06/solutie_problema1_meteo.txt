@@ -1,0 +1,20 @@
+meteo - solutie (prof. Anca Uriciuc)
+- citesc n=numarul de zile si a=temperatura corespunzatoare primei zile
+- l=1 // lungimea sirului curent construit cu temperaturi consecutive alternante ca semn
+- maxi=0
+- pentru fiecare alta temperatura b citita o compar cu cea din ziua anterioara:
+            -daca au semne diferite se incrementeaza l; 
+            -altfel, se compara l cu maximul anterior, eventual modificand maximul si retinand pozitia ultimei zile din perioada cea mai lunga gasita pana in acest moment
+            -se reinitializeaza l cu 1
+            -a devine actualul b
+
+- compar lungimea ultimei perioade de temperaturi alternante cu maximul si eventual, actualizez maximul, retinand si pozitia ultimei zile a acelei perioade
+- afisez rezultatul cerut  ( 0 sau valoarea primei zile din perioada cea mai lunga determinata in functie de ultima ei zi si de numarul de zile corespunzatoare)
+
+
+meteo - solutie (prof. Marinel Serban)
+- in timpul citirii inlocuiesc valoarea 0 cu 51 (50 fiind valoarea maxima pozitiva)
+- parcurg vectorul testand produse de vecini (T[i] * T[i+1] < 0)
+- la incheierea unei secvente (T[i] * T[i+1] > 0), testez lungimea acesteia si o retin 
+  daca este cazul (e mai mare sau egala cu cea veche)
+- la afisarea secventei detectate, in locul valorii 51 afisez valoarea 0

@@ -1,0 +1,1 @@
+Dupa citirea datelor de intrare se memoreaza in variabila n valoarea x si intr-un for de la 1 la x-1 adaugam la sfarsitul lui n cifra y (n<-n*10+y), afisam numarul determinat. 

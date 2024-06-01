@@ -1,0 +1,9 @@
+Expand - descrierea solutiei
+Prof. Emanuela Cerchez
+Pentru fiecare litera din alfabet vom retine o lista cu secventele care apar pe cartonasele corespunzatoare literei respective.
+Numim stare perechea formata dintr-un cuvant si numarul minim de mutari necesare pentru a obtine cuvantul respectiv.
+Starea initiala este formata din litera aleasa de Ana si 0.
+Vom utiliza o coada in care plasam starea initiala.
+Cat timp coada nu este vida si nu am obtinut cuvantul ales de Ana:
+- extragem o stare din coada
+- parcurgem cuvantul si inlocuim fiecare litera din cuvant cu secventele din lista corespunzatoare; se genereaza astfel cate o noua stare pe care o introducem in coada.

@@ -1,0 +1,8 @@
+Escape - descriere solutie
+prof. Virga Liliana- Liceul teoretic de Informatica "Grigore Moisil", Iasi
+c=1
+Pentru fiecare din cele n numere vom adauga punctajul fiecarui elev (cod%100) într-unul din vectorii de frecventa: fp daca  punctaj/100 este numar prim  respectiv f daca  punctaj/100 nu este prim;
+Vom afisa maximul din fiecare vector
+
+c=2
+Retinem în cel de al treilea vector de frecventa numarul de elevi care viziteaza fiecare camera, vector pe care îl vom sorta apoi descrescator; folosim un vector auxiliar în care retinem indicele fiecarei camere 

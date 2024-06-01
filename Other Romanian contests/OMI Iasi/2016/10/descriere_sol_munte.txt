@@ -1,0 +1,3 @@
+Descriere solutie - problema munte
+Se citeste matricea, efectuand parsarea fiecarei linii. 
+Se efectueaza apoi n cautari binare pentru a gasi valoarea cautata.

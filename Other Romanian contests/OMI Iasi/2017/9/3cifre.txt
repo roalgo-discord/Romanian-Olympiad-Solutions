@@ -1,0 +1,34 @@
+Descriere solutie problema 3cifre
+prof. Marinel Serban
+
+se citeste n si cerinta
+nu este necesara retinerea elementelor intr-un vector
+cat_timp mai exista numere
+{
+  se citeste un numar in variabila x
+  cat_timp se poate (x > 99)
+  {
+    se separa cate un numar de trei cifre (x % 1000)
+    daca acesta este din trei cifre (nu are 0 pe prima pozitie)
+    {
+       daca acesta este mai mic decat minimul curent
+       {
+         se retine ca minim curent 
+         el apare o data - se retine si x ca prima si ultima aparitie
+       }  
+       altfel
+          daca acesta este egal cu minimul curent
+             se contorizeaza aparitia
+             aceasta este ultima aparitie 
+    se procedeaza la fel pentru maximul curent
+    se elimina ultima cifra (x / 10)
+    pentru cerinta 2 se contorizeaza intr-un vector de frecventa fiecare
+      numar de 3 cifre aparut, determinandu-se concomotent si nuamrul
+      maxim de aparitii
+  }
+  am terminat de tratat inca un numar (n--)
+}
+afisare rezultate
+  pentru cerinta 2 se parcurge vectorul de frecventa de la 100 la 999
+  determinandu-se astfel in ordine valorile care apar de un numar 
+  maxim de ori

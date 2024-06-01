@@ -1,0 +1,1 @@
+Se analizeaza toate mutarile posibile intre doua piese alaturate. De fiecare data se calculeaza punctajul obtinut si se retine maximul.

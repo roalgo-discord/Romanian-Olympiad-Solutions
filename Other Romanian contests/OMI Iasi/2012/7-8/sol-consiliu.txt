@@ -1,0 +1,10 @@
+Solutie - consiliu
+Vom construi un vector M cu 24*60 componente (cate una pentru fiecare minut dintr-o zi).
+M[i]=numarul de profesori aflati in scoala la minutul i.
+Vom citi succesiv orarul fiecarui profesor.
+Vom parcurge intervalul in care profesorul respectiv este in scoala si vom incrementa numarul de profesori aflati in scoala pentru toate minutele din intervalul respectiv.
+La final vom numara cate componente ale vectorului M sunt egale cu N (numarul de profesori din scoala).
+
+Autor:
+prof. Emanuela Cerchez
+C. N. "Emil Racovita" Iasi

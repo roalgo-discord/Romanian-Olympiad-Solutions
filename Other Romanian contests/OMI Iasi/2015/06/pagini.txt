@@ -1,0 +1,14 @@
+solutie pagini
+prof. Lucian Neagu
+
+Pentru fiecare test T, se aplica algoritmul de numarare al cifrelor.
+Se va folosi un vector de frecventa al cifrelor.
+
+Daca avem in vectorul de frecventa toate cifrele cu aparitia para,
+atunci se va afisa DA.
+
+Daca avem in vectorul de frecventa o cifra cu aparitia impara,
+iar restul cifrelor cu aparitia para,
+atunci se va afisa DA.
+
+In oricare alt caz, se va afisa NU.

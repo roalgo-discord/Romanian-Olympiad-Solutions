@@ -1,0 +1,11 @@
+solutie - vapoare
+prof. Mariana Gradinariu
+
+
+Se transforma saptamanile in zile.
+Se inmultesc cu 2 (dus-intors).
+Se aduna zilele pentru manevrarea marfurilor.
+Se afla cmmmc al celor doua valori.
+Pentru aceasta se retine produsul numerelor, apoi se utilizeaza formula:
+
+[a, b] x (a, b) = a x b

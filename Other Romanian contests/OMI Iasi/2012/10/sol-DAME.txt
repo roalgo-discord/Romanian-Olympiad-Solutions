@@ -1,0 +1,9 @@
+Solutie - problema dame
+Este o problema simpla de simulare a unor mutari.
+Vom citi succesiv mutarile si le vom efectua.
+Pentru fiecare mutare simpla extragem pozitia de start si pozitia finala, le validam (verificam ca sunt pe tabla, ca pozitia de start este ocupata corespunzator mutarii si cea finala este libera, ca mutarea este efectuata diagonal inainte) si daca este corecta o executam.
+Pentru salturi procedam in mod similar, numai ca extragem pozitii finale in mod repetat, pana la epuizarea acestora. 
+
+Autor:
+prof. Emanuela Cerchez
+C. N. "Emil Racovita" Iasi

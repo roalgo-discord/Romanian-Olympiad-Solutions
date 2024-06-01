@@ -1,0 +1,26 @@
+moretime - descriere solutie
+
+Se citesc cele n perechi de numere reprezentand conturile si fondurile celor n clienti. 
+Se memoreaza in vectorii cont si fond doar valorile corespunzatoare clientilor premium (prima cifra si ultima cifra a numarului de cont sunt egale).
+cp=numarul clientilor premium
+Pe vectorul fond se aplica principiul cutiei lui Dirichlet, conform caruia, pentru orice multime de cp numere naturale exista o submultime de suma divizibila cu cp.
+
+
+Se construiesc pe rand sumele 
+s1=fond[1]; 
+s2=fond[1]+fond[2];
+...
+si=fond[1]+...+fond[i];
+...
+
+Daca si este divizibila cu cp atunci submltimea cautata este formata din primii i clienti cu cont[1],...cont[i]
+Daca nicio suma nu este divizibila cu cp, cum sunt cp resturi distincte posibile la impartirea la cp (0,1,2,..cp-1) iar restul 0 nu s-a obtinut,
+exista cel putin doua sume diferite care dau acelasi rest r la impartirea la cp. 
+Pentru a memora resturile vom construi vectorul rest cu semnificatia rest[k]=i, unde si % cp = k 
+
+Fie sj, si (j<i) doua sume care dau restul r la impartirea la cp (r din multimea 1, 2, ...cp-1).
+Conform teoremei impartirii cu rest, sj = c1*cp + r iar si = c2 * cp + r. Atunci, si - sj = (c2-c1) * cp. 
+
+Deci, suma elementelor cuprinse intre j+1 si i va fi divizibila cu cp iar valorile cautate sunt i-j si cont[j+1],....cont[i].
+
+

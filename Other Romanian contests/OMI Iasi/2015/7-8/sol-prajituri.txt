@@ -1,0 +1,7 @@
+Descrierea solutiei- prajituri
+prof. Lucia Miron
+Colegiul "C. Negruzzi", Iasi
+
+Cerinta a): se reduce la a cauta prima aparitie din stanga a vectorului b in vectorul a, daca prima aparitie este in pozitia i, vom elimina din stanga i-1 elemente, iar din dreapta n-(i-1)-m
+Cerinta b): se reduce la a cauta toate aparitiile disjuncte ale vectorului b in vectorul a. Vom  verifica toate posibilitatile.
+cerinta c): pentru a rezolva aceasta cerinta vom utiliza doi vectori va respectiv vb care retin pentru fiecare culoare numarul de aparitii din vectorul a respectiv numarul de aparitii din vectorul b, numarul de prajituri va fi min(va[i]/vb[i],vb[i]<>0,i=1,100).

@@ -1,0 +1,7 @@
+x*x-y*y=a, a un numar din matrice
+Aceasta expresie se mai poate scrie (x+y)*(x-y)=a,
+unde x+y si x-y trebuie sa divida pe a
+notam cu i primul divizor al lui a, iar j=a div i si obtinem:
+x+y=i si x-y=j
+=>x=(i+j)/2 si y=(j-i)/2, deci i+j trebuie sa fie un numar par, 
+adica (a+a div i)%2 sa fie 0, cu i=1,sqrt(a)

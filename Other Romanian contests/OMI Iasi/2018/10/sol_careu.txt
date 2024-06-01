@@ -1,0 +1,22 @@
+careu - descriere solutie
+prof. Marinel Serban
+Colegiul National "Emil Racovita" Iasi
+
+Se citeste careul linie cu linie intr-o matrice de caractere.
+La citire se prelucreaza linia i: 
+  - se copiaza linia intr-un vector de caractere
+  - se selecteaza pe rand fiecare cuvant
+     o se verifica daca este palindrom
+     o daca este se verifica lungimea lui
+       . aici sunt doua cazuri
+         a) este lungime mai mare ca cea gasita anterior
+         b) este lungime egala cu cea gasita anterior
+       . daca este cazul se retine cuvantul intr-un vector
+  - se trece la prelucrarea pe coloane
+     o se formeaza un sir de caractere din fiecare coloana
+     o se prelucreaza sirurile formate ca in cazul anterior
+Se ordoneaza vectorul de siruri de carcatere
+Se retin intr-un vector de aparitii caracterele distincte
+Se calculeaza suma codurilor ASCII ale caracterelor care apar
+Functie de cerinta... se afiseaza
+     

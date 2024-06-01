@@ -1,0 +1,12 @@
+Descrierea solutiei- serbare
+prof. Lucia Miron
+Colegiul "C. Negruzzi", Iasi
+
+Cerinta a): se reduce la a determina numarul de inaltimi distincte
+Cerinta b): se reduce la a determina pentru fiecare inaltime elevii cu inaltimea respectiva
+Vom defini o structura care va memora numele si inaltimea unui elev. 
+Vom ordona elevii descrescator dupa inaltime, iar pentru inaltimi egale alfabetic.
+Vom construi un vector de frecventa care va memora frecventa de aparitie a unei inaltimi.
+Nr. de elemente nenule din vectorul de frecventa reprezinta nr. de randuri(cerinta a)
+pentru cea de a doua cerinta prelucram simultan cei doi vectori.
+

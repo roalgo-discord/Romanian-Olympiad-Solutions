@@ -1,0 +1,9 @@
+barca - solutie
+
+Din analiza restrictiilor se observa o schema care se aplica 
+fiecarui soldat i
+
+- Ionel si Gigel traverseaza râul împreuna
+- Ionel se întoarce pe malul cu soldati si ramâne aici
+- soldatul i traverseaza râul si ramâne acolo
+- Gigel revine pe malul initial

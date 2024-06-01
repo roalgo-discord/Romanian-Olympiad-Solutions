@@ -1,0 +1,37 @@
+* solutie broscute *
+
+Pentru a ajunge la configuratia finala intr-un numar minim de pasi, observam ca avem 2 situatii diferite:
+
+1) Atunci cand pe pozitia frunzei libere, in configuratia finala se afla o broscuta. In acest caz, pe frunza libera, mutam broscuta corespunzatoare configuratiei finale.
+2) Atunci cand frunza libera este la locul ei, insa exista o broscuta care nu e pe pozitia ei corespunzatoare. In acest caz, mutam broscuta care nu se afla la locul ei
+pe pozitia frunzei libere, astfel frunza libera isi schimba pozitia, ajungand din nou in situatia 1).
+
+Exemplu:
+
+Presupunem ca avem configuratia: 0 2 3 1
+Si vrem sa ajungem la configuratia: 2 0 1 3
+
+Pasul 1: Observam ca suntem in prima situatie, cand pozitiile frunzei libere nu corespund in cele doua configuratii. Frunza noastra libera se afla pe pozitia 1, insa
+in configuratia finala, acolo ar trebuie sa se afla broscuta 2. Asadar, mutam pe prima pozitie broscuta cu numarul 2.
+
+Am ajuns la configuratia: 2 0 3 1
+Configuratia finala este: 2 0 1 3
+
+Pasul 2: Observam ca suntem in a doua situatie, cand frunza libera se afla la locul ei, insa exista o broscuta care nu indeplineste aceasta conditie (Ex: 3).
+Asadar, mutam broscuta cu numarul 3 pe pozitia frunzei libere.
+
+Am ajuns la configuratia: 2 3 0 1
+Configuratia finala este: 2 0 1 3
+
+Observatie: Am ajuns din nou in situatia 1, asadar:
+Pasul 3: Mutam pe frunza libera broscuta 1 deoarece ea ar trebui sa se afle pe acea pozitie.
+
+Am ajuns la configuratia: 2 3 1 0
+Configuratia finala este: 2 0 1 3
+
+Pasul 4: Mutam pe frunza libera broscuta 3, deoarece ea ar trebui sa se afle pe acea pozitie.
+
+Am ajuns la configuratia: 2 0 1 3
+Configuratia finala este: 2 0 1 3
+
+Cele doua configuratii sunt la fel. Asadar, numarul minim de mutari este 4.

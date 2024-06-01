@@ -1,0 +1,7 @@
+Vom reprezenta datele prin-un graf neorientat cu n varfuri(reprezentantii), intre varfurile i si j exista muchie, daca i si j vorbesc cel putin o aceeasi limba.
+Odata construit graful trebuie sa generam un subgraf complet maximal(o clica), recurgem la un algoritm de tip backtracking de generare a combinarilor, pentru a obtine solutiile in ordine lexicografica.
+Complexitate:
+O(n) pentru citire(cd ca citirea datelor pentru un reprezentant se face in timp constant fiind cel mult 10 valori); O(n*n) pentru construirea matricei de adiacenta;
+generarea submultimilor si verificarea daca este clica (2^n)*n*n;
+O(n) pentru afisare.
+O(n)+O(n*n)+O(n*n*2^n)+O(n)=O(n*n*2^n)

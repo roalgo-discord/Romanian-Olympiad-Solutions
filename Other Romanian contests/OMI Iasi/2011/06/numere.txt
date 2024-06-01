@@ -1,0 +1,8 @@
+- Se determina ultima cifra si prima cifra a numarului x
+- pentru cele n numere citite din fisier se afla ultima cifra si prima cifra 
+	- daca cifrele extreme (prima si ultima cifra ) sunt egale intre ele 
+	    atunci se incrementeaza contorul numerelor "denaturate"
+	- daca prima cifra a numarului citit este egala cu prima cifra a lui x si ultima cifra 
+	  a numarului citit este egala cu ultima cifra a numarului x
+	    atunci se incrementeaza contorul numerelor "surori" cu x
+- se scriu in fisierul de iesire in ordinea precizata valorile celor doua contoare.

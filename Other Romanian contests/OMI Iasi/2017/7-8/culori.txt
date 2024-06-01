@@ -1,0 +1,7 @@
+Se citesc mesajele primite, unul cate unul.
+
+Vom extrage numele, respectiv culoarea.
+Vom gasi culoarea cea mai intensa si vom retine numele prietenilor cu aceasta culoare.
+(se poate folosi o structura pentru retinerea numelor)
+
+Vom sorta prietenii alfabetic.

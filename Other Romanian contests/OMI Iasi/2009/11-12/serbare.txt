@@ -1,0 +1,6 @@
+Problema SERBARE
+
+Algoritmul de rezolvare trebuie sa gaseasca un subgraf complet de cel mult k noduri al grafului initial.
+Problema este NP-Completa, dar devine mai usor de rezolvat cu cat k este mai mic.
+Astfel problema poate fi rezolvata chiar cu un algoritm backtracking in care vectorul solutie 
+il reprezinta nodurile subgrafului complet.
