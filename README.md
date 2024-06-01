@@ -57,7 +57,8 @@ Dacă dețineți descrierile soluțiilor în format txt, docs, doc sau pdf, ne p
 
 ## 📝 Patch Notes
 
-- **20.05.2024** - Adăugate soluții în PDF pentru toate problemele ce au fost publicate de SEPI din loturile din anii 2021-2023, precum si loturile de pana acum din 2024.
+- **01.06.2024** - Adăugare soluții OMI Iasi 2009-2023 + Loturi 2024
+- **20.05.2024** - Adăugare soluții în PDF pentru toate problemele ce au fost publicate de SEPI din loturile din anii 2021-2023, precum si loturile de pana acum din 2024.
 - **27.04.2024** - ONI 2024 și reoganizare ONI
 - **9.04.2024**  - Adăugare soluții Info1Cup 2024 și reorganizare OJI  
 - **18.03.2024** - Adăugare soluții pentru [OJI 2024](OJI%20(regional%20olympiad)/2024)
