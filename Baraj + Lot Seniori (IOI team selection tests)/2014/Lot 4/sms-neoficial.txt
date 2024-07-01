@@ -1,0 +1,24 @@
+Autor: Rares-Andrei Buzdugan - https://kilonova.ro/submissions/397690
+
+Fie:
+    - E[i] = valoarea medie de a tasta primele i caractere din sirul s
+    - x = numarul de ordine al caracterului s[i]
+
+    1) Daca tastam corect caracterul s[i], atunci vom contribui cu o singura apasare de tasta la valoarea medie
+       Putem face acest lucru cu probabilitate pc[x], deci contribuim cu pc[x] * 1
+    2) Daca tastam un caracter diferit de s[i], atunci vom contribui cu doua apasari (prima este cea in care apasam caracterul gresit iar a doua cea in care apasam backspace)
+       Dupa care, mai avem de facut, in medie, E[i] apasari de tasta pentru a tasta caracterul s[i]
+       Acest lucru se intampla cu probabilitate pi[x], deci contribuim cu pi[x] * (2 + E[i])
+    3) Daca apasam backspace, atunci vom contribui cu o apasare de tasta
+       Urmat de, in medie, E[i - 1] apasari de tasta ca sa retastam caracterul s[i - 1]
+       Urmat de, in medie, E[i] apasari de tasta ca sa tastam caracterul s[i]
+       Acest lucru se intampla cu probabilitate pb[x] si contribuim cu pb[x] * (1 + E[i - 1] + E[i])
+
+    Deci, in total, avem:
+    E[i] = pc[x] + pi[x] * (2 + E[i]) + pb[x] * (1 + E[i - 1] + E[i])
+    E[i] = pc[x] + 2 * pi[x] + pi[x] * E[i] + pb[x] * (1 + E[i - 1) + pb[x] * E[i]
+    E[i] - pi[x] * E[i] - pb[x] * E[i] = pc[x] + 2 * pi[x] + pb[x] * (1 + E[i - 1])
+    (1 - pi[x] - pb[x]) * E[i] = pc[x] + 2 * pi[x] + pb[x] * (1 + E[i - 1])
+    E[i] = (pc[x] + 2 * pi[x] + pb[x] * (1 + E[i - 1])) / (1 - pi[x] - pb[x])
+
+    Raspunsul va fi suma tuturor E[i]
