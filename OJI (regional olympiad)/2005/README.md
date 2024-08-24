@@ -1,0 +1,1 @@
+Pentru clasele la care nu sunt solutii, conform informatiilor mele, nu s-au scris descrieri ale solutiilor, ci doar coduri sursa, care se pot gasi daca cautati problema pe [kilonova](https://kilonova.ro).
