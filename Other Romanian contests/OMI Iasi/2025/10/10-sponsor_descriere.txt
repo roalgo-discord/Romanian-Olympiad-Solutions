@@ -1,0 +1,32 @@
+Problema sponsor - descriere solutie
+
+prof. Marinel Serban - CN Emil Racovita, Iasi
+==============================================
+Problema se poate rezolva in mai multe moduri
+1. brut (sortare - bubble, select, sort- algorithm)
+2. backtracking
+3. algoritm de tip succesor cu adunare in baza 2
+4. utilizand containerul map din STL
+
+Indiferent de algoritmul ales, sunt obligatorii cativa pasi
+ - selectarea sponsorilor care pot face parte dintr-o solutie (primul si ultimul caracter)
+ - contorizarea fiecarui tip de aparitie cap-coada din multimea sponsorilor selectati la pasul anterior
+ - cerinta 1 - produsul valorilor contorizate anterior
+ - cerinta 2 - selectarea si afisarea unei solutii conform metodei alese
+
+prof. Cornelia Ivasc - Liceul de Informatica Grigore Moisil, Iasi
+==================================================================
+Construim matricea c în care punem, pe fiecare dintre cele 11 linii, câte un șir format din două caractere reprezentând prima și ultima literă din numele sponsorilor, în ordinea în care ei trebuie să apară în listele de sponsori care trebuiesc construite. Observăm că aceste șiruri memorate în matricea c sunt diferite.
+Folosim un vector de frecvență fr. În fr[i] determinăm numărul de sponsori care pot fi puși pe poziția i în listele de sponsori.
+Pentru fiecare sponsor i citit, construim mai intâi un șir d format din prima și ultima literă, apoi, căutând șirul d în matricea c, determinăm poziția j pe care el poate să fie pus în listă, dacă acest lucru este posibil, și mărim fr[i]. În plus, în lista finală construită pentru cerința 2, vom plasa pe poziția j sponsorul cel mai mic din punct de vedere lexicografic.
+Dacă cerința este 1, rezultatul cerut se calculează după formula: fr[0]*fr[1]*…*fr[10] (numărul de elemente ale unui produs cartezian a celor 11 mulțimi de sponsori).
+Dacă cerința este 2, lista construită așa cum am explicat mai sus este rezultatul corect.
+Complexitatea algoritmului este O(11*30*N), adică O(N).
+
+prof. Simona Iuscinschi - Liceul de Informatica Grigore Moisil, Iasi
+==================================================================
+Am creat un șablon cu combinații de primă-ultimă literă dorite pentru sponsori, în ordinea descrisă în enunț.
+Pentru fiecare sponsor din fișierul de intrare, am construit șirul format din cele două litere din capete; dacă este unul dintre șirurile din șablon, i-am incrementat frecvența și am păstrat numele sponsorului în sp pe poziția corespunzătoare (poziția identificată în șablon) doar dacă este minim lexicografic comparativ cu sponsorii cu aceeași proprietate.
+Pentru cerința 1, am înmulțit cele 11 frecvențe corespunzătoare șirurilor ce îndeplinesc proprietatea din enunț.
+Pentru cerința 2, am afișat șirurile păstrate în sp (minime din punct de vedere lexicografic).
+
