@@ -4,6 +4,8 @@
 
 Bine ați venit! Acest repository conține descrieri ale soluțiilor pentru o varietate largă de olimpiade și concursuri de informatică oficiale din România, precum OJI, ONI, Baraje, Loturi de pregătire, și alte concursuri precum IIOT.
 
+Welcome! This repository contains editorials and solution descriptions for a large variety of problems (1000+) given at Romanian Olympiad and various other Romanian competitive programming contests, such as OJI, ONI, IOI/EJOI Team Selection Tests, as well as other contests such as IIOT, various local, regional and online contests.
+
 ## 📚 Resurse Soluții
 
 Descoperiți soluțiile oficiale și rezolvați folosind linkurile de mai jos:
@@ -57,6 +59,8 @@ Dacă dețineți descrierile soluțiilor în format txt, docs, doc sau pdf, ne p
 
 ## 📝 Patch Notes
 
+- **2025-26** - Adăugare soluții concursuri recente, plus Info1Cup
+- **2024-25** - Adăugare soluții concursuri recente
 - **24.08.2024** - Adăugare soluții ONI-uri vechi + concursuri recente
 - **01.06.2024** - Adăugare soluții OMI Iasi 2009-2023 + Loturi 2024
 - **20.05.2024** - Adăugare soluții în PDF pentru toate problemele ce au fost publicate de SEPI din loturile din anii 2021-2023, precum si loturile de pana acum din 2024.
