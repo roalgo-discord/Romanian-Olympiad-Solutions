@@ -1,0 +1,1724 @@
+
+<html>
+<!-- #BeginTemplate "/Templates/templ.dwt" -->
+
+<head>
+<meta NAME="WEB-AUTHOR" CONTENT="Calin Borz, cborz@agora.ro">
+<meta NAME="COPYRIGHT"
+CONTENT="Computer Press Agora, office@agora.ro, http://www.agora.ro/">
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-2">
+
+<!-- #BeginEditable "doctitle" -->
+<title>Editorial</title>
+<!-- #EndEditable -->
+ 
+<link REL="stylesheet" HREF="../ginfo.css">
+<meta NAME="author" CONTENT="Clara Ionescu">
+<meta NAME="keywords"
+CONTENT="De zece ani aşteptăm să se întâmple ceva demn şi adecvat sfârşitului de secol în care trăim şi să putem privi încrezători">
+<meta NAME="date" CONTENT="Mai 1999">
+</head>
+<body bgcolor="#FFFFFF">
+<table border="0" cellpadding="0" cellspacing="0" width="600" align="center">
+      
+  <tr valign="top"> 
+        
+    <td width="100%"> 
+                     
+            
+      <!-- #BeginEditable "text" -->
+      <div align="left"><b><I>Olimpiada Naţională de Informatică - Mediaş, 1999
+</I></b>
+</div>
+      <h1 align="center"><b>SOLUŢIILE problemelor propuse
+</b>
+</h1>
+      <P align="left">În numărul 5/1999 al GInfo am publicat cele 24 de probleme de la ONI 99, organizată la Mediaş. Redacţia GInfo, preocupată de a vă oferi posibilitatea de a "creşte" mereu, vă prezintă rezolvările unora dintre ele.
+      <P align="left">
+      <div align="left">
+        <h3><B>P059901: Expresie
+</B>
+</h3>
+      </div>
+      <P ALIGN=left><I>Sabău Florin, clasa a XI-a, Reşiţa</I>
+      <P align="left">
+Procedura Eval realizează evaluarea expresiei. Aceasta defalcă expresia stocată în variabila exp în părţile componente:
+      <P align="left">
+- mai întâi operatorii - în vectorul o
+      <P align="left">
+- apoi constantele numerice şi variabilele - în vectorul op
+      <P align="left">
+Urmează evaluarea propriu-zisă în doi paşi:
+      <P align="left">
+- înmulţirea;
+      <P align="left">
+- adunarea şi scăderea.
+      <P align="left">
+
+      <P align="left">
+      <div align="left"><B>Listing expresie.pas
+</B>
+</div>
+      <P align="left"><B>
+var </b>exp:<B>string</B>;
+      <P align="left">
+    v:<B>array</B>['a'..'e'] <B>of </B>Longint;
+      <P align="left">
+    e:<B>array</B>['a'..'e'] <B>of </B>Boolean;
+      <P align="left">
+    op:<B>array</B>[1..255] <B>of </B>Comp;
+      <P align="left">
+    o:<B>array</B>[1..255] <B>of </B>Char;
+      <P align="left">
+    i:Integer;
+      <P align="left">
+    s:Comp;
+      <P align="left">
+
+      <P align="left">
+<B>function </B>s2i(s:<B>string</B>):Longint;
+      <P align="left">
+<B>var </B>i:Longint;
+      <P align="left">
+    code:Integer;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  val(s,i,code);
+      <P align="left">
+  s2i:=i
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+
+      <P align="left">
+<B>procedure </B>citeste;
+      <P align="left">
+<B>var </B>s:<B>string</B>;
+      <P align="left">
+    c:Char;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  Assign(input,'EX.IN'); Reset(input);
+      <P align="left">
+  Readln(exp);
+      <P align="left">
+  Fillchar(e,Sizeof(e),0);
+      <P align="left">
+  i:=0;
+      <P align="left">
+  <B>while not </B>Eof <B>do</B>
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    Inc(i);
+      <P align="left">
+    Readln(s);
+      <P align="left">
+    c:=s[1];
+      <P align="left">
+    v[c]:=s2i(Copy(s,3,Length(s)-2));
+      <P align="left">
+    e[c]:=true
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+  Close(input);
+      <P align="left">
+  Assign(output,'EX.OUT');
+      <P align="left">
+  Rewrite(output)
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+
+      <P align="left">
+<B>function </B>nedefinita:Boolean;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  nedefinita:=false;
+      <P align="left">
+  <B>for </B>i:=1 <B>to </B>Length(exp) 
+      <div align="left"><B>do
+</B>
+</div>
+      <P align="left"><B>
+    if </b>(exp[i] <B>in </B>['a'..'e']) 
+      <div align="left"><B>and
+</B>
+</div>
+      <P align="left">(e[exp[i]]=false)
+      <P align="left">
+      <div align="left"><B>then
+</B>
+</div>
+      <P align="left"><B>
+    begin </b>nedefinita:=true; Break <B>end</B>
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+
+      <P align="left">
+<B>function </B>eval:<B>string</B>;
+      <P align="left">
+<B>var </B>vec,i,n,m,k:Integer;
+      <P align="left">
+    sw:Comp;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  i:=1;
+      <P align="left">
+  n:=0; m:=0;
+      <P align="left">
+  o[1]:='+';
+      <P align="left">
+  <B>while </B>i&lt;=Length(exp) <B>do</B>
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    vec:=i;
+      <P align="left">
+    <B>while not </B>(exp[i] <B>in </B>['a'..'e','+','-'])
+      <P align="left">
+         <B>and </B>(i&lt;=Length(exp)) <B>do </B>i:=i+1;
+      <P align="left">
+    <B>if </B>(vec&lt;&gt;i)
+      <P align="left">
+    <B>then</B>
+      <P align="left">
+    <B>begin</B>
+      <P align="left">
+      Inc(n);
+      <P align="left">
+      op[n]:=s2i(Copy(exp,vec,i-vec));
+      <P align="left">
+      <B>if </B>i&lt;=Length(exp)
+      <P align="left">
+      <div align="left"><B>then
+</B>
+</div>
+      <P align="left"><B>
+      if </b>exp[i] <B>in </B>['a'..'e']
+      <P align="left">
+      <B>then </B>o[n+1]:='*'
+      <P align="left">
+      <div align="left"><B>else
+</B>
+</div>
+      <P align="left"><B>
+      begin </b>o[n+1]:=exp[i]; Inc(i) <B>end</B>
+      <P align="left">
+    <B>end;</B>
+      <P align="left">
+    vec:=i;
+      <P align="left">
+    <B>while </B>(exp[i] <B>in </B>['a'..'e']) 
+      <div align="left"><B>and 
+</B>
+</div>
+      <P align="left">i&lt;=Length(exp)) 
+      <div align="left"><b>do
+</b>
+</div>
+      <P align="left"><b>
+    begin
+</b>
+      <P align="left">Inc(n);
+      <P align="left">
+      op[n]:=v[exp[i]];
+      <P align="left">
+      o[n+1]:='*';
+      <P align="left">
+      Inc(i)
+      <P align="left">
+    <B>end</B>;
+      <P align="left">
+    <B>if </B>(vec&lt;&gt;i)
+      <P align="left">
+    <B>then</B>
+      <P align="left">
+    <B>begin</B>
+      <P align="left">
+      <B>if </B>exp[i] <B>in </B>['0'..'9']
+      <P align="left">
+      <B>then </B>o[n+1]:='*'
+      <P align="left">
+      <div align="left"><B>else
+</B>
+</div>
+      <P align="left"> <B>begin </B>o[n+1]:=exp[i]; Inc(i) <B>end</B>
+      <P align="left">
+    <B>end</B>
+      <P align="left">
+  <B>end;</B>
+      <P align="left">
+  o[n+1]:=#0;
+      <P align="left">
+  i:=1;
+      <P align="left">
+  <B>while </B>i&lt;=n <B>do      </B>{ Pasul 1 - Inmultirea }
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    vec:=i;
+      <P align="left">
+    <B>while </B>(o[i+1]='*') <B>and </B>(i&lt;=n) <B>do </B>i:=i+1;
+      <P align="left">
+    <B>if </B>(i&lt;=n)
+      <P align="left">
+    <B>then</B>
+      <P align="left">
+    <B>begin</B>
+      <P align="left">
+      sw:=1;
+      <P align="left">
+      <B>for </B>k:=vec <B>to </B>i 
+      <div align="left"><b>do
+</b>
+</div>
+      <P align="left"><b>
+      begin 
+</b>
+      <P align="left">sw:=sw*op[k];
+      <P align="left">
+        <B>if </B>k&lt;&gt;vec <B>then </B>o[k]:=#0
+      <P align="left">
+      <B>end</B>;
+      <P align="left">
+      op[vec]:=sw
+      <P align="left">
+    <B>end</B>;
+      <P align="left">
+    <B>while </B>(o[i+1]&lt;&gt;'*') <B>and </B>(i&lt;=n) <B>do </B>i:=i+1
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+  s:=0;
+      <P align="left">
+  <B>for </B>i:=1 <B>to </B>n <B>do</B>
+      <P align="left">
+    <B>if </B>o[i]='+'
+      <P align="left">
+    <B>then </B>s:=s+op[i]
+      <P align="left">
+      <div align="left"><B>else
+</B>
+</div>
+      <P align="left"><B>
+      if </b>o[i]='-'
+      <P align="left">
+      <B>then </B>s:=s-op[i];
+      <P align="left">
+    Writeln(s:0:0)
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+<B>Begin</B>
+      <P align="left">
+  citeste;
+      <P align="left">
+  <B>if </B>nedefinita
+      <P align="left">
+  <B>then </B>Writeln('NEDEFINITA')
+      <P align="left">
+  <B>else </B>eval;
+      <P align="left">
+  Close(output)
+      <P align="left">
+<B>End</B>.
+      <P align="left">
+      <div align="left">
+        <h3><B>P059902: Nasturi
+</B>
+</h3>
+      </div>
+      <P ALIGN=left><I>Sabău Florin, clasa a XI-a, Reşiţa</I>
+      <P align="left">
+Problema nu are soluţie pentru următoarele seturi de date:
+      <P align="left">
+-  numărul de nasturi (x) este impar;
+      <P align="left">
+-  numărul de nasturi de extras este cu 2 mai mic decât numărul total de nasturi (n*n);
+      <P align="left">
+-  numărul de nasturi de extras este mai mic decât 4 (=2).
+      <P align="left">
+Dacă nici una dintre condiţii nu este îndeplinită atunci avem soluţie. Dacă numărul x este divizibil cu 4 atunci simpla extragere a unor grupuri de nasturi de câte 4 este suficientă.
+      <P align="left">
+       ..
+      <P align="left">
+       ..
+      <P align="left">
+ Dacă nu, se extrag câte 4 nasturi până când mai rămân 6. Aceştia şase sunt extraşi din colţul din dreapta-jos al matricei în felul următor:
+      <P align="left">
+       o..
+      <P align="left">
+       .o.
+      <P align="left">
+       ..o
+      <P align="left">
+ori, dacă antepenultima linie a matricei este ocupată în întregime, avem:
+      <P align="left">
+    -....
+      <P align="left">
+    -..oo
+      <P align="left">
+    -.oo.
+      <P align="left">
+    -.o.o
+      <P align="left">
+( '.' reprezintă locul de unde se extrag nasturi, iar 'o' nasturi neextraşi).
+      <P align="left">
+
+      <P align="left">
+      <div align="left"><B>Listing: NASTURI.PAS
+</B>
+</div>
+      <P align="left"><B>
+var </b>n,x,i,j:Integer;
+      <P align="left">
+    a:<B>array</B>[1..31,1..31] <B>of </B>Char;
+      <P align="left">
+    gata:Boolean;
+      <P align="left">
+
+      <P align="left">
+<B>procedure </B>citeste;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  Assign(input,'NASTURI.IN'); Reset(input);
+      <P align="left">
+  Readln(n,x); Close(input);
+      <P align="left">
+  Assign(output,'NASTURI.OUT'); Rewrite(output)
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+
+      <P align="left">
+<B>Begin</B>
+      <P align="left">
+  citeste;
+      <P align="left">
+  <B>if </B>(x <B>mod </B>2&lt;&gt;0) <B>or </B>(x&gt;=n*n-2) <B>or </B>(x&lt;4)
+      <P align="left">
+  <B>then </B>Writeln('fara solutie')
+      <P align="left">
+      <div align="left"><B>else
+</B>
+</div>
+      <P align="left">  <B>begin</B>
+      <P align="left">
+    Fillchar(a,Sizeof(a),'o');
+      <P align="left">
+    gata:=false;
+      <P align="left">
+    <B>for </B>i:=1 <B>to </B>n <B>div </B>2 <B>do</B>
+      <P align="left">
+      <B>if not </B>gata
+      <P align="left">
+      <B>then</B>
+      <P align="left">
+        <B>for </B>j:=1 <B>to </B>n <B>div </B>2 <B>do</B>
+      <P align="left">
+        <B>begin</B>
+      <P align="left">
+          <B>if </B>(x=6) <B>or </B>(x=0)
+      <P align="left">
+          
+      <div align="left"><B>then
+</B>
+</div>
+      <P align="left"><B>
+          begin </b>gata:=true; Break <B>end</B>;
+      <P align="left">
+          a[2*i-1,2*j-1]:='.';
+      <P align="left">
+          a[2*i,2*j-1]:='.';
+      <P align="left">
+          a[2*i-1,2*j]:='.';
+      <P align="left">
+          a[2*i,2*j]:='.';
+      <P align="left">
+          Dec(x,4);
+      <P align="left">
+          <B>if </B>(x=6) <B>or </B>(x=0)
+      <P align="left">
+          
+      <div align="left"><B>then
+</B>
+</div>
+      <P align="left"><B>
+          begin </b>gata:=true; Break <B>end</B>
+      <P align="left">
+        <B>end</B>;
+      <P align="left">
+        <B>if </B>x=6 
+      <P align="left">
+        <B>then</B>
+      <P align="left">
+        <B>begin</B>
+      <P align="left">
+          <B>if </B>a[n-3,n]&lt;&gt;'.'
+      <P align="left">
+          <B>then</B>
+      <P align="left">
+          <B>begin</B>
+      <P align="left">
+            a[n-2,n-1]:='.';
+      <P align="left">
+            a[n-2,n]:='.';
+      <P align="left">
+            a[n-1,n]:='.';
+      <P align="left">
+            a[n-1,n-2]:='.';
+      <P align="left">
+            a[n,n-2]:='.';
+      <P align="left">
+            a[n,n-1]:='.'
+      <P align="left">
+          <B>end</B>
+      <P align="left">
+          <B>else</B>
+      <P align="left">
+          <B>begin</B>
+      <P align="left">
+            a[n-2,n-1]:='o';
+      <P align="left">
+            a[n-2,n]:='o';
+      <P align="left">
+            <B>for </B>i:=n-5 <B>to </B>n-3 
+      <div align="left"><b>do
+</b>
+</div>
+      <P align="left"><b>
+            begin
+</b>
+      <P align="left">a[n-1,i]:='.';
+      <P align="left">
+              a[n,i]:='.';
+      <P align="left">
+              a[n-1,n]:='.';
+      <P align="left">
+              a[n,n-1]:='.'
+      <P align="left">
+            <B>end</B>
+      <P align="left">
+          <B>end</B>
+      <P align="left">
+        <B>end</B>;
+      <P align="left">
+        <B>for </B>i:=1 <B>to </B>n <B>do</B>
+      <P align="left">
+        <B>begin</B>
+      <P align="left">
+          <B>for </B>j:=1 <B>to </B>n <B>do</B> Write(a[i,j]);
+      <P align="left">
+          Writeln
+      <P align="left">
+        <B>end</B>
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+  Close(output)
+      <P align="left">
+<B>End</B>.
+      <P align="left">
+      <div align="left">
+        <h3><B>P059904: Furtună în Balcani
+</B>
+</h3>
+      </div>
+      <P ALIGN=left><I>Sabău Florin, clasa a XI-a, Reşiţa</I>
+      <P align="left">
+Pentru această problemă am folosit algoritmul "fill". Pentru început se umple exteriorul "taberelor" cu un alt caracter ('o') pentru a diferenţia exteriorul de interiorul taberelor. Se porneşte din punctul (1,1) deoarece se ştie din problemă că taberele nu ating marginea. Urmează apoi o parcurgere a matricei: când se întâlneşte sârma ghimpată ('X') se umple exteriorul taberei (caracterul 'o') pe direcţiile N, S, V, E cu mine ('M').
+      <P align="left">
+ În final se tipăreşte în fişierul de ieşire matricea.
+      <P align="left">
+
+      <P align="left">
+      <div align="left"><B>Listing: BALCANI.PAS
+</B>
+</div>
+      <P align="left">{$m 65000,0,0}
+      <P align="left">
+<B>var </B>m,n,i,j:Integer;
+      <P align="left">
+    a:<B>array</B>[1..100,1..100] <B>of </B>Char;
+      <P align="left">
+    x,y:Integer;
+      <P align="left">
+    cul1,cul2:Char;
+      <P align="left">
+
+      <P align="left">
+<B>procedure </B>citeste;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  Assign(input,'NATO.IN');
+      <P align="left">
+  Reset(input);
+      <P align="left">
+  Readln(m,n);
+      <P align="left">
+  <B>for </B>i:=1 <B>to </B>m <B>do</B>
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    <B>for </B>j:=1 <B>to </B>n <B>do </B>Read(a[i,j]);
+      <P align="left">
+    Readln
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+  Close(input);
+      <P align="left">
+  Assign(output,'NATO.OUT');
+      <P align="left">
+  Rewrite(output)
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+
+      <P align="left">
+<B>procedure </B>fill;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  <B>if </B>a[x,y]&lt;&gt;cul1 <B>then </B>Exit;
+      <P align="left">
+  a[x,y]:=cul2;
+      <P align="left">
+  Inc(x); fill; Dec(x);
+      <P align="left">
+  Inc(y); fill; Dec(y);
+      <P align="left">
+  Dec(x); fill; Inc(x);
+      <P align="left">
+  Dec(y); fill; Inc(y)
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+
+      <P align="left">
+<B>Begin</B>
+      <P align="left">
+  citeste;
+      <P align="left">
+  x:=1; y:=1; cul1:='.'; cul2:='o';
+      <P align="left">
+  fill;
+      <P align="left">
+  <B>for </B>x:=1 <B>to </B>m <B>do</B>
+      <P align="left">
+    <B>for </B>y:=1 <B>to </B>n <B>do</B>
+      <P align="left">
+    <B>begin</B>
+      <P align="left">
+      <B>if </B>a[x,y]='X'
+      <P align="left">
+      <B>then</B>
+      <P align="left">
+      <B>begin</B>
+      <P align="left">
+        <B>if </B>a[x-1,y]='o' <B>then </B>a[x-1,y]:='M';
+      <P align="left">
+        <B>if </B>a[x,y-1]='o' <B>then </B>a[x,y-1]:='M';
+      <P align="left">
+        <B>if </B>a[x+1,y]='o' <B>then </B>a[x+1,y]:='M';
+      <P align="left">
+        <B>if </B>a[x,y+1]='o' <B>then </B>a[x,y+1]:='M'
+      <P align="left">
+      <B>end</B>
+      <P align="left">
+    <B>end</B>;
+      <P align="left">
+    <B>for </B>x:=1 <B>to </B>m <B>do</B>
+      <P align="left">
+    <B>begin</B>
+      <P align="left">
+      <B>for </B>y:=1 <B>to </B>n <B>do</B>
+      <P align="left">
+        <B>if </B>a[x,y]='o' <B>then </B>Write('.')
+      <P align="left">
+                     <B>else </B>Write(a[x,y]);
+      <P align="left">
+        Writeln
+      <P align="left">
+    <B>end</B>;
+      <P align="left">
+    Close(output)
+      <P align="left">
+<B>End</B>.
+      <P align="left">
+      <div align="left">
+        <h3><B>P059905: Semne
+</B>
+</h3>
+      </div>
+      <P ALIGN=left><I>Sabău Florin, clasa a XI-a, Reşiţa</I>
+      <P align="left">
+Nu se poate obţine o expresie în cazul în care n este mai mic decât 3. Pentru nł3 se observă că folosind succesiunea ++--++--... pentru un număr de forma 4k+3 se obţine 0. Pentru un număr de forma 4k+1, folosind aceeaşi succesiune de operatori, am obţine 1, deci trebuie să micşorăm expresia cu o unitate. De aceea vom substitui începutul expresiei +1+2 (=3) cu +1*2 (=2), în rest aceasta rămâne neschimbată. Pentru 4k vom folosi înşiruirea:
+      <P align="left">
+  +-+-...+--+...-+-+ 
+      <P align="left">
+în care primul şi ultimul termen sunt anulaţi de al doilea şi penultimul etc. Pentru 4k+2 vom porni de la aceeaşi înşiruire de operatori ca şi la 4k. Aici avem 2 termeni în plus, a căror diferenţă este de 1 (sau -1). Dacă pentru aceşti ultimi termeni se foloseşte -+, atunci trebuie să anulăm acest 1 la începutul expresiei. Înlocuim deci +1-2 (=-1) cu -1*2 (=-2).
+      <P align="left">
+
+      <P align="left">
+      <div align="left"><B>Listing: SEMNE.PAS
+</B>
+</div>
+      <P align="left"><B>
+const </b>semn:<B>array</B>[0..1] <B>of </B>Char=('+','-');
+      <P align="left">
+<B>var </B>n:Longint;
+      <P align="left">
+
+      <P align="left">
+<B>procedure </B>citeste;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  Assign(input,'ZERO.IN'); Reset(input);
+      <P align="left">
+  Readln(n); Close(input)
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+
+      <P align="left">
+<B>function </B>neg(x:Byte):Byte; 
+      <P align="left">
+<B>begin </B>x:=(x+1) <B>mod </B>2; neg:=x <B>end</B>;
+      <P align="left">
+
+      <P align="left">
+<B>procedure </B>rezolva;
+      <P align="left">
+<B>var </B>i:Longint;
+      <P align="left">
+    sem:0..1;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  <B>case </B>(n <B>mod </B>4) <B>of</B>
+      <P align="left">
+  1: <B>begin</B>
+      <P align="left">
+       Write('+*'); i:=3; sem:=1;
+      <P align="left">
+       <B>while </B>i&lt;n 
+      <div align="left"><b>do 
+</b>
+</div>
+      <P align="left"><b>
+       begin 
+</b>
+      <P align="left">Write(semn[sem],semn[sem]);
+      <P align="left">
+         i:=i+2; sem:=neg(sem)
+      <P align="left">
+       <B>end</B>;
+      <P align="left">
+       Writeln(semn[sem])
+      <P align="left">
+     <B>end</B>;
+      <P align="left">
+  2: <B>begin</B>
+      <P align="left">
+       Write('-*');
+      <P align="left">
+       sem:=0;
+      <P align="left">
+       <B>for </B>i:=3 <B>to </B>(n-2) <B>div </B>2 
+      <div align="left"><B>do 
+</B>
+</div>
+      <P align="left"><B>
+       begin </b>Write(semn[sem]);
+      <P align="left">
+             sem:=neg(sem)
+      <P align="left">
+       <B>end</B>;
+      <P align="left">
+       sem:=neg(sem);
+      <P align="left">
+       <B>for </B>i:=1 <B>to </B>(n-2) <B>div </B>2 
+      <div align="left"><B>do 
+</B>
+</div>
+      <P align="left"><B>
+       begin </b>Write(semn[sem]);
+      <P align="left">
+             sem:=neg(sem)
+      <P align="left">
+       <B>end</B>;
+      <P align="left">
+       Writeln('-+')
+      <P align="left">
+     <B>end</B>;
+      <P align="left">
+  3: <B>begin</B>
+      <P align="left">
+       <B>for </B>i:=1 <B>to </B>n <B>div </B>4 <B>do </B>Write('++--'); 
+      <P align="left">
+       Writeln('++-')
+      <P align="left">
+     <B>end</B>;
+      <P align="left">
+  0: <B>begin</B>
+      <P align="left">
+       <B>for </B>i:=1 <B>to </B>n <B>div </B>4 <B>do </B>Write('+-');
+      <P align="left">
+       <B>for </B>i:=1 <B>to </B>n <B>div </B>4 <B>do </B>Write('-+')
+      <P align="left">
+     <B>end</B>
+      <P align="left">
+  <B>end</B>
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+
+      <P align="left">
+<B>Begin</B>
+      <P align="left">
+  citeste;
+      <P align="left">
+  n:=12;
+      <P align="left">
+  <B>if </B>n&lt;3 <B>then </B>Writeln('NU') <B>else </B>rezolva;
+      <P align="left">
+  Close(output)
+      <P align="left">
+<B>End</B>.
+      <P align="left">
+      <div align="left">
+        <h3><B>P059907: Vile
+</B>
+</h3>
+      </div>
+      <P ALIGN=left><I>Andrei Vancea, student Universitatea Tehnică, Cluj</I>
+      <P align="left">
+Problema este rezolvată folosind metoda Branch&amp;Bound. Pentru fiecare configuraţie se reţine camera curentă şi starea becurilor din cele n camere. Având în vedere faptul că numărul de camere este mai mic decât 16 starea becurilor se poate reţine într-un word (un bit pentru fiecare bec). Dintr-o configuraţie se poate trece în alta prin trecerea în altă cameră sau schimbarea stării unui bec conform condiţiilor din enunţ. În tabloul ajuns sunt marcate configuraţiile care s-au expandat pentru a nu se mai expanda încă o dată.
+      <P align="left">
+ Existenţa unui număr mic de configuraţii (11*2^11) garantează găsirea soluţiei într-un timp rezonabil.
+      <P align="left">
+
+      <P align="left">
+      <div align="left"><B>Listing: VILE.PAS
+</B>
+</div>
+      <P align="left">{$M 65384,0,655360}
+      <P align="left">
+<B>program </B>vile;
+      <P align="left">
+<B>type </B>plista=^lista;
+      <P align="left">
+     lista=<B>record</B>
+      <P align="left">
+            camera:Byte;
+      <P align="left">
+            becuri,nrmut:Word;
+      <P align="left">
+            urm,pred:plista;
+      <P align="left">
+          <B>end</B>;
+      <P align="left">
+      <P align="left">
+<B>
+var </b>n,i,c:Byte;
+      <P align="left">
+    nr,nr1,nr2:<B>array</B>[1..11] <B>of </B>Byte;
+      <P align="left">
+    vec,ap,st:<B>array</B>[1..11,1..11] <B>of </B>Byte;
+      <P align="left">
+    ajuns:<B>array</B>[1..11,1..1 <B>shl </B>11] <B>of </B>Boolean;
+      <P align="left">
+    l,k:Word;
+      <P align="left">
+    prim,ultim,cr,p:plista;
+      <P align="left">
+    gasitsolutie:Boolean;
+      <P align="left">
+
+      <P align="left">
+<B>procedure </B>Citire;
+      <P align="left">
+<B>var </B>f:Text;
+      <P align="left">
+    i,j:Byte;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  Assign(f,'VILA.IN'); Reset(f);
+      <P align="left">
+  Readln(f,n);
+      <P align="left">
+  <B>for </B>i:=1 <B>to </B>n <B>do</B>
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    Read(f,nr[i]);
+      <P align="left">
+    <B>for </B>j:=1 <B>to </B>nr[i] <B>do </B>Read(f,vec[i,j])
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+  <B>for </B>i:=1 <B>to </B>n <B>do</B>
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    Read(f,nr1[i]);
+      <P align="left">
+    <B>for </B>j:=1 <B>to </B>nr1[i] <B>do </B>Read(f,ap[i,j])
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+  <B>for </B>i:=1 <B>to </B>n <B>do</B>
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    Read(f,nr2[i]);
+      <P align="left">
+    <B>for </B>j:=1 <B>to </B>nr2[i] <B>do </B>Read(f,st[i,j])
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+  Close(f)
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+
+      <P align="left">
+<B>procedure </B>scriere;
+      <P align="left">
+<B>var </B>f:Text;
+      <P align="left">
+    i:Byte;
+      <P align="left">
+  <B>procedure </B>Mutari(p:plista);
+      <P align="left">
+  <B>var </B>i:Byte;
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    <B>if </B>p=prim <B>then </B>Exit;
+      <P align="left">
+    Mutari(p^.pred);
+      <P align="left">
+    <B>if </B>p^.camera&lt;&gt;p^.pred^.camera
+      <P align="left">
+    <B>then </B>Writeln(f,'m',p^.camera)
+      <P align="left">
+    <B>else</B>
+      <P align="left">
+      <B>for </B>i:=0 <B>to </B>n-1 <B>do</B>
+      <P align="left">
+        <B>if </B>(p^.becuri <B>and </B>(1 <B>shl </B>i)=0) <B>and</B>
+      <P align="left">
+           (p^.pred^.becuri <B>and </B>(1 <B>shl </B>i)&lt;&gt;0)
+      <P align="left">
+        
+      <div align="left"><B>then
+</B>
+</div>
+      <P align="left"> <B>begin</B> Writeln(f,'s',i+1); Break <B>end</B>
+      <P align="left">
+        <B>else</B>
+      <P align="left">
+          <B>if </B>(p^.becuri <B>and </B>(1 <B>shl </B>i)&lt;&gt;0) <B>and</B>
+      <P align="left">
+             (p^.pred^.becuri <B>and </B>(1 <B>shl </B>i)=0)
+      <P align="left">
+          
+      <div align="left"><B>then
+</B>
+</div>
+      <P align="left">&nbsp; 
+      <div align="left"><B>begin
+</B>
+</div>
+      <P align="left"> Writeln(f,'a',i+1); Break
+      <P align="left">
+          <B>end</B>
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  Assign(f,'VILA.OUT'); Rewrite(f);
+      <P align="left">
+  <B>if </B>cr=
+      <div align="left"><B>nil
+</B>
+</div>
+      <P align="left"><B>
+  then </b>Writeln(f,'Nu exista solutie')
+      <P align="left">
+  <B>else</B>
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    Writeln(f,cr^.nrmut);
+      <P align="left">
+    Mutari(cr)
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+  Close(f)
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+
+      <P align="left">
+<B>Begin</B>
+      <P align="left">
+  Citire;
+      <P align="left">
+  Fillchar(ajuns,Sizeof(ajuns),0); 
+      <P align="left">
+  ajuns[1,1]:=true;
+      <P align="left">
+  l:=1;
+      <P align="left">
+  new(prim);
+      <P align="left">
+  prim^.camera:=1; prim^.becuri:=1;
+      <P align="left">
+  prim^.nrmut:=0; prim^.urm:=<B>nil</B>;
+      <P align="left">
+  prim^.pred:=<B>nil</B>; ultim:=prim;
+      <P align="left">
+  cr:=prim; gasitsolutie:=false;
+      <P align="left">
+  <B>while </B>cr&lt;&gt;<B>nil do</B>
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    c:=cr^.camera;
+      <P align="left">
+    <B>for </B>i:=1 <B>to </B>nr[c] <B>do</B>
+      <P align="left">
+      <B>if </B>(cr^.becuri 
+      <div align="left"><B>and
+</B>
+</div>
+      <P align="left">(1 <B>shl </B>(vec[c,i]-1))&lt;&gt;0) <B>and</B>
+      <P align="left">
+         (<B>not </B>ajuns[vec[c,i],cr^.becuri])
+      <P align="left">
+      <B>then</B>
+      <P align="left">
+      <B>begin</B>
+      <P align="left">
+        ajuns[vec[c,i],cr^.becuri]:=true;
+      <P align="left">
+        New(p);
+      <P align="left">
+        p^.urm:=<B>nil</B>;
+      <P align="left">
+        p^.pred:=cr;
+      <P align="left">
+        p^.camera:=vec[c, i];
+      <P align="left">
+        p^.becuri:=cr^.becuri;
+      <P align="left">
+        ultim^.urm:=p;
+      <P align="left">
+        ultim:=p;
+      <P align="left">
+        p^.nrmut:=cr^.nrmut+1;
+      <P align="left">
+        <B>if </B>(vec[c,i]=n) 
+      <div align="left"><B>and
+</B>
+</div>
+      <P align="left">(p^.becuri=1 <B>shl </B>(n-1))
+      <P align="left">
+        <B>then</B>
+      <P align="left">
+          <B>begin</B>
+      <P align="left">
+            cr:=p;
+      <P align="left">
+            gasitsolutie:=true;
+      <P align="left">
+            Break
+      <P align="left">
+          <B>end</B>
+      <P align="left">
+      <B>end</B>;
+      <P align="left">
+      <B>if </B>gasitsolutie <B>then </B>Break;
+      <P align="left">
+      <B>for </B>i:=1 <B>to </B>nr1[c] <B>do</B>
+      <P align="left">
+      <B>if </B>(cr^.becuri 
+      <div align="left"><B>and
+</B>
+</div>
+      <P align="left">(1 <B>shl </B>(ap[c,i]-1))=0) <B>and</B>
+      <P align="left">
+         (<B>not </B>ajuns[c, cr^.becuri+
+      <P align="left">
+         (1 <B>shl </B>(ap[c,i]-1))])
+      <P align="left">
+
+      <P align="left">
+      <B>then</B>
+      <P align="left">
+      <B>begin</B>
+      <P align="left">
+      ajuns[c, cr^.becuri+
+      <P ALIGN=left>
+          (1 <B>shl </B>(ap[c,i]-1))]:=true;
+      <P align="left">
+      New(p); p^.urm:=<B>nil</B>;
+      <P align="left">
+      p^.pred:=cr;
+      <P align="left">
+      p^.camera:=cr^.camera;
+      <P align="left">
+      p^.becuri:=cr^.becuri+
+      <P ALIGN=left>
+          (1 <B>shl </B>(ap[c,i]-1));
+      <P align="left">
+      p^.nrmut:=cr^.nrmut+1;
+      <P align="left">
+      ultim^.urm:=p; ultim:=p
+      <P align="left">
+    <B>end</B>;
+      <P align="left">
+<B>    for </B>i:=1 <B>to </B>nr2[c] <B>do</B>
+      <P align="left">
+      <B>if </B>(cr^.becuri 
+      <div align="left"><B>and 
+</B>
+</div>
+      <P align="left">(1 <B>shl </B>(st[c,i]-1))&lt;&gt;0) <B>and</B>
+      <P align="left">
+         (<B>not </B>ajuns[c, cr^.becuri-
+      <P align="left">
+         (1 <B>shl </B>(st[c,i]-1))])
+      <P align="left">
+      <B>then</B>
+      <P align="left">
+      <B>begin</B>
+      <P align="left">
+        ajuns[c, cr^.becuri-
+      <P align="left">
+                     (1 <B>shl </B>(st[c,i]-1))]:=true;
+      <P align="left">
+        New(p); p^.urm:=<B>nil</B>; p^.pred:=cr;
+      <P align="left">
+        p^.camera:=cr^.camera;
+      <P align="left">
+        p^.becuri:=cr^.becuri-
+      <P align="left">
+                        (1 <B>shl </B>(st[c,i]-1));
+      <P align="left">
+        p^.nrmut:=cr^.nrmut+1;
+      <P align="left">
+        ultim^.urm:=p; ultim:=p;
+      <P align="left">
+        <B>if </B>(c=n)<B>and</B>(p^.becuri=1 <B>shl </B>(n-1))
+      <P align="left">
+        <B>then</B>
+      <P align="left">
+        <B>begin</B>
+      <P align="left">
+          cr:=p; gasitsolutie:=true;
+      <P align="left">
+          Break
+      <P align="left">
+        <B>end</B>
+      <P align="left">
+      <B>end</B>;
+      <P align="left">
+    <B>if </B>gasitsolutie <B>then </B>Break;
+      <P align="left">
+    cr:=cr^.urm
+      <P align="left">
+  <B>end</B>
+      <P align="left">
+<B>End</B>.
+      <P align="left">
+      <div align="left">
+        <h3><B>P059915: Peisaje
+</B>
+</h3>
+      </div>
+      <P ALIGN=left><I>Andrei Vancea, student Universitatea Tehnică, Cluj</I>
+      <P align="left">
+Problema este rezolvată prin programare dinamică.
+      <P align="left">
+ Se definesc:
+      <P align="left">
+- a[i,j,1] - numărul de posibilităţi ca după trasarea a i caractere să se ajungă la înălţimea j şi, în plus, condiţia din enunţ să fie îndeplinită (adică există cel puţin un munte cu înălţimea mai mare sau egală cu k);
+      <P align="left">
+- a[i,j,0] - numărul de posibilităţi ca după trasarea a i caractere să se ajungă la înălţimea j şi condiţia din enunţ să nu fie îndeplinită.
+      <P align="left">
+Soluţia problemei va fi a[2*n,0,1]. Valorile tabloului a se vor calcula în următorul mod:
+      <P align="left">
+<B>dacă</B>  k=1
+      <P align="left">
+<B>atunci</B><I> </I>a[1,1,1]=1
+      <P align="left">
+<B>altfel</B><I>  </I>a[1,1,1]=0
+      <P align="left">
+a[1,1,0]=1-a[1,1,1];
+      <P align="left">
+<B>dacă</B><I> </I>j=k
+      <P align="left">
+<B>atunci</B><I> </I>a[i,j,1]=a[i-1,j-1,0]+a[i-1,j-1,1]+
+      <P ALIGN=left>
++a[i-1,j+1,1]
+      <P align="left">
+      a[i,j,0]=0
+      <P align="left">
+<B>dacă</B> j&lt;&gt;k
+      <P align="left">
+<B>atunci</B> a[i,j,1]=a[i-1,j-1,1]+a[i-1,j+1,1];
+      <P align="left">
+      a[i,j,0]=a[i-1,j-1,0]+a[i-1,j+1,0];
+      <P align="left">
+
+      <P align="left">
+      <div align="left"><B>Listing: PEISAJE.PAS
+</B>
+</div>
+      <P align="left">{$M 16384,0,655360}
+      <P align="left">
+<B>program </B>peisaje;
+      <P align="left">
+<B>var </B>a:<B>array</B>[-1..62,-1..31,0..1] <B>of </B>Comp;
+      <P align="left">
+    f:Text;
+      <P align="left">
+    n,k,i,j:Byte;
+      <P align="left">
+<B>Begin</B>
+      <P align="left">
+  Assign(f,'PEISAJ.IN'); Reset(f); 
+      <P align="left">
+  Readln(f,n,k);
+      <P align="left">
+  Close(f); Fillchar(a,Sizeof(a),0);
+      <P align="left">
+  <B>if </B>k=1 
+      <P align="left">
+  <B>then </B>a[1,1,1]:=1
+      <P align="left">
+  <B>else </B>a[1,1,0]:=1;
+      <P align="left">
+  <B>for </B>i:=2 <B>to </B>2*n <B>do</B>
+      <P align="left">
+    <B>for </B>j:=0 <B>to </B>n <B>do</B>
+      <P align="left">
+    <B>begin</B>
+      <P align="left">
+      <B>if </B>j=k 
+      <P align="left">
+      <B>then </B>a[i,j,1]:=a[i-1,j-1,0]+
+      <P align="left">
+                      a[i-1,j-1,1]+a[i-1,j+1,1]
+      <P align="left">
+      <B>else</B>
+      <P align="left">
+      <B>begin</B>
+      <P align="left">
+        a[i,j,1]:=a[i-1,j-1,1]+a[i-1,j+1,1];
+      <P align="left">
+        a[i,j,0]:=a[i-1,j-1,0]+a[i-1,j+1,0]
+      <P align="left">
+      <B>end</B>
+      <P align="left">
+    <B>end</B>;
+      <P align="left">
+  Assign(f,'PEISAJ.OUT'); Rewrite(f);
+      <P align="left">
+  Writeln(f,a[2*n,0,1]:0:0);
+      <P align="left">
+  Close(f)
+      <P align="left">
+<B>End</B>.
+      <P align="left">
+      <div align="left">
+        <h3><B>P59923: Un dreptunghi
+</B>
+</h3>
+      </div>
+      <P ALIGN=left><I>Andrei Vancea, student Universitatea Tehnică, Cluj</I>
+      <P align="left">
+Pentru fiecare linie se contorizează numărul de bile aruncate despre care suntem informaţi că s-au întors şi cele despre care ni se spune că nu s-au întors, apoi calculăm diferenţa acestora. Această diferenţă se va reţine în şirul a. Problema se reduce la determinarea unei subsecvenţe de sumă maximă din şirul a. Din extremităţile acelei subsecvenţe se calculează valorile L şi H. Dacă suma maximală calculată este negativă atunci H va fi 0. Acelaşi algoritm se aplică şi pentru coloane, calculându-se C şi W.
+      <P align="left">
+
+      <P align="left">
+      <div align="left"><B>Listing: DREPTUNGHI.PAS
+</B>
+</div>
+      <P align="left"><B>
+program </b>dreptunghi;
+      <P align="left">
+<B>type </B>sir=<B>array</B>[1..20000] <B>of </B>Integer;
+      <P align="left">
+<B>var </B>l,c,h,w,m,n,q,r,i,k,b:Word;
+      <P align="left">
+    a,s,pred:^sir;
+      <P align="left">
+    f:Text;
+      <P align="left">
+<B>Begin</B>
+      <P align="left">
+  New(a);
+      <P align="left">
+  Fillchar(a^,Sizeof(a^),0);
+      <P align="left">
+  New(s);
+      <P align="left">
+  Fillchar(s^,Sizeof(s^),0);
+      <P align="left">
+  New(pred);
+      <P align="left">
+  Fillchar(pred^,Sizeof(pred^),0);
+      <P align="left">
+  Assign(f,'DREPT.IN'); Reset(f);
+      <P align="left">
+  Readln(f,m,n); Readln(f,q);
+      <P align="left">
+  <B>for </B>i:=1 <B>to </B>q <B>do</B>
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    Readln(f,k,b);
+      <P align="left">
+    <B>if </B>b=0 <B>then </B>Dec(a^[k])
+      <P align="left">
+           <B>else </B>Inc(a^[k])
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+  s^[1]:=a^[1];
+      <P align="left">
+  pred^[1]:=1;
+      <P align="left">
+  <B>for </B>i:=2 <B>to </B>m <B>do</B>
+      <P align="left">
+    <B>if </B>s^[i-1]&gt;=0
+      <P align="left">
+    <B>then</B>
+      <P align="left">
+      <div align="left"><B>begin
+</B>
+</div>
+      <P align="left"> s^[i]:=s^[i-1]+a^[i];
+      <P align="left">
+      pred^[i]:=pred^[i-1]
+      <P align="left">
+    <B>end</B>
+      <P align="left">
+      <div align="left"><b>else
+</b>
+</div>
+      <P align="left"><b>
+    begin
+</b>
+      <P align="left">s^[i]:=a^[i];
+      <P align="left">
+      pred^[i]:=i
+      <P align="left">
+    <B>end</B>;
+      <P align="left">
+  b:=1;
+      <P align="left">
+  <B>for </B>i:=2 <B>to </B>m <B>do</B>
+      <P align="left">
+  <B>if </B>(s^[b]&lt;s^[i]) <B>or </B>((s^[b]=s^[i]) 
+      <div align="left"><B>and
+</B>
+</div>
+      <P align="left">(b-pred^[b]&lt;i-pred^[i]))
+      <P align="left">
+  <B>then </B>b:=i;
+      <P align="left">
+  l:=pred^[b];
+      <P align="left">
+  <B>if </B>s^[b]&gt;=0 <B>then </B>h:=b-pred^[b]+1
+      <P align="left">
+             <B>else </B>h:=0; 
+      <P align="left">
+  Fillchar(a^,Sizeof(a^),0);
+      <P align="left">
+  Fillchar(s^,Sizeof(s^),0);
+      <P align="left">
+  Fillchar(pred^,Sizeof(pred^),0);
+      <P align="left">
+  Readln(f,r);
+      <P align="left">
+  <B>for </B>i:=1 <B>to </B>r <B>do</B>
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    Readln(f,k,b);
+      <P align="left">
+    <B>if </B>b=0 <B>then </B>Dec(a^[k])
+      <P align="left">
+           <B>else </B>Inc(a^[k])
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+  s^[1]:=a^[1];
+      <P align="left">
+  pred^[1]:=1;
+      <P align="left">
+  <B>for </B>i:=2 <B>to </B>m <B>do</B>
+      <P align="left">
+    <B>if </B>s^[i-1]&gt;=0
+      <P align="left">
+      <div align="left"><B>then
+</B>
+</div>
+      <P align="left">&nbsp; 
+      <div align="left"><B>begin
+</B>
+</div>
+      <P align="left">   s^[i]:=s^[i-1]+a^[i];
+      <P align="left">
+      pred^[i]:=pred^[i-1]
+      <P align="left">
+    <B>end</B>
+      <P align="left">
+      <div align="left"><B>else
+</B>
+</div>
+      <P align="left"><B>
+    begin </b>s^[i]:=a^[i]; pred^[i]:=i <B>end</B>;
+      <P align="left">
+  b:=1;
+      <P align="left">
+  <B>for </B>i:=2 <B>to </B>m <B>do</B>
+      <P align="left">
+    <B>if </B>(s^[b]&lt;s^[i]) <B>or</B> ((s^[b]=s^[i]) 
+      <div align="left"><B>and 
+</B>
+</div>
+      <P align="left">(b-pred^[b]&lt;i-pred^[i]))
+      <P align="left">
+    <B>then </B>b:=i;
+      <P align="left">
+  c:=pred^[b];
+      <P align="left">
+  <B>if </B>s^[b]&gt;=0 <B>then </B>w:=b-pred^[b]+1
+      <P align="left">
+             <B>else </B>w:=0;
+      <P align="left">
+  Close(f);
+      <P align="left">
+  Assign(f,'DREPT.OUT'); Rewrite(f);
+      <P align="left">
+  Writeln(f,l,' ', c,' ',h,' ',w);
+      <P align="left">
+  Close(f)
+      <P align="left">
+<B>End</B>.
+      <P align="left">
+
+      <P align="left">
+      <div align="left">
+        <h3><B>P059924: Submulţimi
+</B>
+</h3>
+      </div>
+      <P ALIGN=left><I>Andrei Vancea, student Universitatea Tehnică, Cluj</I>
+      <P align="left">
+Se traversează şirul şi se marchează în tabloul a sumele ce se pot obţine din submulţimi ale şirului cu elemente având indicele mai mic sau egal decât indicele elementului curent. Pentru fiecare sumă astfel marcată se reţine elementul cu indice maxim al unei submulţimi având acea sumă. Dacă suma ce trebuie marcată a fost marcată înainte de a se ajunge la elementul curent înseamnă că s-a găsit o soluţie şi se afişează. Deoarece tabloul a are dimensiunea de 400000 de octeţi (nu încape într-un segment de memorie) se reprezintă ca un şir de pointeri. Se observă că algoritmul funcţionează mai rapid dacă şirul este ordonat crescător. De aceea se ordonează înainte.
+      <P align="left">
+
+      <P align="left">
+      <div align="left"><B>Listing: SUBM.PAS
+</B>
+</div>
+      <P align="left"><B>
+program </b>submultimi;
+      <P align="left">
+<B>type </B>sir = <B>array</B>[0..49999] <B>of </B>Byte;
+      <P align="left">
+<B>var </B>a:<B>array</B>[1..30] <B>of </B>Longint;
+      <P align="left">
+    s:<B>array</B>[0..7] <B>of </B>^sir;
+      <P align="left">
+    l1,l2,m,i:Byte;
+      <P align="left">
+    j,max,maxx,k,suma:Longint;
+      <P align="left">
+    sol1,sol2:<B>array</B>[1..30] <B>of </B>Byte;
+      <P align="left">
+
+      <P align="left">
+<B>procedure </B>citire;
+      <P align="left">
+<B>var </B>f:Text;
+      <P align="left">
+    i:Byte;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  Assign(f,'SUB.IN'); Reset(f);
+      <P align="left">
+  Readln(f,m);
+      <P align="left">
+  suma:=0;
+      <P align="left">
+  <B>for </B>i:=1 <B>to </B>m <B>do</B>
+      <P align="left">
+      <div align="left"><B>begin
+</B>
+</div>
+      <P align="left">Read(f,a[i]);
+      <P align="left">
+    Inc(suma,a[i]) 
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+  Close(f)
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+      <P align="left">
+<B>
+procedure </b>scriere;
+      <P align="left">
+<B>var </B>f:Text;
+      <P align="left">
+    i:Byte;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  Assign(f,'SUB.OUT'); Rewrite(f);
+      <P align="left">
+  Writeln(f,l1);
+      <P align="left">
+  <B>for </B>i:=1 <B>to </B>m <B>do</B>
+      <P align="left">
+    <B>if </B>sol1[i]=1 <B>then </B>Write(f,a[i], ' ');
+      <P align="left">
+  Writeln(f);
+      <P align="left">
+  Writeln(f,l2);
+      <P align="left">
+  <B>for </B>i:=1 <B>to </B>m <B>do</B>
+      <P align="left">
+    <B>if </B>sol2[i]=1 <B>then </B>Write(f,a[i],' ');
+      <P align="left">
+  Writeln(f);
+      <P align="left">
+  Close(f);
+      <P align="left">
+  Halt
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+
+      <P align="left">
+<B>procedure </B>scrienu;
+      <P align="left">
+<B>var </B>f:Text;
+      <P align="left">
+<B>begin</B>
+      <P align="left">
+  Assign(f,'SUB.OUT'); Rewrite(f);
+      <P align="left">
+  Writeln(f,'NU');
+      <P align="left">
+  Close(f);
+      <P align="left">
+  Halt
+      <P align="left">
+<B>end</B>;
+      <P align="left">
+
+      <P align="left">
+<B>Begin</B>
+      <P align="left">
+  Citire;
+      <P align="left">
+  <B>for </B>i:=0 <B>to </B>7 <B>do</B>
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    New(s[i]);
+      <P align="left">
+    Fillchar(s[i]^,Sizeof(s[i]^),0)
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+  s[0]^[0]:=31;
+      <P align="left">
+  max:=0;
+      <P align="left">
+  <B>for </B>i:=1 <B>to </B>m-1 <B>do</B>
+      <P align="left">
+    <B>for </B>j:=i+1 <B>to </B>m <B>do</B>
+      <P align="left">
+      <B>if </B>a[i]&gt;a[j]
+      <P align="left">
+      <B>then</B>
+      <P align="left">
+      <B>begin</B>
+      <P align="left">
+        a[i]:=a[i] <B>xor </B>a[j];
+      <P align="left">
+        a[j]:=a[i] <B>xor </B>a[j];
+      <P align="left">
+        a[i]:=a[i] <B>xor </B>a[j]
+      <P align="left">
+      <B>end</B>;
+      <P align="left">
+  <B>for </B>i:=1 <B>to </B>m <B>do</B>
+      <P align="left">
+  <B>begin</B>
+      <P align="left">
+    Writeln(i);
+      <P align="left">
+    maxx:=max;
+      <P align="left">
+    <B>for </B>j:=0 <B>to </B>max <B>do</B>
+      <P align="left">
+      <B>if </B>(s[j <B>div </B>50000]^[j <B>mod </B>50000]&lt;&gt;0) <B>and</B>
+      <P align="left">
+        (s[j <B>div </B>50000]^[j <B>mod </B>50000]&lt;&gt;i)
+      <P align="left">
+      <B>then</B>
+      <P align="left">
+      <B>begin</B>
+      <P align="left">
+        <B>if </B>s[(j+a[i]) <B>div </B>50000]^[(j+a[i])
+      <P ALIGN=left>
+             <B>mod </B>50000]=0
+      <P align="left">
+        <B>then</B>
+      <P align="left">
+        <B>begin</B>
+      <P align="left">
+          s[(j+a[i]) <B>div </B>50000]^[(j+a[i]) 
+      <P ALIGN=left>
+              <B>mod </B>50000]:=i;
+      <P align="left">
+          <B>if </B>(j+a[i]&gt;maxx)
+      <P align="left">
+          <B>then </B>maxx:=j+a[i];
+      <P align="left">
+        <B>end</B>
+      <P align="left">
+        <B>else</B>
+      <P align="left">
+        <B>begin</B>
+      <P align="left">
+          Fillchar(sol1,Sizeof(sol1),0);
+      <P align="left">
+          Fillchar(sol2,Sizeof(sol2),0);
+      <P align="left">
+          l1:=0;
+      <P align="left">
+          l2:=0;
+      <P align="left">
+          k:=j;
+      <P align="left">
+          sol1[i]:= 1;
+      <P align="left">
+          <B>while </B>k&lt;&gt;0 <B>do</B>
+      <P align="left">
+          <B>begin</B>
+      <P align="left">
+            sol1[s[k <B>div </B>50000]^
+      <P ALIGN=left>
+[k <B>mod </B>50000]]:=1;
+      <P align="left">
+            Dec(k,a[s[k <B>div </B>50000]^
+      <P ALIGN=left>
+[k <B>mod </B>50000]])
+      <P align="left">
+            <B>end</B>;
+      <P align="left">
+            k:=j+a[i];
+      <P align="left">
+            <B>while </B>k&lt;&gt;0 <B>do</B>
+      <P align="left">
+            <B>begin</B>
+      <P align="left">
+              sol2[s[k <B>div </B>50000]^
+      <P ALIGN=left>
+[k <B>mod </B>50000]]:=1;
+      <P align="left">
+              Dec(k,a[s[k <B>div </B>50000]^
+      <P ALIGN=left>
+   [k <B>mod </B>50000]])
+      <P align="left">
+            <B>end</B>;
+      <P align="left">
+            <B>for </B>k:=1 <B>to </B>m <B>do</B>
+      <P align="left">
+              <B>if </B>(sol1[k]=1) <B>and </B>(sol2[k]=1)
+      <P align="left">
+              <B>then</B>
+      <P align="left">
+              <B>begin</B>
+      <P align="left">
+                sol1[k]:=0;
+      <P align="left">
+                sol2[k]:=0
+      <P align="left">
+              <B>end</B>
+      <P align="left">
+              
+      <div align="left"><B>else
+</B>
+</div>
+      <P align="left"><B>
+                if </b>sol1[k]=1
+      <P align="left">
+                <B>then </B>Inc(l1)
+      <P align="left">
+                
+      <div align="left"><B>else
+</B>
+</div>
+      <P align="left"><B>
+                  if </b>sol2[k]=1
+      <P align="left">
+                  <B>then </B>Inc(l2);
+      <P align="left">
+              scriere
+      <P align="left">
+            <B>end</B>
+      <P align="left">
+        <B>end</B>;
+      <P align="left">
+    max:=maxx;
+      <P align="left">
+    <B>if </B>max&gt;suma <B>div </B>2
+      <P align="left">
+    <B>then </B>max:=suma <B>div </B>2;
+      <P align="left">
+  <B>end</B>;
+      <P align="left">
+  scrienu
+      <P align="left">
+<B>End</B>.
+      <P align="left">
+      <!-- #EndEditable -->
+      <p align="center"><font color="#000000">[</font><a href="/9_6">cuprins</a><font color="#000000">]</font></p>
+      <p align="center"><font color="#000000"><a href="/"><img src="../logo.gif" width="51"height="51" border="0"></a></font>
+            
+          </p>
+    </td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate -->
+</html>

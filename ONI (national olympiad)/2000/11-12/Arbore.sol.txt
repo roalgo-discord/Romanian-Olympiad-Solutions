@@ -1,0 +1,25 @@
+
+
+
+
+		ARBORE - SOLUTIE
+	       ------------------
+
+	Pentru fiecare nod, se tine un vector de la 1 la 1000,
+V[i,p] (1<=p<=1000) = TRUE, daca se poate obtine suma p folosind
+	valoarea nodului i, si unele dintre valorile din subarborele
+	determinat de nodul i.
+
+	Pentru frunze, V[i,Val[i]]= TRUE, restul fiind FALSE.
+
+	Pentru a mari viteza de cautare, se va tine si o lista cu toate
+sumele obtinute, fiecare din ele fiind marcate in tabel (pt.a nu in-
+troduce in lista de 2 ori aceeasi suma).
+
+Pentru fiecare J dintre fiii lui i
+	Pentru Cj de la 1 la Numarul de elemente din lista lui J
+	Pentru Ci de la 1 la Numarul de elemente din lista lui I,
+	Daca (List[j,Cj]+List[i,Ci] nu a fost marcat in tabelul lui
+	I) se marcheaza si se adauga la sfarsitul listei lui I (dar
+nu se actualizeaza inca numarul de elemente ale lui I).
+- actulaizeaza numarul de elemente ale listei lui I. 

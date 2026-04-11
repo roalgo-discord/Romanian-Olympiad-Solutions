@@ -1,0 +1,11 @@
+
+
+
+
+		JOC - SOLUTIE
+	       ---------------
+
+	Se sorteaza punctele dupa X, si in caz de egalitate, dupa Y. Apoi
+se uneste primul punct cu al doilea, al treilea cu al patrulea s.a.m.d.
+Daca N este par, atunci se vor cupla toate punctele. Altfel ultimul punct
+va ramane izolat.

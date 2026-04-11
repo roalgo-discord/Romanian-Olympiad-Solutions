@@ -1,0 +1,9 @@
+Plimbare:
+Idea e sa transformi cele doua plimbari in dreptughiuri (utilizand doar 
+RP,
+pe niste drepte de suport exterioare), iar dupa aceea sa transformi 
+primul
+dreptunghi in al doilea cu un RP si un RL (cum am aratat si in 
+exemplu).
+Complexitate(N^3). Cred ca se poate si mai bine, dar nu mi se pare asa
+important. Importanta aici e ideea.

@@ -1,0 +1,17 @@
+
+
+
+
+		ANTENE - SOLUTIE
+	       ------------------
+
+	Se genereaza un graf bipartit: nodurile din partea stanga sunt reprezentate
+de liniile caroiajului, iar cele din partea dreapta de coloanele acestuia. Exista
+muchie intre un punct i din partea stanga si un punct j din partea dreapta, daca
+exista o antena ce trebuie plasata pe linia i si coloana j. Apoi se parcurge acest
+graf, plecand din nodurile cu grad impar, marcandu-se alternativ muchiile cu 1,-1,..
+Dupa marcarea unei muchii, aceasta este eliminata, si gradele nodurilor pe care le
+unea sunt modificate corespunzator. Se repeta acest procedeu pana ce nu mai exista
+noduri de grad impar. In acest moment vor exista numai noduri de grad par, care vor
+determina existenta unor cicluri. Se incepe parcurgerea din oricare nod, marcandu-se
+muchiile cu 1,-1,1,-1.. si eliminandu-le pe rand.

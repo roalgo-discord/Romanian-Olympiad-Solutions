@@ -1,0 +1,38 @@
+
+
+
+
+
+		PARANTEZARI - SOLUTIE
+	       ------------------------
+
+	Se calculeaza initial sirul S[i,j], cu semnificatia: cate siruri de paranteze
+ce contin i paranteze deschise si j paranteze inchise exista, si nu exista la nici un
+moment dat mai multe paranteze inchise decat au fost deschise.
+
+S[1,1]=1
+S[1,0]=0
+S[i,-1]=0, i=1,..,N
+
+S[i,j] =	0, daca j>i
+		S[i-1,j]+S[i,j-1], daca i>=j
+
+	Apoi se parcurge sirul de paranteze, caracter cu caracter, contorizand numa-
+rul de paranteze deschise si inchise ka fiecare moment. De asemnea, se va folosi o
+variabila Nr, initializata cu 1, care va reprezenta la fiecare moment numarul de or-
+dine al sirului respectiv in ordinea lexicpgrafica a sirurilor de N paranteze deschi-
+se si inchise corect.
+	De fiecare data cand se intalneste o paranteze deschisa, se incrementeaza nu-
+marul de paranteze deschise (Nd).
+	Cand se intalneste o paranteza inchisa:
+- se incrementeaza numarul de paranteze inchise (Ni);
+- se calculeza cate siruri sunt egale cu sirul citit pana la pozitia i-1 (pozitia
+curenta fiind pozitia i), dar care au caracteryl '(' pe pozitia i (ceea ce inseamna
+ca se afla inaintea acestui sir in ordinea lexicografica):
+-> acest numar este dat de numar de siruri care se pot afla la sfarsitul sirului
+citit, astfel incat sa nu ii strice propietatea de inchidere si deschidere corecta
+a parantezelor; aceste siruri trebuie sa contina N-Nd-1 paranteze deschise, si N-Ni+1
+paranteze inchise. Se observa ca acest numar de siruri este egal cu numarul
+S[N-Ni+1,N-Nd-1], existand o bijectie intre multimea de sirurilor de paranteze corect
+deschise, si cele corect inchise (prin oglindire)
+-> asadar, Nr=Nr+S[N-Ni+1,N-Nd-1]

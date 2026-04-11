@@ -1,0 +1,6 @@
+parcele - solutie
+-----------------
+
+Complexitate: O(N*logN)
+
+	Cele 2 parcele sunt separate printr-o dreapta (orizontala sau verticala). Sa consideram cazul cand sunt separate printr-o dreapta verticala (celalalt caz se trateaza analog). Se calculeaza pt. fiecare din cele N coordonate X posibile, RIGHT[i] si LEFT[i], insemnand nr. maxim de puncte acoperite de un dreptunghi ce are latura din dreapta la coordonata Xi (sau mai la stanga), respectiv nr. maxim de puncte acoperite de un dreptunghi ce are latura din stanga la coordonata Xi (sau mai la dreapta). Se determina max(LEFT[i]+RIGHT[i+1]), cu X(i)<>X(i+1). RIGHT si LEFT se calculeaza in O(N*logN), folosind arbori de intervale [sau in O(N*sqrt(N)), impartind cele N coordonate sortate in sqrt(N) grupe a cate sqrt(N) valori]

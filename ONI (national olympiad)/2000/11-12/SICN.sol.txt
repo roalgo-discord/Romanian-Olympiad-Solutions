@@ -1,0 +1,10 @@
+
+
+
+
+		SICN - SOLUTIE
+	       ----------------
+
+	Problema se rezuma la determinarea punctelor critice
+intr-un graf, si, in cazul in care acestea exista, a tuturor com-
+ponentelor biconexe ale acestuia.

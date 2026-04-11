@@ -1,0 +1,11 @@
+
+
+
+
+		TEZAUR - SOLUTIE
+	       ------------------
+
+	Se intersecteaza primele 2 poligoane, si se pastreaza inter-
+sectia lor (tot un poligon convex). Apoi aceasta intersectie se inter-
+secteaza cu al treilea poligon, si se pastreaza noua intersectie s.a.m.d,
+pana cand se ontine intersectia celor n poligoane.

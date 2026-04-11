@@ -4,7 +4,7 @@
 
 Bine ați venit! Acest repository conține descrieri ale soluțiilor pentru o varietate largă de olimpiade și concursuri de informatică oficiale din România, precum OJI, ONI, Baraje, Loturi de pregătire, și alte concursuri precum IIOT.
 
-Welcome! This repository contains editorials and solution descriptions for a large variety of problems (1000+) given at Romanian Olympiad and various other Romanian competitive programming contests, such as OJI, ONI, IOI/EJOI Team Selection Tests, as well as other contests such as IIOT, various local, regional and online contests.
+Welcome! This repository contains editorials and solution descriptions for a large variety of problems (2000+) given at Romanian Olympiad and various other Romanian competitive programming contests, such as OJI, ONI, IOI/EJOI Team Selection Tests, as well as other contests such as IIOT, various local, regional and online contests.
 
 ## 📚 Resurse Soluții
 
@@ -44,10 +44,41 @@ Pentru a vă urmări progresul, puteți utiliza checklisturile disponibile aici:
 
 Există câteva lacune în colecție, pe care sperăm să le completăm cu ajutorul comunității:
 
-- Seniori: lotul 3 din 2018, in 2019 avem doar barajele de selectie pentru lot, 2020 nu are lotul, 2016 nu are loturile 4, 5, 6, o parte din probleme lipsesc la 2014
-- OJI, ONI: lipsesc anumite probleme, mai ales din cele date inainte de 2010 la gimnaziu
+#### Loturi Seniori
+
+* pre 2003: o mare parte din probleme, in special inainte de 2001, inclusiv
+* 2004: comoara, resturi, ierarhie (lot 3)
+* 2014: evacuare (lot 2); manhattan, sms (doar solutie neoficiala), termite (lot 4); history (lot 5); bringing down the house, game2d (lot 6) 
+* 2016: expozitie, parb, purification (lot 4); echilibrare, kc, palind (lot 5); ar, clasament, entanglement (lot 6)
+* 2018: sortall, turneu, trenbus (lot 3); mere, trasee (lot 4)
+* 2019: anarhie, dag, takara (baraj); mole, pisi, zombies (lot 1); bolt, tango, wildcards (lot 2); bribe, enemies, soldiers (lot 3); detective, partition, teams (lot 4)
+* 2020: arborex, permutare, wbtree (lot 1); pisici, petic, divine (lot 2); 
+* 2021: ctree (lot 1); saumat, iftode, tcolor (lot 3)
+* 2023: dakara (lot 2)
+* 2025: scurtcircuit (lot 3); cal-cule (lot 4)
+
+#### ONI
+
+* nu exista solutii pre-2001, cu mici exceptii punctuale
+* 2002: tir, gigel (clasa V); mititelu, cod (clasa VI); arhivare, matrice monoton maximala (clasa VII); cut&paste, patrate (clasa VIII)
+* 2003: circular, scaune, seti, operatii (clasa IX)
+* 2004: neo (clasa VII); coduri, logic, poligon (clasa IX); 
+* 2005: baschet, comoara, ingerasi (clasa V); numar, prieteni, robinson (clasa VI)
+* 2006: morse (clasa V);  
+* 2008: sir (clasa V); rezervatie (clasa VII);
+
+#### OJI
+
+* nu exista solutii pre 2001
+* 2002: balaur, la scoala (clasa V); valori-panta, cuburi (clasa VI); panglica, joc (clasa VII); sir, anagrame (clasa VIII); poarta, mouse (clasa IX); triang, cod (clasa X); urgenta, nunta (clasele XI-XII)
+* 2003: exponent, pinochio (clasa V); visul, gardul (clasa VI); sir, paranteze (clasa VII); templu, tort (clasa VIII); text, numere (clasa IX)
+* 2004: cifre, concurs (clasa V); control, vanatoare (clasa VI); siruri, nu te supari (clasa VII); culmi, ron (clasa VIII); expresie, reactivi (clasa IX); perle, rj (clasa X); mosia, lanterna (clasele XI-XII)
+* 2005: multimi, ucif (clasa V); ocr, tabel (clasa VII)
+* 2007: test (clasa V);
+* 2008: numere, schi (clasa V); turnuri, pagini (clasa VI); culori, virus (clasa VII); numar, turist (clasa VIII)
+
 - Majoritatea editorialelor de la alte concursuri precum Urmasii lui Moisil, Grigore Moisil, Info-Oltenia, AGM etc.
-- Anumite probleme de la loturi pre 2010
+
 
 ## 🤝 Cum ne puteți ajuta?
 
@@ -59,6 +90,7 @@ Dacă dețineți descrierile soluțiilor în format txt, docs, doc sau pdf, ne p
 
 ## 📝 Patch Notes
 
+- **11.04.2026** - Adăugare unele soluții competitii istorice + reformatare
 - **2025-26** - Adăugare soluții concursuri recente, plus Info1Cup
 - **2024-25** - Adăugare soluții concursuri recente
 - **24.08.2024** - Adăugare soluții ONI-uri vechi + concursuri recente

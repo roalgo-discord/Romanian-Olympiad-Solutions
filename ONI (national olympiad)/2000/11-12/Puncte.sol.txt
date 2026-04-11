@@ -1,0 +1,14 @@
+
+
+
+
+
+		PUNCTE - SOLUTIE
+	       ------------------
+
+	Se imparte multimea celor N puncte in 2 submultimi:
+una cu primele N/2 puncte, iar cealalalta cu celelalte N-N/2 puncte.
+Numarul maxim de segmente ce pot fi trasate este: N/2*(N-N/2) -
+unind fiecare punct din prima submultime cu fiecare punct din cea
+de-a doua. Astfel se garanteaza ca nu se vor obtine triunghiuri.
+Din numarul total de segmente, se aleg apoi oricare k.

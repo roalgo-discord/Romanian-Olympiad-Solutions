@@ -1,0 +1,21 @@
+
+
+
+
+		VANATOARE - SOLUTIE
+	       ---------------------
+
+	O posibila solutie (nedemonstrata ca fiind corecta, insa) este o programare dinamica, astfel:
+- se sorteaza crescator timpii pt. lupi si pt. mistreti
+- se aplica metoda "rucsacului", pt. a calcula numarul maxim de lupi pe
+care ii poate ucide Cristi in fiecare moment, de la 1 la T; in caz de e-
+galitate la numar de lupi, se alege momentul cel mai apropiat de T, caci
+astfel i-ar mai ramane lupi mai usor de omorat lui Marius (deja pt. Cristi
+acest lucru nu ar mai conta)
+- se interclaseaza vectorul cu timpii lupilor neomorati de Cristi cu cel
+al timpilor mistretilor, si se aplica din nou "metoda rucsacului", de data
+aceasta pt. Marius, si folosind toate animalele ramase (lupii ramasi, plus
+mistretii); se foloseste acelasi algoritm ca si pt. Cristi; se va alege din
+nou momentul in care poate omori un numar maxim de animale si Marius, dar de
+data aceasta nu mai are nici o importanta ce moment este ales, in caz de e-
+galitate la numar de animale.

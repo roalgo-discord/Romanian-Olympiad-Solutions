@@ -1,0 +1,8 @@
+
+
+                   PERECHI - SOLUTIE
+                  -------------------
+
+	Singura solutie care a trecut toate testele a fost cea
+de a precalcula toate cele 200 de numere in timpul concursului,
+si,apoi, doar de a le afisa.

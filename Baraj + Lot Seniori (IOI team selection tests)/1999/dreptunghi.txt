@@ -1,0 +1,11 @@
+
+
+	DREPTUNGHI - SOLUTIE
+       ----------------------
+
+	Pentru fiecare linie, se calculeaza diferenta dintre numarul
+de incercari care s-au lovit de dreptunghi, si numarul de incercari
+care nu s-au lovit.
+        Se calculeaza apoi subsecventa de suma maxima din vectorul
+de linii, aceasta subsecventa reprezentand dimensiunea pe verticala
+a dreptunghiului. Analog pt. coloane.

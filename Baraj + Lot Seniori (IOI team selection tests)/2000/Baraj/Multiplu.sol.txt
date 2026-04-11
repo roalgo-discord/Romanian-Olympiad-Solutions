@@ -1,0 +1,19 @@
+
+
+
+
+		MULTIPLU - SOLUTIE
+	       --------------------
+
+	Rezolvarea se bazeaza pe programare dinamica:
+	La primul pas se genereaza toate numerele de 1 singura cifra
+care dau restul r (0<=r<=n-1) la impartirea la n (din cele k cifre), si se
+pune valoarea 0 daca nu exista un astfel de numar.
+	La fiecare pas se adauga la sfarsitul fiecarui numar generat la pasul
+anterior una din cele k cifre, si se calculeaza restul la impartirea la N. Daca
+acest numar este mai mic decat numarul curent retinut pe pozitia r (numar care
+trebuie sa aiba tot atatea cifre cat numarul in constructie), atunci se pastreaza
+acest numar. Altfel se renunta la el. Cu alte cuvinte, la pasul p se pastreaza
+cele mai mici numere formare din cate p cifre care dau resturile 0..N-1 la impar-
+tirea la N. Daca la un pas se gaseste un numar care da restul 0, atunci programul
+se incheie cu tiparirea acestui numar.

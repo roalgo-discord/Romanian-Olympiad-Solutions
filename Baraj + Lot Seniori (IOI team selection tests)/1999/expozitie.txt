@@ -1,0 +1,15 @@
+
+
+	APM 2 & 3 - SOLUTIE
+      -----------------------
+
+       Se genereaza APM1 (algoritmul lui Prim - N^2), apoi
+se incearca scoaterea a cate unei muchii din APM1. O data
+cu scoaterea unei muchii, arborele este impartit in 2 componente
+conexe. Se incearca unirea a 2 noduri din componente conexe diferite,
+cu conditia sa nu fie cele intre care s-a scos muchia din APM1, si
+se calculeaza costul noului arbore. Daca este mai mic decat cea mai
+buna solutie gasita pt. APM2, atunci se pastreaza aceasta solutie pt.
+APM2, si vechea solutie pt. APM2 devine APM3. Daca,insa, costul
+este mai mare decat APM2-ul actual, se compara si cu solutia cea
+mai buna gasita pana atunci pt. APM3.

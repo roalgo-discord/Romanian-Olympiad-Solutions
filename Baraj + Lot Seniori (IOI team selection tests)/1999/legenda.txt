@@ -1,0 +1,12 @@
+
+
+	LEGENDA - SOLUTIE
+       -------------------
+
+	Pt. fiecare numar de pe fiecare papirus (maxim 10.000 de
+numere) se incearca plasarea lui in mijloc. Pt. a vedea daca acest
+lucru este posibil, se face o dinamica la stanga, pt. a observa daca
+exista o concatenare a celorlalte N-1 papirusuri, astfel incat sa
+formeze lungimea L(=lungimea totala) div 2 - POZ(=pozitia din papiru-
+sul sau a numarului curent)+1. De preferat, numerele se sorteaza
+inainte, si programul se opreste la prima solutie gasita.

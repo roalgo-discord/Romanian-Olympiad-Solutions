@@ -1,0 +1,17 @@
+
+
+
+
+		GRAF TURNEU - SOLUTIE
+	       -----------------------
+
+	Se construiesc manual doua grafuri - unul cu numar par de elemente (de ex.6),
+altul cu numar impar de elemente (de ex.5). In functie de valoarea lui N (par sau impar),
+se va porni de la unul din aceste grafuri (cel care are aceeasi paritate cu N).
+	La fiecare pas se introduc cate 2 noduri, la graful deja existent, care veri-
+fica cerintele problemei. Sa notam cele 2 noduri A si B. Se duc muchii (orientate) de
+la A la toate nodurile introduse deja in graf (fara B). Se duc apoi muchii (orientate)
+de la toate celelalte noduri deja introduse in graf (fara A), catre B. Apoi se intro-
+duce muchia B->A. Astfel, graful nou-format (avand cu 2 noduri in plus decat preceden-
+tul) va respecta conditiile cerute de problema (ca intre oricare 2 noduri sa existe
+drumuri de lungime minima 1 sau 2).

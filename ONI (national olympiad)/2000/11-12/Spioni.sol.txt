@@ -1,0 +1,32 @@
+
+
+
+
+		SPIONI - SOLUTIE
+	       ------------------
+
+	Problema nu are solutie daca graful orientat determinat de
+cei n spioni contine cicluri. Acest lucru este verificat prin sor-
+tare topologica - daca la un anumit punct nu exista nici un nod
+de grad 0, si nu au fost introduse toate nodurile in coada, atunci
+graful contine un ciclu.
+	Timpul minim de incepere a sedintei este maximul dintre timpul
+dupa care poate sa porneasca fiecare agent i, si timpul care ii ia
+pt. a ajunge la baza.
+	Pentru a determina numarul minim de persoane ce trebuie trans-
+portate in regim de urgenta, se construieste o retea de flux, cu mu-
+chii - muchiile critice din graful initial, si noduri - cei n spioni:
+fiecare nod are capacitatea 1, iar muchiile pot avea orice capacitate.
+Valoarea fluxului maxim in aceasat retea reprezinta numarul minim de
+spioni ce trebuie transportati in regim de urgenta.
+	Pentru a determina numerele de ordine ale spionilor ce trebuie
+trensportati in regim de urgenta, se parcurge reteaua pe muchiile fara
+flux, de la destinatie (virtuala - in care intra doar muchiile care
+determina timpul de incepere a sedintei), pana se ajunge la un nod
+prin care trece flux. Se marcheaza acest nod, si se repeta procedeul
+pentru alt traseu. In final, se porneste de la fiecare nod marcat si
+se observa pt. care dintre nodurile "terminale" reduce timpul de start.
+Nodurile "terminale" care nu au fost "reduse" (prin care, deci, circula
+flux), sunt marcate apoi si ele.
+	Spionii ce trebuie transportati in regim de urgenta sunt cei
+ce au numerele de ordine egale cu nodurile marcate.

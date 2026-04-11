@@ -1,0 +1,21 @@
+
+
+
+
+		MOSTENIRE - SOLUTIE
+	       ---------------------
+
+	Se ordoneaza nodurile in ordine topologica. Pentru fiecare nod
+se retine un vector:
+
+NMost[I,J] = numarul de "succesiuni de mostenitori" care pornesc de la
+	     persoana j (j fiind "stramos"), si ajung la persoana I.
+
+Daca I este "stramos", atunci NMost[I,I]=1, iar estul elementelor sunt 0.
+Daca I nu este "stramos", NMost[I,j]:=Nmost[I,j]+Nmost[i',j], unde i este
+mostenitor direct al lui i', pentru toti i'.
+
+Numarul de mosteniri duble este dat de suma a C(Nmost[I,J],2), pentru toti
+I - noduri "terminale", si J "stramosi", daca NMost[I,J]>1.
+
+C(N,K) = combinari de N luate cate K.	
