@@ -65,7 +65,7 @@ Există câteva lacune în colecție, pe care sperăm să le completăm cu ajuto
 * 2004: neo (clasa VII); coduri, logic, poligon (clasa IX); 
 * 2005: baschet, comoara, ingerasi (clasa V); numar, prieteni, robinson (clasa VI)
 * 2006: morse (clasa V);  
-* 2008: sir (clasa V); rezervatie (clasa VII);
+* 2008: sir (clasa V); joc (clasa VII);
 
 #### OJI
 
