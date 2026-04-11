@@ -1,16 +1,11 @@
-Ce trebuie să calculăm?
+\## Ce trebuie să calculăm?  
 
-Alex scoate, fără înlocuire, K șosete dintr-un sertar în care fiecare șosetă are
 
-o culoare (numere de la 1 la N) și
-
-o dimensiune – mică (size = 0) sau mare (size = 1).
+Alex scoate, fără înlocuire, K șosete dintr-un sertar în care fiecare șosetă are o culoare (numere de la 1 la N) și o dimensiune – mică (size = 0) sau mare (size = 1).
 
 
 
-Toate șosetele mici au aceeași greutate sizeSmall, toate cele mari au greutatea sizeBig.
-
-În fiecare pas, șansele ca o anumită șosetă să fie aleasă sunt proporționale cu greutatea ei.
+Toate șosetele mici au aceeași greutate sizeSmall, toate cele mari au greutatea sizeBig. În fiecare pas, șansele ca o anumită șosetă să fie aleasă sunt proporționale cu greutatea ei.
 
 
 
@@ -34,11 +29,7 @@ Evenimentul „există cel puţin o pereche de şosete de aceeaşi culoare” es
 
 
 
-$$
-
-P\_{\\text{cel puţin două egale}} = 1 - P\_{\\text{toate diferite}}.
-
-$$
+`P\_{cel puţin două egale} = 1 - P\_{toate diferite}.`
 
 
 
@@ -50,7 +41,7 @@ Greutatea depinde numai de dimensiune, nu de culoare. Din acest motiv procesul p
 
 
 
-1\. Câte şosete mici și câte mari sunt luate?
+1\. Câte şosete mici și câte mari sunt luate?  
 
 &#x20;  Dacă notăm cu $a$ numărul de mici și cu $b = K-a$ numărul de mari, distribuţia perechii $(a,b)$ se obţine printr-un DP simplu ($q\[a]\[b]$).
 
@@ -68,11 +59,7 @@ Răspunsul final se obţine prin sumarea peste toate combinaţiile posibile $(a,
 
 
 
-$$
-
-\\boxed{\\displaystyle \\text{Răspuns}= \\sum\_{a=0}^{K} q\[a]\[K-a];\\bigl(1-p\[a]\[K-a]\\bigr)}
-
-$$
+`Răspuns = sum\_{a=0..K} q\[a]\[K-a] \* (1 - p\[a]\[K-a])`
 
 
 
@@ -102,7 +89,7 @@ Să notăm
 
 \* $B$ – numărul total de şosete mari,
 
-\* $w\_S = \\text{sizeSmall}$, $w\_B = \\text{sizeBig}$.
+\* $w\_S = sizeSmall$, $w\_B = sizeBig$.
 
 
 
@@ -110,11 +97,7 @@ Definim
 
 
 
-$$
-
-q\[i]\[j] = \\Pr\\bigl(\\text{după } i+j \\text{ alegeri am luat } i \\text{ mici şi } j \\text{ mari}\\bigr).
-
-$$
+`q\[i]\[j] = Pr(după i+j alegeri am luat i mici şi j mari)`
 
 
 
@@ -122,11 +105,7 @@ Starea iniţială este
 
 
 
-$$
-
-q\[0]\[0] = 1.
-
-$$
+`q\[0]\[0] = 1`
 
 
 
@@ -134,11 +113,7 @@ Dintr-o stare $(i,j)$ greutatea totală rămasă este
 
 
 
-$$
-
-W = (A-i) w\_S + (B-j) w\_B.
-
-$$
+`W = (A-i) \* w\_S + (B-j) \* w\_B`
 
 
 
@@ -146,11 +121,7 @@ Probabilitatea de a alege o şosetă mică este
 
 
 
-$$
-
-\\frac{(A-i) w\_S}{W},
-
-$$
+`((A-i) \* w\_S) / W`
 
 
 
@@ -158,11 +129,7 @@ iar cea de a alege o şosetă mare este
 
 
 
-$$
-
-\\frac{(B-j) w\_B}{W}.
-
-$$
+`((B-j) \* w\_B) / W`
 
 
 
@@ -170,17 +137,13 @@ Tranzițiile DP:
 
 
 
-$$
+```text
 
-\\begin{aligned}
+q\[i+1]\[j] += q\[i]\[j] \* ((A-i) \* w\_S) / ((A-i) \* w\_S + (B-j) \* w\_B)
 
-q\[i+1]\[j] \&\\mathrel{+=} q\[i]\[j];\\frac{(A-i) w\_S}{(A-i) w\_S+(B-j) w\_B}, \\
+q\[i]\[j+1] += q\[i]\[j] \* ((B-j) \* w\_B) / ((A-i) \* w\_S + (B-j) \* w\_B)
 
-q\[i]\[j+1] \&\\mathrel{+=} q\[i]\[j];\\frac{(B-j) w\_B}{(A-i) w\_S+(B-j) w\_B}.
-
-\\end{aligned}
-
-$$
+````
 
 
 
@@ -230,11 +193,7 @@ Pentru fiecare culoare $c$:
 
 
 
-$$
-
-dp\[i]\[x]\[y] = \\text{numărul de moduri de a selecta } x \\text{ mici şi } y \\text{ mari}
-
-$$
+`dp\[i]\[x]\[y] = numărul de moduri de a selecta x mici şi y mari`
 
 
 
@@ -242,11 +201,7 @@ Inițial:
 
 
 
-$$
-
-dp\[0]\[0]\[0] = 1
-
-$$
+`dp\[0]\[0]\[0] = 1`
 
 
 
@@ -254,19 +209,15 @@ Tranziții:
 
 
 
-$$
+```text
 
-\\begin{aligned}
+dp\[i]\[x]\[y] = dp\[i-1]\[x]\[y]
 
-dp\[i]\[x]\[y] \&= dp\[i-1]\[x]\[y] \\
+&#x20;           + dp\[i-1]\[x-1]\[y] \* cntS\[i]
 
-\&+ dp\[i-1]\[x-1]\[y] \\cdot cntS\[i] \\
+&#x20;           + dp\[i-1]\[x]\[y-1] \* cntB\[i]
 
-\&+ dp\[i-1]\[x]\[y-1] \\cdot cntB\[i]
-
-\\end{aligned}
-
-$$
+```
 
 
 
@@ -282,11 +233,7 @@ Numărul total de moduri:
 
 
 
-$$
-
-\\text{tot}\[a]\[b] = \\binom{A}{a}\\binom{B}{b}
-
-$$
+`tot\[a]\[b] = C(A, a) \* C(B, b)`
 
 
 
@@ -294,11 +241,7 @@ Probabilitatea:
 
 
 
-$$
-
-p\[a]\[b] = \\frac{dp\[M]\[a]\[b]}{\\text{tot}\[a]\[b]}
-
-$$
+`p\[a]\[b] = dp\[M]\[a]\[b] / tot\[a]\[b]`
 
 
 
@@ -310,19 +253,15 @@ $$
 
 
 
-$$
+`P(cel puţin două egale) = 1 - sum q\[a]\[b] \* p\[a]\[b]`
 
-\\begin{aligned}
 
-P(\\text{cel puţin două egale})
 
-\&= 1 - \\sum\_{a+b=K} q\[a]\[b];p\[a]\[b] \\
+sau
 
-\&= \\sum\_{a+b=K} q\[a]\[b];\\bigl(1-p\[a]\[b]\\bigr)
 
-\\end{aligned}
 
-$$
+`P(cel puţin două egale) = sum q\[a]\[b] \* (1 - p\[a]\[b])`
 
 
 
@@ -354,11 +293,7 @@ Prin descompunerea procesului în distribuția dimensiunilor și combinatorica c
 
 
 
-$$
-
-\\text{Răspuns}= \\sum\_{a=0}^{K} q\[a]\[K-a];\\bigl(1-p\[a]\[K-a]\\bigr)
-
-$$
+`Răspuns = sum q\[a]\[K-a] \* (1 - p\[a]\[K-a])`
 
 
 
@@ -366,5 +301,5 @@ poate fi evaluată cu precizia cerută ($\\le 10^{-5}$).
 
 
 
-
+```
 
