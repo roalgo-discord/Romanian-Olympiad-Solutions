@@ -1,0 +1,192 @@
+1. Ce trebuie să calculăm?
+Alex scoate, fără înlocuire, K șosete dintr-un sertar în care fiecare șosetă are
+
+o culoare (numere de la 1 la N) și
+o dimensiune – mică (size = 0) sau mare (size = 1).
+Toate șosetele mici au aceeași greutate sizeSmall, toate cele mari au greutatea sizeBig.
+În fiecare pas, șansele ca o anumită șosetă să fie aleasă sunt proporționale cu greutatea ei.
+
+După ce a luat cele K șosete, Alex vrea să ştie probabilitatea ca cel puţin două dintre ele să aibă aceeaşi culoare (dimensiunea nu contează).
+Se cere răspunsul cu eroare absolută ≤ 10⁻⁵.
+
+2. Ideea principală
+Evenimentul „există cel puţin o pereche de şosete de aceeaşi culoare” este complementul evenimentului „toate şosetele alese au culori diferite”.
+
+[ P_{\text{cel puţin două egale}} = 1 - P_{\text{toate diferite}} . ]
+
+Așadar trebuie să calculăm probabilitatea ca, în cele K alegeri, să nu se repete nicio culoare.
+
+Greutatea depinde numai de dimensiune, nu de culoare. Din acest motiv procesul poate fi descompus în două părţi independente:
+
+Câte şosete mici și câte mari sunt luate?
+Dacă notăm cu a numărul de mici și cu b = K‑a numărul de mari, distribuţia perechii (a,b) se obţine printr-un DP simplu (q[a][b]).
+
+Pentru o pereche fixă (a,b), care este probabilitatea ca toate culorile să fie distincte?
+Odată cunoscut că exact a mici și b mari au fost scoase, selecţia dintre şosetele mici (respectiv mari) este uniformă: fiecare submulţime de a elemente ale celor A mici și fiecare submulţime de b elemente ale celor B mari este la fel de probabilă. Astfel problema devine pur combinatorială – numărarea submulţimilor care conţin cel mult un şosetă din fiecare culoare.
+
+Răspunsul final se obţine prin sumarea peste toate combinaţiile posibile (a,b):
+
+[ \boxed{\displaystyle \text{Răspuns}= \sum_{a=0}^{K} q[a][K-a];\bigl(1-p[a][K-a]\bigr) } ]
+
+unde
+
+q[a][b] – probabilitatea ca în cele K alegeri să existe exact a şosete mici și b şosete mari;
+p[a][b] – probabilitatea, condiţionată de existenţa acelei repartizări de dimensiuni, că toate culorile sunt diferite.
+3. Calculul distribuţiei q[a][b]
+Să notăm
+
+A – numărul total de şosete mici,
+B – numărul total de şosete mari,
+și greutăţile lor wS = sizeSmall, wB = sizeBig.
+
+Definim
+
+[ q[i][j] = \Pr\bigl(\text{după }i+j\text{ alegeri am luat }i\text{ mici şi }j\text{ mari}\bigr). ]
+
+Starea iniţială este q[0][0] = 1.
+Dintr‑o stare (i,j) greutatea totală rămasă este
+
+[ W = (A-i) wS + (B-j) wB . ]
+
+Probabilitatea de a alege o şosetă mică (dacă mai există) este
+
+[ \frac{(A-i) wS}{W}, ]
+
+iar cea de a alege o şosetă mare este
+
+[ \frac{(B-j) wB}{W}. ]
+
+Prin urmare tranziţiile DP sunt
+
+[ \begin{aligned} q[i+1][j] &\mathrel{+=} q[i][j];\frac{(A-i) wS}{(A-i) wS+(B-j) wB},\ q[i][j+1] &\mathrel{+=} q[i][j];\frac{(B-j) wB}{(A-i) wS+(B-j) wB}. \end{aligned} ]
+
+Se completează tabelul pentru i = 0 … A și j = 0 … B.
+Complexitatea este O(A·B) ≤ O(N²) – neglijabilă pentru N ≤ 199.
+
+4. Probabilitatea ca toate culorile să fie diferite pentru un (a,b) fix
+4.1 Datele pe culori
+Pentru fiecare culoare c numărăm
+
+cntS[c] – câte şosete mici de acea culoare există,
+cntB[c] – câte şosete mari de acea culoare există.
+Numărăm doar culorile care apar efectiv; să le notăm 1 … M (M ≤ N).
+
+4.2 Ce putem lua dintr‑o culoare?
+Pentru a nu repeta nicio culoare, dintr‑o culoare c putem lua cel mult una şosetă, iar aceasta poate fi:
+
+niciuna – 1 posibilitate,
+o mică – există cntS[c] moduri de a alege una dintre ele,
+o mare – există cntB[c] moduri de a alege una dintre ele.
+Nu putem lua simultan o mică și o mare din aceeași culoare, pentru că ar crea deja o repetiție.
+
+4.3 DP care numără submulţimile valide
+Definim
+
+[ dp[i][x][y] = \text{numărul de moduri de a selecta }x\text{ mici şi }y\text{ mari din primele }i\text{ culori, fără repetiţii de culoare}. ]
+
+Iniţial dp[0][0][0] = 1, restul 0.
+
+Pentru fiecare culoare i = 1 … M se aplică cele trei alegeri posibile:
+
+nu luăm nimic → dp[i][x][y] += dp[i-1][x][y];
+luăm o mică (dacă există) → dp[i][x][y] += dp[i-1][x-1][y] * cntS[i];
+luăm o mare (dacă există) → dp[i][x][y] += dp[i-1][x][y-1] * cntB[i].
+După procesarea tuturor culorilor, dp[M][a][b] este exact numărul de submulţimi care conţin a mici și b mari și în care nicio culoare nu apare de două ori.
+
+4.4 Normalizarea
+Dacă ignorăm condiţia de culoare, numărul de moduri de a alege a mici și b mari este pur combinatorial:
+
+[ \text{tot}[a][b] = \binom{A}{a},\binom{B}{b}. ]
+
+Prin urmare probabilitatea ca, în condiţia de a avea exact a mici şi b mari, toate culorile să fie diferite este
+
+[ p[a][b] = \frac{dp[M][a][b]}{\text{tot}[a][b]} . ]
+
+5. Combinarea rezultatelor
+Pentru fiecare a = 0 … K (și b = K‑a) cunoaştem deja
+
+q[a][b] – probabilitatea distribuţiei de dimensiuni (secţiunea 3);
+p[a][b] – probabilitatea de a nu avea culori repetate (secţiunea 4).
+Răspunsul cerut este
+
+[ \text{Răspuns}= \sum_{a=0}^{K} q[a][K-a];\bigl(1-p[a][K-a]\bigr). ]
+
+6. Demonstrarea corectitudinii
+Lema 1
+Condiționat de evenimentul „am luat exact a şosete mici și b şosete mari”, mulțimea de şosete mici luate este uniform aleatoare din toate submulțimile de a elemente ale celor A şosete mici; același lucru este valabil pentru şosetele mari.
+
+Demonstrație.
+Toate şosetele mici au aceeași greutate sizeSmall. În fiecare pas raportul dintre probabilitățile de a alege oricare două şosete mici este 1. Astfel procesul de extragere fără înlocuire este echivalent cu alegerea uniformă a unui subset de dimensiune a. Argumentul se aplică în mod simetric și pentru şosetele mari. ∎
+
+Lema 2
+Valorile q[a][b] obținute prin DP-ul din secțiunea 3 coincid cu probabilitatea reală ca în cele K alegeri să existe exact a şosete mici și b şosete mari.
+
+Demonstrație.
+DP‑ul urmărește exact legea probabilității totale: dintr‑o stare (i,j) se trece la (i+1,j) cu probabilitatea proporțională cu greutatea totală a şosetelor mici rămase și la (i,j+1) cu probabilitatea proporțională cu greutatea totală a şosetelor mari rămase. Prin inducție pe numărul de pași, toate căile care duc la (a,b) sunt contorizate cu probabilitatea corectă, iar suma lor este q[a][b]. ∎
+
+Lema 3
+„dp[M][a][b] este numărul exact de submulțimi ce conțin a șosete mici și b șosete mari și în care nicio culoare nu apare de două ori.”
+
+Demonstratie
+Fie C₁ , C₂ , … , C_M lista tuturor culorilor care apar în sertar (după comprimare).
+Pentru fiecare culoare C_i cunoaștem două valori:
+
+cntS[i] – numărul de șosete mici de acea culoare,
+cntB[i] – numărul de șosete mari de acea culoare.
+În construcția submulțimii dorite trebuie să respectăm două restricții stricte:
+
+Numărul total de mici este exact a și al de mari este exact b.
+Din fiecare culoare se poate alege cel mult o singură șosetă (oricare dintre cele mici, dintre cele mari, sau niciuna).
+Aceste restricții pot fi exprimate în mod recursiv, procesând culorile una câte una.
+
+Pasul de inducție
+Presupunem că pentru primele i‑1 culori am calculat corect toate posibilitățile de a obține un anumit număr de mici și mari, fără a repeta nicio culoare. Aceste valori sunt conținute în tabelul dp[i‑1][x][y], unde x și y sunt numerele de mici, respectiv mari, alese până în acel moment.
+
+Nu luăm nicio șosetă din C_i.
+În acest caz numărul de mici și mari rămâne (x , y). Toate variantele deja contorizate în dp[i‑1][x][y] rămân valide, deci contribuim cu dp[i‑1][x][y].
+
+Luăm o șosetă mică din C_i.
+Această alegere este posibilă numai dacă cntS[i] > 0 și dacă mai avem nevoie de încăcel puțin un mic (x ≥ 1). Pentru fiecare dintre cele cntS[i] șosete mici disponibile există o modalitate distinctă de a o alege, iar restul alegerilor (pentru primele i‑1 culori) trebuie să producă exact x‑1 mici și y mari. Prin urmare adăugăm
+dp[i‑1][x‑1][y] * cntS[i].
+
+Luăm o șosetă mare din C_i.
+Analog, dacă cntB[i] > 0 și y ≥ 1, pentru fiecare dintre cele cntB[i] mari există o modalitate de a o alege, iar restul alegerilor trebuie să producă x mici și y‑1 mari. Contribuția este
+dp[i‑1][x][y‑1] * cntB[i].
+
+Aceste trei cazuri sunt exhaustive și mutu exclusive:
+
+Exhaustive – dintr‑o culoare nu există alte posibilităţi (nu putem alege simultan o mică și o mare, deoarece ar încălca condiţia de „nici o culoare nu apare de două ori”).
+Mutu exclusive – fiecare submulțime respectă exact una dintre cele trei descrieri, deci nu există dublări în numărare.
+Prin urmare, pentru fiecare pereche (x , y) relaţia de recurență
+
+dp[i][x][y] = dp[i‑1][x][y]                     // nu luăm nimic
+            + dp[i‑1][x‑1][y] * cntS[i] (dacă x>0) // luăm o mică
+            + dp[i‑1][x][y‑1] * cntB[i] (dacă y>0) // luăm o mare
+construiește exact numărul de submulțimi valide care includ primele i culori.
+
+Pornind de la baza dp[0][0][0] = 1 (singura submulțime a niciunei culori este submulțimea vidă) și aplicând recurenţa pentru i = 1 … M, obținem prin inducție că, la final, dp[M][a][b] este exact numărul de submulțimi care conțin exact a șosete mici și b șosete mari și în care fiecare culoare apare cel mult o singură dată. ∎
+
+7. Calculul probabilităţii finale
+Pentru fiecare repartizare posibilă (a , b) cu a + b = K avem:
+
+q[a][b] – probabilitatea ca în cele K extrageri să se obţină exact a mici și b mari (obţinută în prima parte a algoritmului);
+p[a][b] = dp[M][a][b] / ( C(A,a)·C(B,b) ) – probabilitatea, condiționată de acea repartizare, ca toate culorile să fie diferite (normalizarea cu numărul total de combinaţii fără restricție de culoare).
+Evenimentul „cel puţin două şosete au aceeaşi culoare” este complementul evenimentului „toate culorile sunt diferite”. Prin legea totală a probabilităţilor:
+
+[ \begin{aligned} P(\text{cel puţin două egale}) &= 1 - \sum_{a+b=K} q[a][b];p[a][b] \ &= \sum_{a+b=K} q[a][b];\bigl(1-p[a][b]\bigr). \end{aligned} ]
+
+Această formulă este exact cea utilizată în program. Suma are cel mult K+1 termeni, deci este calculată în timp trivial.
+
+8. Complexitatea și utilizarea memoriei
+DP pentru distribuţia de dimensiuni – O(A·B) timp și O(A·B) memorie.
+Pentru N ≤ 199 aceasta este de ordinul a câtorva zeci de mii de operaţii.
+
+DP pentru submulţimile fără repetiție – O(M·A·B) timp și O(A·B) memorie (se poate reduce la două straturi pentru a economisi spaţiu).
+În cel mai nefavorabil caz M = N = 199, A și B nu depășesc 199, deci numărul de operaţii este sub 8·10⁶, confortabil în limita de timp.
+
+Calculul final – O(K) timp.
+
+În total, algoritmul rulează în timp O(N³) cu un factor mic și consumă O(N²) memorie, mult sub limitele impuse de problemă.
+
+9. Concluzie
+Prin descompunerea procesului de extragere în (a) distribuţia numărului de şosete mici/mari și (b) numărarea combinărilor valide de culori pentru fiecare repartizare, am transformat problema probabilistică într‑o serie de calcule combinatorii exacte. Lemma 3 garantează că DP‑ul pentru culori numără corect submulţimile fără repetiție, iar normalizarea cu combinaţiile totale transformă acest număr în probabilitatea dorită. Îmbinarea cu distribuţia q duce la formula finală, care este exactă și poate fi evaluată cu precizia cerută (eroare absolută ≤ 10⁻⁵). Astfel soluţia propusă este corectă, eficientă și ușor de implementat.

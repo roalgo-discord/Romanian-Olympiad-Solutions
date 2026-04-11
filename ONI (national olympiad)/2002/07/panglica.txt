@@ -1,0 +1,3 @@
+Se citesc datele, se memoreaza pentru fiecare culoare pozitia (indicele) pe care apare prima data si ultima data. Cautam apoi culoarea pentru care diferenta dintre prima si ultima aparitie este maxima. In acest fel e suficienta o singura parcurgere a sirului (doua "for"-uri pentru un sir de 10000 numere inseamna timp de executie prea mare). In plus, nu e nevoie nici de memorarea numerelor din sir. Desigur, exista si alte metode de optimizare a cautarii, aproape la fel de eficiente
+
+Nota: Aceasta descriere este un comentariu luat din sursa oficiala
