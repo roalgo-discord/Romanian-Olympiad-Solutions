@@ -20,3 +20,7 @@ Thumbs.db
 
 # generated unmatched-kilonova report (regenerate with: npm run unmatched)
 unmatched-kilonova.md
+
+# internal docs — kept out of the public GitHub repo
+readme.md
+DEPLOYMENT.md
