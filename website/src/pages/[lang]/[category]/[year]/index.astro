@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import {
+  CATEGORIES, getCategory, entriesOfYear, groupEntries, seasonForYear,
+} from "../../../../data/catalog";
+import { LANGS, type Lang } from "../../../../i18n/ui";
+import { useTranslations, localePath } from "../../../../i18n/utils";
+
+export function getStaticPaths() {
+  const paths = [];
+  for (const lang of LANGS) {
+    for (const c of CATEGORIES) {
+      for (const year of c.years) {
+        paths.push({ params: { lang, category: c.slug, year: String(year) } });
+      }
+    }
+  }
+  return paths;
+}
+
+const lang = Astro.params.lang as Lang;
+const slug = Astro.params.category as string;
+const year = Number(Astro.params.year);
+const t = useTranslations(lang);
+const category = getCategory(slug)!;
+const groups = groupEntries(entriesOfYear(slug, year));
+const yLabel = seasonForYear(slug, year) ?? String(year);
+
+function bucketHeading(kind: string | null) {
+  if (kind === "grade") return t("year.grade");
+  if (kind === "round") return t("year.round");
+  return t("year.other");
+}
+---
+
+<BaseLayout lang={lang} title={`${category.name[lang]} ${year}`}>
+  <Breadcrumbs
+    lang={lang}
+    items={[
+      { label: t("breadcrumb.home"), href: localePath("", lang) },
+      { label: category.name[lang], href: localePath(slug, lang) },
+      { label: yLabel },
+    ]}
+  />
+
+  <h1>{category.name[lang]} <span class="dim">{yLabel}</span></h1>
+
+  {
+    groups.map((g) => (
+      <section>
+        {g.group && <h2 class="group">{g.group}</h2>}
+        {
+          g.buckets.map((b) => (
+            <>
+              <div class="bucket-title">
+                {b.label ? (
+                  <h3>
+                    <span class="kind">{bucketHeading(b.kind)}</span> {b.label}
+                  </h3>
+                ) : (
+                  <h3>{t("year.problems")}</h3>
+                )}
+                <span class="count">{b.entries.length}</span>
+              </div>
+              <ul class="sol-list">
+                {b.entries.map((e) => (
+                  <li>
+                    <a href={localePath(`solution/${e.id}`, lang)}>
+                      <span>{e.title}</span>
+                      <span class="ext">{e.file.ext}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ))
+        }
+      </section>
+    ))
+  }
+</BaseLayout>
+
+<style>
+  .dim { color: var(--text-faint); font-weight: 600; }
+  .group { margin-top: 1.8rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border); }
+  .kind { color: var(--text-faint); font-weight: 600; font-size: 0.85em; }
+</style>

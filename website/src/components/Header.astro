@@ -1,0 +1,57 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+import LangSwitch from "./LangSwitch.astro";
+import { SITE } from "../config/site.mjs";
+import { useTranslations, localePath } from "../i18n/utils";
+import type { Lang } from "../i18n/ui";
+
+const { lang, pathname } = Astro.props as { lang: Lang; pathname: string };
+const t = useTranslations(lang);
+const repoUrl = `https://github.com/${SITE.repo.owner}/${SITE.repo.name}`;
+---
+
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href={localePath("", lang)}>
+      <span class="logo" aria-hidden="true">{"</>"}</span>
+      <span class="brand-name">{t("brand")}</span>
+    </a>
+
+    <nav class="links" aria-label="Primary">
+      <a href={localePath("", lang)}>{t("nav.home")}</a>
+      <a href={localePath("search", lang)}>{t("nav.search")}</a>
+      <a href={repoUrl} target="_blank" rel="noopener">{t("nav.github")}</a>
+    </nav>
+
+    <div class="tools">
+      <LangSwitch lang={lang} pathname={pathname} />
+      <ThemeToggle lang={lang} />
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: saturate(140%) blur(8px);
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .bar { display: flex; align-items: center; gap: 1rem; height: 60px; }
+  .brand { display: inline-flex; align-items: center; gap: 0.55rem; color: var(--text); font-weight: 800; }
+  .brand:hover { text-decoration: none; }
+  .logo {
+    display: inline-grid; place-items: center; width: 30px; height: 30px;
+    font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700;
+    color: var(--primary-contrast); background: var(--primary); border-radius: 8px;
+  }
+  .brand-name { font-size: 0.98rem; letter-spacing: -0.01em; }
+  .links { display: flex; gap: 1.1rem; margin-left: auto; font-weight: 600; font-size: 0.92rem; }
+  .links a { color: var(--text-soft); }
+  .links a:hover { color: var(--link); text-decoration: none; }
+  .tools { display: inline-flex; align-items: center; gap: 0.6rem; }
+  @media (max-width: 640px) {
+    .brand-name { display: none; }
+    .links { gap: 0.8rem; font-size: 0.85rem; }
+  }
+</style>

@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../config/site.mjs";
+import { useTranslations } from "../i18n/utils";
+import { DEFAULT_LANG } from "../i18n/ui";
+const t = useTranslations(DEFAULT_LANG);
+---
+
+<BaseLayout lang={DEFAULT_LANG} title={t("notFound.title")} noindex={true}>
+  <section style="text-align:center; padding:3rem 0;">
+    <h1>404</h1>
+    <p>{t("notFound.title")}</p>
+    <a class="btn btn-primary" href={`/${SITE.defaultLang}/`}>{t("notFound.back")}</a>
+  </section>
+</BaseLayout>

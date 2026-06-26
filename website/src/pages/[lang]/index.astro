@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Search from "../../components/Search.astro";
+import { CATEGORIES, COUNTS } from "../../data/catalog";
+import { LANGS, type Lang } from "../../i18n/ui";
+import { useTranslations, localePath } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title="" description={t("site.tagline")}>
+  <section class="hero">
+    <h1>{t("site.title")}</h1>
+    <p class="lead">{t("home.intro")}</p>
+    <p class="count">{t("home.stats", { entries: COUNTS.entries, categories: COUNTS.categories })}</p>
+
+    <div class="search-box">
+      <Search lang={lang} id="home-search" />
+    </div>
+  </section>
+
+  <h2 id="categories">{t("home.browse")}</h2>
+  <div class="grid">
+    {
+      CATEGORIES.map((c) => (
+        <a class="card" href={localePath(c.slug, lang)}>
+          <h3>{c.name[lang]}</h3>
+          <p class="count">
+            {c.count} {t("cat.solutions")}
+            {c.years.length > 0 && <> · {c.years[c.years.length - 1]}–{c.years[0]}</>}
+          </p>
+        </a>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .hero { padding: 1.8rem 0 2.2rem; text-align: center; }
+  .lead { font-size: 1.12rem; max-width: 60ch; margin-inline: auto; }
+  .hero .count { margin-top: 0.2rem; }
+  .search-box { max-width: 640px; margin: 1.4rem auto 0; }
+  h2#categories { text-align: center; margin-top: 1rem; }
+  .grid { max-width: 900px; margin-inline: auto; }
+  .grid .card { text-align: center; }
+  h3 { margin: 0 0 0.3rem; }
+</style>

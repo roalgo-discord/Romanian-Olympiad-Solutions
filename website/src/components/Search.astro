@@ -1,0 +1,32 @@
+---
+import PagefindSearch from "astro-pagefind/components/Search";
+import { useTranslations } from "../i18n/utils";
+import type { Lang } from "../i18n/ui";
+
+interface Props { lang: Lang; id?: string; }
+const { lang, id = "search" } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<PagefindSearch
+  id={id}
+  className="pf-search"
+  uiOptions={{
+    showImages: false,
+    showSubResults: true,
+    translations: { placeholder: t("search.placeholder") },
+  }}
+/>
+
+<style is:global>
+  .pf-search {
+    --pagefind-ui-primary: var(--primary);
+    --pagefind-ui-text: var(--text);
+    --pagefind-ui-background: var(--surface);
+    --pagefind-ui-border: var(--border);
+    --pagefind-ui-tag: var(--chip);
+    --pagefind-ui-border-radius: var(--radius);
+    --pagefind-ui-font: var(--font-sans);
+    text-align: left;
+  }
+</style>

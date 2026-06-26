@@ -1,0 +1,31 @@
+---
+import { LANGS, LANG_LABEL, type Lang } from "../i18n/ui";
+import { switchLangPath, useTranslations } from "../i18n/utils";
+
+const { lang, pathname } = Astro.props as { lang: Lang; pathname: string };
+const t = useTranslations(lang);
+---
+
+<nav class="lang" aria-label={t("lang.switch")}>
+  {
+    LANGS.map((l) => (
+      <a
+        href={switchLangPath(pathname, l)}
+        class:list={["lang-opt", { active: l === lang }]}
+        hreflang={l}
+        aria-current={l === lang ? "true" : undefined}
+        title={LANG_LABEL[l]}
+      >
+        {l.toUpperCase()}
+      </a>
+    ))
+  }
+</nav>
+
+<style>
+  .lang { display: inline-flex; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .lang-opt { padding: 0.4em 0.6em; font-size: 0.8rem; font-weight: 700; color: var(--text-faint); background: var(--surface-2); }
+  .lang-opt:hover { color: var(--text); text-decoration: none; }
+  .lang-opt.active { color: var(--primary-contrast); background: var(--primary); }
+  .lang-opt + .lang-opt { border-left: 1px solid var(--border); }
+</style>

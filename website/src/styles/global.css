@@ -1,0 +1,106 @@
+@import "./theme.css";
+
+* { box-sizing: border-box; }
+
+html {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+  background:
+    radial-gradient(1200px 400px at 50% -150px, var(--bg-soft), transparent 70%),
+    var(--bg);
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+
+h1, h2, h3 { line-height: 1.2; color: var(--text); margin: 0 0 0.4em; }
+h1 { font-size: clamp(1.7rem, 1.2rem + 2vw, 2.6rem); letter-spacing: -0.02em; }
+h2 { font-size: 1.4rem; }
+p { color: var(--text-soft); }
+
+.container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 1.1rem; }
+
+main { flex: 1 0 auto; padding-block: 2rem 4rem; }
+
+/* Cards & chips */
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.2rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+a.card:hover { transform: translateY(-2px); border-color: var(--brand-300); text-decoration: none; }
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.chip {
+  display: inline-flex; align-items: center; gap: 0.35em;
+  background: var(--chip); color: var(--chip-text);
+  border-radius: 999px; padding: 0.18em 0.7em;
+  font-size: 0.8rem; font-weight: 600;
+}
+
+.count { color: var(--text-faint); font-size: 0.85rem; font-weight: 500; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5em;
+  padding: 0.55em 1em; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--surface-2);
+  color: var(--text); font-weight: 600; cursor: pointer;
+}
+.btn:hover { border-color: var(--brand-300); text-decoration: none; }
+.btn-primary { background: var(--primary); color: var(--primary-contrast); border-color: var(--primary); }
+.btn-primary:hover { filter: brightness(1.06); color: var(--primary-contrast); }
+
+/* Breadcrumbs */
+.breadcrumbs { font-size: 0.9rem; color: var(--text-faint); margin-bottom: 1rem; }
+.breadcrumbs a { color: var(--text-soft); }
+.breadcrumbs span[aria-current] { color: var(--text); }
+
+/* Lists of solutions */
+.sol-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+.sol-list a {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.7rem 0.95rem; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); background: var(--surface);
+  color: var(--text);
+}
+.sol-list a:hover { border-color: var(--brand-300); background: var(--surface-2); text-decoration: none; }
+.sol-list .ext { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--chip-text); background: var(--chip); padding: 0.1em 0.5em; border-radius: 6px; }
+
+.bucket-title { margin-top: 1.6rem; display: flex; align-items: baseline; gap: 0.6rem; }
+.bucket-title h3 { margin: 0; }
+
+/* Viewer */
+.viewer { width: 100%; height: min(80vh, 900px); border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); }
+pre.text-view {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.2rem; overflow: auto; max-height: 80vh;
+  font-family: var(--font-mono); font-size: 0.86rem; color: var(--text); white-space: pre-wrap; word-break: break-word;
+}
+.meta-grid { display: grid; grid-template-columns: auto 1fr; gap: 0.35rem 1rem; margin: 1rem 0; font-size: 0.95rem; }
+.meta-grid dt { color: var(--text-faint); }
+.meta-grid dd { margin: 0; color: var(--text); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.2rem 0; }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

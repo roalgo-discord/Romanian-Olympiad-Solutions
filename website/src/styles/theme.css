@@ -1,0 +1,86 @@
+/* =========================================================================
+   THEME — edit your colors here and nowhere else.
+   The whole site reads from these CSS custom properties.
+   Light/dark are switched by the `data-theme` attribute on <html>.
+   ========================================================================= */
+
+:root {
+  /* --- Brand palette (light blue / sky / white). Change these to rebrand. */
+  --brand-700: #1f86c9; /* deepest — used for readable link text on white */
+  --brand-600: #3aa6e6; /* primary-ish */
+  --brand-500: #5cc0fb; /* accent */
+  --brand-300: #90d5ff; /* signature light blue */
+  --brand-100: #e8f6ff; /* very light blue tint */
+
+  /* Type scale & layout (rarely need changing) */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  --maxw: 1080px;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 3px rgba(16, 42, 80, 0.08), 0 8px 24px rgba(16, 42, 80, 0.06);
+}
+
+/* ----------------------------- LIGHT THEME ----------------------------- */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #b6e1ff;        /* light blue (#90d5ff family) is the dominant background */
+  --bg-soft: #98d4ff;   /* deeper light blue for the hero glow */
+  --surface: #ffffff;   /* white cards pop against the blue page */
+  --surface-2: #e4f4ff; /* very light blue for inputs / code blocks */
+  --border: #93cdf2;
+  --text: #0b2540;
+  --text-soft: #3a5b7b;
+  --text-faint: #5e7c9c;
+  --link: var(--brand-700);
+  --link-hover: var(--brand-600);
+  --primary: var(--brand-700); /* deeper blue button stands out on the light-blue page */
+  --primary-contrast: #ffffff;
+  --chip: #c9e9ff;
+  --chip-text: var(--brand-700);
+  --header-bg: rgba(182, 225, 255, 0.85);
+}
+
+/* ------------------------------ DARK THEME ----------------------------- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #143f6c;        /* lighter, brighter blue (not near-black navy) */
+  --bg-soft: #1d5793;   /* hero glow */
+  --surface: #1b4e83;   /* cards sit a step lighter than the page */
+  --surface-2: #163d68;
+  --border: #2f6aa4;
+  --text: #ecf5ff;
+  --text-soft: #bdd6f0;
+  --text-faint: #8fb1d5;
+  --link: #aadcff;
+  --link-hover: #cfe9ff;
+  --primary: var(--brand-300);
+  --primary-contrast: #062338; /* dark text on light blue */
+  --chip: #205a96;
+  --chip-text: #c8e6ff;
+  --header-bg: rgba(20, 63, 108, 0.85);
+}
+
+/* Respect OS preference when the user hasn't chosen explicitly. The inline
+   script in BaseLayout sets data-theme before paint to avoid a flash. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #143f6c;
+    --bg-soft: #1d5793;
+    --surface: #1b4e83;
+    --surface-2: #163d68;
+    --border: #2f6aa4;
+    --text: #ecf5ff;
+    --text-soft: #bdd6f0;
+    --text-faint: #8fb1d5;
+    --link: #aadcff;
+    --link-hover: #cfe9ff;
+    --primary: var(--brand-300);
+    --primary-contrast: #062338;
+    --chip: #205a96;
+    --chip-text: #c8e6ff;
+    --header-bg: rgba(20, 63, 108, 0.85);
+  }
+}

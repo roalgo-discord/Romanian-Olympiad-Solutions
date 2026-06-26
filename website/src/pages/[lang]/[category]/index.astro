@@ -1,0 +1,103 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import { CATEGORIES, getCategory, entriesOfCategory, groupEntries, seasonForYear } from "../../../data/catalog";
+import { LANGS, type Lang } from "../../../i18n/ui";
+import { useTranslations, localePath } from "../../../i18n/utils";
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) =>
+    CATEGORIES.map((c) => ({ params: { lang, category: c.slug } }))
+  );
+}
+
+const lang = Astro.params.lang as Lang;
+const slug = Astro.params.category as string;
+const t = useTranslations(lang);
+const category = getCategory(slug)!;
+
+const entries = entriesOfCategory(slug);
+const perYear = new Map<number, number>();
+for (const e of entries) if (e.year) perYear.set(e.year, (perYear.get(e.year) ?? 0) + 1);
+const years = [...perYear.keys()].sort((a, b) => b - a);
+const noYear = entries.filter((e) => !e.year).length;
+
+// Some categories (e.g. InfoPro, a one-off) have no years — they are organized
+// by round/group instead, so we list those sections directly on this page.
+const byYear = years.length > 0;
+const groups = byYear ? [] : groupEntries(entries);
+
+function bucketHeading(kind: string | null) {
+  if (kind === "grade") return t("year.grade");
+  if (kind === "round") return t("year.round");
+  return t("year.other");
+}
+---
+
+<BaseLayout lang={lang} title={category.name[lang]}>
+  <Breadcrumbs
+    lang={lang}
+    items={[
+      { label: t("breadcrumb.home"), href: localePath("", lang) },
+      { label: category.name[lang] },
+    ]}
+  />
+
+  <h1>{category.name[lang]}</h1>
+  <p class="count">{category.count} {t("cat.solutions")}</p>
+
+  {
+    byYear ? (
+      <>
+        <h2>{t("cat.years")}</h2>
+        <div class="grid">
+          {years.map((y) => (
+            <a class="card year-card" href={localePath(`${slug}/${y}`, lang)}>
+              <span class="year">{seasonForYear(slug, y) ?? y}</span>
+              <span class="count">{perYear.get(y)} {t("cat.solutions")}</span>
+            </a>
+          ))}
+        </div>
+        {noYear > 0 && <p class="count" style="margin-top:1rem">+ {noYear} {t("year.other").toLowerCase()}</p>}
+      </>
+    ) : (
+      groups.map((g) => (
+        <section>
+          {g.group && <h2 class="group">{g.group}</h2>}
+          {g.buckets.map((b) => (
+            <>
+              {(b.label || !g.group) && (
+                <div class="bucket-title">
+                  {b.label ? (
+                    <h3><span class="kind">{bucketHeading(b.kind)}</span> {b.label}</h3>
+                  ) : (
+                    <h3>{t("year.problems")}</h3>
+                  )}
+                  <span class="count">{b.entries.length}</span>
+                </div>
+              )}
+              <ul class="sol-list">
+                {b.entries.map((e) => (
+                  <li>
+                    <a href={localePath(`solution/${e.id}`, lang)}>
+                      <span>{e.title}</span>
+                      <span class="ext">{e.file.ext}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ))}
+        </section>
+      ))
+    )
+  }
+</BaseLayout>
+
+<style>
+  .grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+  .year-card { display: flex; flex-direction: column; gap: 0.25rem; text-align: center; align-items: center; }
+  .year { font-size: 1.5rem; font-weight: 800; color: var(--text); }
+  .group { margin-top: 1.8rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border); }
+  .kind { color: var(--text-faint); font-weight: 600; font-size: 0.85em; }
+</style>

@@ -1,0 +1,36 @@
+---
+import { useTranslations } from "../i18n/utils";
+import type { Lang } from "../i18n/ui";
+import type { Entry } from "../data/catalog";
+
+interface Props {
+  lang: Lang;
+  entry: Entry;
+  embedUrl: string;
+  text: string | null;
+}
+const { lang, entry, embedUrl, text } = Astro.props;
+const t = useTranslations(lang);
+const kind = entry.file.kind;
+const inlineable = (kind === "text" || kind === "code" || kind === "html") && text !== null;
+---
+
+<section class="viewer-wrap">
+  {
+    kind === "pdf" ? (
+      <iframe class="viewer" src={embedUrl} title={entry.title} loading="lazy" />
+    ) : inlineable ? (
+      <>
+        <p class="note">{t("sol.textNote")}</p>
+        <pre class="text-view">{text}</pre>
+      </>
+    ) : (
+      <p class="note">{t("sol.cantEmbed")}</p>
+    )
+  }
+</section>
+
+<style>
+  .viewer-wrap { margin-top: 0.5rem; }
+  .note { font-size: 0.88rem; color: var(--text-faint); margin: 0 0 0.5rem; }
+</style>

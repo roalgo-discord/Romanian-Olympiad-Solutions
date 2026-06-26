@@ -1,0 +1,11 @@
+{
+  "_README": "Manual fixes for individual solution files. Key = the file's path inside the solutions repo (exactly as it appears there). Value = any of: title (string), summary ({ ro, en } or string), tags (string[]). These override the auto-generated values without ever touching the source files. Example below — delete it or replace with real entries.",
+  "Baraj + Lot Juniori (EJOI team selection tests)/2008/Lot 2/sol-munte.pdf": {
+    "title": "Munte",
+    "summary": {
+      "ro": "Soluție pentru problema Munte (Lot Juniori 2008).",
+      "en": "Editorial for the problem Munte (Junior Team Selection 2008)."
+    },
+    "tags": ["dp", "geometry"]
+  }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://romanian-olympiad-solutions.vercel.app/sitemap-index.xml

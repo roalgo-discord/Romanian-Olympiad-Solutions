@@ -1,0 +1,20 @@
+---
+// Root: send visitors to the default language. (Vercel also has a redirect,
+// this covers `astro preview` and other static hosts.)
+import { SITE } from "../config/site.mjs";
+const target = `/${SITE.defaultLang}/`;
+---
+
+<!doctype html>
+<html lang={SITE.defaultLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>{SITE.brand}</title>
+  </head>
+  <body>
+    <a href={target}>{SITE.brand}</a>
+    <script is:inline set:html={`location.replace(${JSON.stringify(target)})`} />
+  </body>
+</html>

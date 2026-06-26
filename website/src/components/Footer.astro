@@ -1,0 +1,29 @@
+---
+import { SITE } from "../config/site.mjs";
+import { useTranslations } from "../i18n/utils";
+import { COUNTS } from "../data/catalog";
+import type { Lang } from "../i18n/ui";
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const repoUrl = `https://github.com/${SITE.repo.owner}/${SITE.repo.name}`;
+---
+
+<footer class="site-footer">
+  <div class="container inner">
+    <p>
+      {t("footer.maintained")}
+      <a href={repoUrl} target="_blank" rel="noopener">{SITE.repo.name}</a>.
+      <span class="count">{COUNTS.entries} {t("cat.solutions")} · {COUNTS.categories} {t("nav.categories").toLowerCase()}</span>
+    </p>
+    <p>
+      <a href={`${repoUrl}#contributing`} target="_blank" rel="noopener">{t("footer.contribute")}</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer { border-top: 1px solid var(--border); background: var(--surface-2); padding-block: 1.4rem; margin-top: 2rem; }
+  .inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; font-size: 0.9rem; }
+  .inner p { margin: 0; color: var(--text-soft); }
+</style>

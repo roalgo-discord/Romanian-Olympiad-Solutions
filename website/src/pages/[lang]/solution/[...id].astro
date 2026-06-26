@@ -1,0 +1,145 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import SolutionViewer from "../../../components/SolutionViewer.astro";
+import { ENTRIES, getCategory, localizeSummary, yearLabel } from "../../../data/catalog";
+import { getKilonova } from "../../../data/kilonova";
+import { readSolutionText } from "../../../lib/source";
+import { SITE, githubRawUrl, githubBlobUrl, githubCdnUrl } from "../../../config/site.mjs";
+import { LANGS, type Lang } from "../../../i18n/ui";
+import { useTranslations, localePath } from "../../../i18n/utils";
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) =>
+    ENTRIES.map((e) => ({ params: { lang, id: e.id }, props: { entry: e } }))
+  );
+}
+
+const lang = Astro.params.lang as Lang;
+const { entry } = Astro.props;
+const t = useTranslations(lang);
+const category = getCategory(entry.category)!;
+
+const rawUrl = githubRawUrl(entry.file.repoPath);
+const blobUrl = githubBlobUrl(entry.file.repoPath);
+const cdnUrl = githubCdnUrl(entry.file.repoPath); // serves inline (no download prompt)
+const text = entry.file.kind === "text" || entry.file.kind === "code" || entry.file.kind === "html"
+  ? readSolutionText(entry.file.repoPath)
+  : null;
+const summary = localizeSummary(entry.summary, lang);
+const kilonova = getKilonova(entry.id);
+
+const crumbs: { label: string; href?: string }[] = [
+  { label: t("breadcrumb.home"), href: localePath("", lang) },
+  { label: category.name[lang], href: localePath(category.slug, lang) },
+];
+if (entry.year) crumbs.push({ label: yearLabel(entry), href: localePath(`${category.slug}/${entry.year}`, lang) });
+crumbs.push({ label: entry.title });
+
+const description = summary
+  ?? `${entry.title} — ${category.name[lang]}${entry.year ? " " + entry.year : ""}${entry.bucket ? ", " + entry.bucket.label : ""}.`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  name: entry.title,
+  inLanguage: "ro",
+  learningResourceType: "Solution / editorial",
+  about: category.name[lang],
+  isPartOf: { "@type": "Collection", name: SITE.repo.name },
+  url: new URL(localePath(`solution/${entry.id}`, lang), SITE.url).href,
+};
+---
+
+<BaseLayout lang={lang} title={entry.title} description={description}>
+  <Breadcrumbs lang={lang} items={crumbs} />
+
+  <h1 data-pagefind-meta="title">{entry.title}</h1>
+
+  <div class="chips">
+    <a class="chip" href={localePath(category.slug, lang)}>{category.name[lang]}</a>
+    {entry.year && <a class="chip" href={localePath(`${category.slug}/${entry.year}`, lang)}>{yearLabel(entry)}</a>}
+    {entry.bucket && <span class="chip">{entry.bucket.label}</span>}
+    {entry.group && <span class="chip">{entry.group}</span>}
+    {entry.tags.map((tag) => <span class="chip tag">#{tag}</span>)}
+  </div>
+
+  {summary && <p class="summary">{summary}</p>}
+
+  <div class="actions">
+    <a class="btn btn-primary" href={cdnUrl} target="_blank" rel="noopener">
+      {entry.file.kind === "pdf" ? t("sol.openPdf") : t("sol.openRaw")}
+    </a>
+    <a class="btn" href={blobUrl} target="_blank" rel="noopener">{t("sol.viewOnGithub")}</a>
+    <a class="btn" href={rawUrl} download>{t("sol.download")}</a>
+  </div>
+
+  {
+    kilonova && (
+      <section class="kilonova">
+        <div class="kn-head">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+          <h2>{t("sol.solve")}</h2>
+        </div>
+        {kilonova.kind === "list" ? (
+          <>
+            <p>{t("sol.solveDesc")}</p>
+            <div class="kn-problems">
+              {kilonova.problems.map((p) => (
+                <a class="kn-pill" href={p.url} target="_blank" rel="noopener">{p.name}</a>
+              ))}
+            </div>
+            {kilonova.listUrl && (
+              <a class="btn btn-primary kn-list" href={kilonova.listUrl} target="_blank" rel="noopener">
+                {t("sol.solveList")}{kilonova.listName ? ` → ${kilonova.listName}` : ""}
+              </a>
+            )}
+          </>
+        ) : (
+          <>
+            <p>{t("sol.solveProblem")}</p>
+            <a class="btn btn-primary" href={kilonova.problem.url} target="_blank" rel="noopener">
+              {t("sol.solve")}: {kilonova.problem.name}
+            </a>
+          </>
+        )}
+      </section>
+    )
+  }
+
+  <SolutionViewer lang={lang} entry={entry} embedUrl={cdnUrl} text={text} />
+
+  <dl class="meta-grid">
+    <dt>{t("sol.category")}</dt><dd>{category.name[lang]}</dd>
+    {entry.year && <><dt>{t("sol.year")}</dt><dd>{yearLabel(entry)}</dd></>}
+    <dt>{t("sol.type")}</dt><dd>{entry.file.ext.toUpperCase()}</dd>
+    <dt>{t("sol.source")}</dt><dd><a href={blobUrl} target="_blank" rel="noopener">{entry.file.repoPath}</a></dd>
+  </dl>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</BaseLayout>
+
+<style>
+  .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0.2rem 0 0.8rem; }
+  .chip.tag { background: transparent; border: 1px solid var(--border); color: var(--text-soft); }
+  .summary { font-size: 1.05rem; max-width: 65ch; }
+
+  .kilonova {
+    margin: 1.2rem 0 1.6rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--brand-300);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+  }
+  .kn-head { display: flex; align-items: center; gap: 0.5rem; color: var(--link); }
+  .kn-head h2 { margin: 0; font-size: 1.15rem; }
+  .kilonova p { margin: 0.4rem 0 0.7rem; color: var(--text-soft); font-size: 0.95rem; }
+  .kn-problems { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.9rem; }
+  .kn-pill {
+    font-family: var(--font-mono); font-size: 0.85rem;
+    padding: 0.3em 0.8em; border-radius: 999px;
+    background: var(--chip); color: var(--chip-text); border: 1px solid var(--brand-300);
+  }
+  .kn-pill:hover { background: var(--brand-300); color: var(--primary-contrast); text-decoration: none; }
+  .kn-list { font-size: 0.92rem; }
+</style>

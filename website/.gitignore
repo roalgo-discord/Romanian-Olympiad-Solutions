@@ -1,0 +1,22 @@
+# build output
+dist/
+.vercel/
+.astro/
+
+# dependencies
+node_modules/
+
+# local env (use .env.example as a template)
+.env
+
+# generated catalog (rebuilt from the solution folders on every build)
+src/data/catalog.json
+
+# logs / os
+npm-debug.log*
+.DS_Store
+Thumbs.db
+*.log
+
+# generated unmatched-kilonova report (regenerate with: npm run unmatched)
+unmatched-kilonova.md

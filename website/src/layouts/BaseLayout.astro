@@ -1,0 +1,81 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE } from "../config/site.mjs";
+import { useTranslations } from "../i18n/utils";
+import { LANGS, type Lang } from "../i18n/ui";
+import { switchLangPath } from "../i18n/utils";
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description?: string;
+  /** Optional override for the canonical/og image. */
+  noindex?: boolean;
+}
+
+const { lang, title, description, noindex = false } = Astro.props;
+const t = useTranslations(lang);
+
+const pathname = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : Astro.url.pathname + "/";
+const canonical = new URL(pathname, SITE.url).href;
+const desc = description ?? t("site.tagline");
+const brand = t("brand");
+const fullTitle = title ? `${title} · ${brand}` : `${t("site.title")} · ${brand}`;
+
+// hreflang alternates
+const alternates = LANGS.map((l) => ({
+  lang: l,
+  href: new URL(switchLangPath(pathname, l), SITE.url).href,
+}));
+---
+
+<!doctype html>
+<html lang={lang} data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+
+    {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
+    <link rel="alternate" hreflang="x-default" href={alternates[0].href} />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={brand} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === "ro" ? "ro_RO" : "en_US"} />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Set theme before paint to avoid a flash of the wrong theme. -->
+    <script is:inline>
+      (function () {
+        try {
+          // Follow the OS preference by default; the toggle overrides and persists.
+          var saved = localStorage.getItem("theme");
+          var theme =
+            saved ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div data-pagefind-ignore="all"><Header lang={lang} pathname={pathname} /></div>
+    <main {...noindex ? { "data-pagefind-ignore": "all" } : { "data-pagefind-body": true }}>
+      <div class="container">
+        <slot />
+      </div>
+    </main>
+    <div data-pagefind-ignore="all"><Footer lang={lang} /></div>
+  </body>
+</html>

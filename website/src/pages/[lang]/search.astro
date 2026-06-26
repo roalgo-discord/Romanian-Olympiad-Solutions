@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Search from "../../components/Search.astro";
+import { LANGS, type Lang } from "../../i18n/ui";
+import { useTranslations } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title={t("nav.search")} noindex={true}>
+  <h1>{t("nav.search")}</h1>
+  <div class="search-page">
+    <Search lang={lang} id="search" />
+  </div>
+</BaseLayout>
+
+<style>
+  .search-page { max-width: 720px; margin-top: 1rem; }
+</style>
